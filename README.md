@@ -41,13 +41,13 @@ npm run build
 ### Mac风格桌面
 路由：/mac
 
-![image](https://github.com/jiajun00/react-desktops/another/mac-home.png)
+![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-home.png)
 
-![image](https://github.com/jiajun00/react-desktops/another/mac-finder-file.png)
+![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-finder-file.png)
 
-![image](https://github.com/jiajun00/react-desktops/another/mac-finder-list.png)
+![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-finder-list.png)
 
-![image](https://github.com/jiajun00/react-desktops/another/mac-lanpach.png)
+![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-lanpach.png)
 
 
 ### Windows风格桌面
