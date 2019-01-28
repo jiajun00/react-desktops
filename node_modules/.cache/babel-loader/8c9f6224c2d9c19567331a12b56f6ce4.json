@@ -1,0 +1,1 @@
+{"ast":null,"code":"import alignElement from './align/alignElement';\nimport alignPoint from './align/alignPoint';\nexport { alignElement, alignPoint };\nexport default alignElement;","map":null,"metadata":{},"sourceType":"module"}

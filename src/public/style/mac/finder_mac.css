@@ -1,0 +1,95 @@
+.nav_lists section a {
+  text-decoration: none; }
+  .nav_lists section a.active li {
+    background-color: #ddd; }
+.nav_lists section li:hover {
+  background-color: #ddd; }
+
+.findder_files_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 10px; }
+  .findder_files_list .finder_file {
+    width: 90px;
+    padding-right: 10px;
+    max-height: 128px;
+    margin-bottom: 10px;
+    display: inline-block;
+    float: left; }
+    .findder_files_list .finder_file .file {
+      padding-bottom: 5px; }
+      .findder_files_list .finder_file .file:hover {
+        background-color: #cce8ff; }
+      .findder_files_list .finder_file .file img {
+        display: block;
+        height: 80px; }
+      .findder_files_list .finder_file .file span {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        color: #335; }
+  .findder_files_list .empty_file {
+    height: 1px; }
+
+.finder_fileList {
+  min-width: 500px;
+  background-color: #fff; }
+  .finder_fileList .finder_fileList_list {
+    color: #666;
+    font-size: 13px; }
+    .finder_fileList .finder_fileList_list dt {
+      overflow: hidden;
+      padding: 2px 0;
+      border-bottom: 1px solid #eee; }
+      .finder_fileList .finder_fileList_list dt > div {
+        padding: 0px 8px; }
+      .finder_fileList .finder_fileList_list dt .finder_fileList_list_header_name {
+        float: left;
+        min-width: 200px; }
+      .finder_fileList .finder_fileList_list dt .finder_fileList_list_header_date {
+        float: right;
+        width: 15%;
+        min-width: 125px;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee; }
+      .finder_fileList .finder_fileList_list dt .finder_fileList_list_header_size {
+        float: right;
+        width: 10%;
+        min-width: 85px;
+        border-right: 1px solid #eee; }
+      .finder_fileList .finder_fileList_list dt .finder_fileList_list_header_class {
+        float: right;
+        width: 10%;
+        min-width: 85px; }
+    .finder_fileList .finder_fileList_list dd ul {
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden; }
+      .finder_fileList .finder_fileList_list dd ul li {
+        overflow: hidden; }
+        .finder_fileList .finder_fileList_list dd ul li:nth-child(2n) {
+          background: #FAFAFA; }
+        .finder_fileList .finder_fileList_list dd ul li .finder_fileList_list_body_li {
+          width: 100%; }
+        .finder_fileList .finder_fileList_list dd ul li > div {
+          padding: 2px 8px; }
+        .finder_fileList .finder_fileList_list dd ul li .finder_fileList_list_body_name {
+          float: left;
+          min-width: 200px; }
+        .finder_fileList .finder_fileList_list dd ul li .finder_fileList_list_body_date {
+          float: right;
+          width: 15%;
+          min-width: 126px; }
+        .finder_fileList .finder_fileList_list dd ul li .finder_fileList_list_body_size {
+          float: right;
+          width: 10%;
+          min-width: 86px;
+          text-align: right; }
+        .finder_fileList .finder_fileList_list dd ul li .finder_fileList_list_body_class {
+          float: right;
+          width: 10%;
+          min-width: 85px; }
+
+/*# sourceMappingURL=finder_mac.css.map */

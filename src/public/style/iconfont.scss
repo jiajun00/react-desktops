@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'iconfontmac';  /* project id 933820 */
+  src: url('//at.alicdn.com/t/font_933820_k1aphnsns.eot');
+  src: url('//at.alicdn.com/t/font_933820_k1aphnsns.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_933820_k1aphnsns.woff') format('woff'),
+  url('//at.alicdn.com/t/font_933820_k1aphnsns.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_933820_k1aphnsns.svg#iconfontmac') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfontmac" !important;
+  font-size:17px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"// https://github.com/moment/moment/issues/3650\nexport default function interopDefault(m) {\n  return m[\"default\"] || m;\n}","map":null,"metadata":{},"sourceType":"module"}

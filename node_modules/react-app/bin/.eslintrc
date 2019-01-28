@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "global-require": 0,
+    "no-console": 0,
+    "no-var": 0,
+    "prefer-template": 0
+  }
+}
