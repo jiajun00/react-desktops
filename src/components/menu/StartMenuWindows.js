@@ -25,7 +25,7 @@ class StartMenuWindows extends Component {
         <View
           width={150}
         >
-          {/*<DateComponent type="win"/>*/}
+          <DateComponent type="win"/>
         </View>
       </View>
     )
