@@ -1,0 +1,10 @@
+$start_menus_background: rgba(0,0,0,.3);    //开始菜单栏背景颜色
+$message_box_background: rgba(0,0,0,.22);   //消息栏背景颜色
+
+
+.message_box{
+    background-color: $message_box_background;
+}
+.start_menus{
+  background-color: $start_menus_background;
+}

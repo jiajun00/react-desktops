@@ -14,7 +14,7 @@ class DateComponent extends Component {
   render() {
     const { year,month,day,hour,minute,week } = this.props.dataTime
     return (
-      <Fragment>
+      <div className="data_time">
         { this.props.type === 'win' ?
           <Fragment>
             <div>
@@ -27,7 +27,7 @@ class DateComponent extends Component {
           :
           <Fragment>{`${year}/${month}/${day} ${hour}:${minute} 周${week}`}</Fragment>
         }
-      </Fragment>
+      </div>
     )
   }
 

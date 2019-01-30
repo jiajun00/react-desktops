@@ -1,3 +1,4 @@
+@import '~@alifd/theme-2786/dist/next.css';
 @import "../iconfont";
 @import "./StyleValue.scss";
 
@@ -32,6 +33,12 @@ body{
     .active{
       background-color: $hover_lan;
     }
+  }
+}
+.mac_home_menu_right{
+  .data_time{
+    font-size: 14px;
+    padding-top: 3px;
   }
 }
 .mac_home_tools{

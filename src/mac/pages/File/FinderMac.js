@@ -11,7 +11,6 @@ import LeftnavRightContent from "../../../components/layout/LeftnavRightContent"
 import File from "../../../components/file/File";
 import FileList from "../../../components/file/FileList";
 import Iframe from "../../../components/block/Iframe";
-import { Button } from '@alifd/next';
 
 const LeftLayout = (props) => {
 

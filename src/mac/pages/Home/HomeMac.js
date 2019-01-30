@@ -4,7 +4,6 @@ import { View } from 'react-desktop'
 import { actionCreators } from './store/index'
 import desktopImage from "../../../public/images/home/desktop-1.jpg"
 
-import "../../../public/style/mac/index.scss"
 import WindowsMac from "../../../components/windows/WindowsMac"
 import NavMenuMac from "../../../components/menu/NavMenuMac";
 import DateComponent from "../../../components/block/DateComponent";
@@ -93,6 +92,7 @@ class HomeMac extends Component {
             height="26px"
             layout="horizontal"
             horizontalAlignment="right"
+            className="mac_home_menu_right"
           >
             <View
               padding="0 8px"

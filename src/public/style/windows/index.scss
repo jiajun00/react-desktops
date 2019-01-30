@@ -1,9 +1,28 @@
 @import "../iconfont";
+@import '~@alifd/theme-2786/dist/next.css';
 
+.message_box_expand-enter {
+  overflow: hidden;
+}
+
+.message_box_expand-enter-active {
+  transition: width 0.3s ease-out;
+}
+
+.message_box_expand-leave {
+  overflow: hidden;
+}
+
+.message_box_expand-leave-active {
+  transition: width 0.3s ease-out;
+}
+
+.message_box{
+
+}
 
 .start_menus{
   color: #fff;
-  background-color: rgba(0,0,0,.3);
   .start_menus_logo{
     font-size: 34px;
     text-align: center;
@@ -12,6 +31,26 @@
     cursor: pointer;
     &:hover{
       background-color: rgba(255,255,255,.1);
+    }
+  }
+  .data_time{
+    height: 100%;
+    font-size: 13px;
+    padding: 4px 10px;
+    text-align: center;
+    &:hover{
+      background-color: rgba(255,255,255,0.1);
+    }
+  }
+  .start_menus_message{
+    line-height: 40px;
+    padding: 0 10px;
+    i{
+      font-size: 20px;
+    }
+    &:hover{
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.1);
     }
   }
 }

@@ -1,3 +1,4 @@
+@import url(~@alifd/theme-2786/dist/next.css);
 @font-face {
   font-family: 'iconfontmac';
   /* project id 933820 */
@@ -34,6 +35,10 @@ body {
     float: left; }
   .mac_home_menu_left_nav dl .active {
     background-color: #4581EE; }
+
+.mac_home_menu_right .data_time {
+  font-size: 14px;
+  padding-top: 3px; }
 
 .mac_home_tools_navs {
   border-radius: 0 5px 5px 0;

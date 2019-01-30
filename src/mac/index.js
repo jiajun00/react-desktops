@@ -3,6 +3,8 @@ import store from './store/index'
 import { Provider } from 'react-redux'
 import {  Route, Switch } from 'react-router-dom'
 
+import "../public/style/mac/index.scss"
+
 import HomeMac from "./pages/Home/HomeMac"
 import FinderMac from "./pages/File/FinderMac";
 

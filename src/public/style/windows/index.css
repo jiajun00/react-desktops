@@ -1,3 +1,4 @@
+@import url(~@alifd/theme-2786/dist/next.css);
 @font-face {
   font-family: 'iconfontmac';
   /* project id 933820 */
@@ -10,9 +11,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.message_box_expand-enter {
+  overflow: hidden; }
+
+.message_box_expand-enter-active {
+  transition: width 0.3s ease-out; }
+
+.message_box_expand-leave {
+  overflow: hidden; }
+
+.message_box_expand-leave-active {
+  transition: width 0.3s ease-out; }
+
 .start_menus {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.3); }
+  color: #fff; }
   .start_menus .start_menus_logo {
     font-size: 34px;
     text-align: center;
@@ -20,6 +32,21 @@
     padding: 0 18px;
     cursor: pointer; }
     .start_menus .start_menus_logo:hover {
+      background-color: rgba(255, 255, 255, 0.1); }
+  .start_menus .data_time {
+    height: 100%;
+    font-size: 13px;
+    padding: 4px 10px;
+    text-align: center; }
+    .start_menus .data_time:hover {
+      background-color: rgba(255, 255, 255, 0.1); }
+  .start_menus .start_menus_message {
+    line-height: 40px;
+    padding: 0 10px; }
+    .start_menus .start_menus_message i {
+      font-size: 20px; }
+    .start_menus .start_menus_message:hover {
+      cursor: pointer;
       background-color: rgba(255, 255, 255, 0.1); }
 
 /*# sourceMappingURL=index.css.map */

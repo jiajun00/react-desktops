@@ -6,6 +6,11 @@ class StartMenuWindows extends Component {
   state = {}
 
   render() {
+    const {
+      dataTime,isOpenMessageBox,
+      setDataTime,openMessageBox,closeMessageBox
+    } = this.props
+
     return (
       <View
         width="100%"
@@ -23,9 +28,16 @@ class StartMenuWindows extends Component {
 
         </View>
         <View
-          width={150}
+          width={133}
+          style={{position:'absolute',right:0}}
         >
-          <DateComponent type="win"/>
+          <DateComponent dataTime={dataTime} setDataTime={setDataTime} type="win"/>
+          <View
+            className="start_menus_message"
+            onClick={isOpenMessageBox?closeMessageBox:openMessageBox}
+          >
+            <i className="iconfont">&#xe6f6;</i>
+          </View>
         </View>
       </View>
     )
