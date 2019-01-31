@@ -53,6 +53,9 @@ npm run build
 ### Windows风格桌面
 路由：/win
 
+## 在线演示
+[演示地址](http://desk.qqxio.cn)
+
 ## Learn More
 
 redux-devtools [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension).
