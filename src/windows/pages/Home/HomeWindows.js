@@ -7,7 +7,9 @@ import "../../../public/style/windows/index.scss"
 
 import desktopImage from "../../../public/images/home/desktop-2.jpg"
 import StartMenuWindows from "../../../components/menu/StartMenuWindows";
-import MessageBox from "../../../components/menu/MessageBox";
+import MessageBox from "../../../components/block/MessageBox";
+import StartBoxWindows from "../../../components/menu/StartBoxWindows";
+import DesktopApps from "../../../components/block/DesktopApps";
 
 class HomeWindows extends Component {
 
@@ -19,8 +21,8 @@ class HomeWindows extends Component {
 
   render() {
     const {
-      dataTime,isOpenMessageBox,
-      setDataTime,openMessageBox,closeMessageBox
+      dataTime,isOpenMessageBox,isOpenStartBox,
+      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox
     } = this.props
     return (
       <View
@@ -34,10 +36,22 @@ class HomeWindows extends Component {
           width="100%"
           height="100%"
           layout="vertical"
+          className="desktop"
         >
+          <DesktopApps/>
+          <StartBoxWindows isOpenStartBox={isOpenStartBox} openStartBox={openStartBox} closeStartBox={closeStartBox}/>
           <MessageBox isOpenMessageBox={isOpenMessageBox} openMessageBox={openMessageBox} closeMessageBox={closeMessageBox}/>
         </View>
-        <StartMenuWindows dataTime={dataTime} isOpenMessageBox={isOpenMessageBox} closeMessageBox={closeMessageBox} openMessageBox={openMessageBox} setDataTime={setDataTime}/>
+        <StartMenuWindows
+          dataTime={dataTime}
+          isOpenMessageBox={isOpenMessageBox}
+          closeMessageBox={closeMessageBox}
+          openMessageBox={openMessageBox}
+          setDataTime={setDataTime}
+          isOpenStartBox={isOpenStartBox}
+          openStartBox={openStartBox}
+          closeStartBox={closeStartBox}
+        />
       </View>
     )
   }
@@ -45,7 +59,8 @@ class HomeWindows extends Component {
 
 const initMapStateToProps = (state) => ({
   dataTime:state.getIn(['homeWindows','dataTime']).toJS(),
-  isOpenMessageBox:state.getIn(['homeWindows','isOpenMessageBox'])
+  isOpenMessageBox:state.getIn(['homeWindows','isOpenMessageBox']),
+  isOpenStartBox:state.getIn(['homeWindows','isOpenStartBox'])
 })
 
 const initMapDispatchToProps = (dispatch) => ({
@@ -67,6 +82,18 @@ const initMapDispatchToProps = (dispatch) => ({
    */
   closeMessageBox(){
     dispatch(actionCreators.closeMessageBox())
+  },
+  /*
+   * 打开开始菜单
+   */
+  openStartBox(){
+    dispatch(actionCreators.openStartBox())
+  },
+  /*
+   * 关闭开始菜单
+   */
+  closeStartBox(){
+    dispatch(actionCreators.closeStartBox())
   }
 })
 

@@ -8,5 +8,6 @@ export default fromJS({
     minute:'00',
     week:''
   },
-  isOpenMessageBox:false
+  isOpenMessageBox:false,
+  isOpenStartBox:false
 })

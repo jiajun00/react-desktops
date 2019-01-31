@@ -7,8 +7,8 @@ class StartMenuWindows extends Component {
 
   render() {
     const {
-      dataTime,isOpenMessageBox,
-      setDataTime,openMessageBox,closeMessageBox
+      dataTime,isOpenMessageBox,isOpenStartBox,
+      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox
     } = this.props
 
     return (
@@ -19,6 +19,7 @@ class StartMenuWindows extends Component {
       >
         <View
           className="start_menus_logo"
+          onClick={isOpenStartBox?closeStartBox:openStartBox}
         >
           <i className="iconfont">&#xe64b;</i>
         </View>

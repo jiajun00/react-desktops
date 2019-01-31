@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable'
 import * as constants from './constants'
-import {actionCreators} from "./index";
 
 /*
  * 设置日期
@@ -22,5 +21,19 @@ export const openMessageBox = () => ({
  */
 export const closeMessageBox = () => ({
   type:constants.CLOSE_MESSAGE_BOX,
+  data:false
+})
+/*
+ * 打开开始菜单
+ */
+export const openStartBox = () => ({
+  type:constants.OPEN_START_BOX,
+  data:true
+})
+/*
+ * 关闭开始菜单
+ */
+export const closeStartBox = () => ({
+  type:constants.CLOSE_START_BOX,
   data:false
 })
