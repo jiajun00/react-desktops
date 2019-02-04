@@ -39,7 +39,7 @@ class LeftnavRightContent extends Component {
         horizontalAlignment="left"
         height="100%"
       >
-        <div id={'layoutLeft'} ref={layoutLeft => this.layoutLeft=layoutLeft} style={leftStyle}>
+        <div id='layoutLeft' ref={layoutLeft => this.layoutLeft=layoutLeft} style={leftStyle}>
           {this.props.children.find((row) => (
             row.type === 'nav'
           ))}
@@ -51,7 +51,7 @@ class LeftnavRightContent extends Component {
         >
           <View width="2" style={borderCenter}/>
         </View>
-        <div id={'layoutRight'} ref={layoutRight => this.layoutRight=layoutRight} style={rightStyle}>
+        <div id='layoutRight' ref={layoutRight => this.layoutRight=layoutRight} style={rightStyle}>
           {this.props.children.find((row) => (
             row.type === 'main'
           ))}
@@ -76,10 +76,12 @@ class LeftnavRightContent extends Component {
       const moveEndX = e.clientX
       const LeftWidth = this.layoutLeftWidth + (moveEndX - this.moveStartX)
       const RightWidth = this.layoutRightWidth - (moveEndX - this.moveStartX)
-      if(LeftWidth>180 && RightWidth>200){
-        const list = calc_empty_list(RightWidth,90,this.props.fileLists.length,this.props.emptyLists.length)
-        if(list) {
-          this.props.emptyList(list)
+      if(LeftWidth>120 && RightWidth>200){
+        if(this.props.fileLists && this.props.emptyLists){
+          const list = calc_empty_list(RightWidth,90,this.props.fileLists.length,this.props.emptyLists.length)
+          if(list) {
+            this.props.emptyList(list)
+          }
         }
         this.layoutLeft.style.width = LeftWidth + 'px'
         this.layoutRight.style.width = `calc(100% - ${LeftWidth+8}px)`

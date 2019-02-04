@@ -8,6 +8,7 @@ import WindowsMac from "../../../components/windows/WindowsMac"
 import NavMenuMac from "../../../components/menu/NavMenuMac";
 import DateComponent from "../../../components/block/DateComponent";
 import Iframe from "../../../components/block/Iframe";
+import {actionCreators as actionCreatorsHomeMac} from "./store";
 
 class HomeMac extends Component {
   constructor(props){
@@ -17,7 +18,7 @@ class HomeMac extends Component {
   render() {
     const {
       homeNav,tools,openWindowList,setWindowOpenList,menuNav,isEnterMenu,isEnterMenuNav,openMenuNav,
-      handleOpenNav,mouseEnterMenuNav,mouseLeaveMenuNav
+      handleOpenNav,mouseEnterMenuNav,mouseLeaveMenuNav,closeWindow,hiddenWindow
     } = this.props
     return (
       <View
@@ -153,6 +154,8 @@ class HomeMac extends Component {
             zIndex={row.zIndex}
             openWindowList={openWindowList}
             setWindowIndex={this.props.setWindowOpenList}
+            closeWindow={closeWindow}
+            hiddenWindow={hiddenWindow}
           >
             {row.isIframe &&
             <Iframe title={row.type} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
@@ -194,6 +197,18 @@ const initMapDispatchToProps = (dispatch) => ({
    */
   loadWindow(window,openWindowList){
     dispatch(actionCreators.loadWindow(window,openWindowList))
+  },
+  /*
+   * 关闭窗口
+   */
+  closeWindow(type,openWindowList){
+    dispatch(actionCreatorsHomeMac.closeWindow(type,openWindowList))
+  },
+  /*
+   * 隐藏窗口
+   */
+  hiddenWindow(window,windowList){
+    dispatch(actionCreatorsHomeMac.hiddenWindow(window,windowList))
   },
   /*
    * 访问菜单

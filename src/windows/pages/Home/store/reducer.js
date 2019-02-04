@@ -13,6 +13,16 @@ export default (state = defaultState, action) => {
       return state.set('isOpenStartBox',action.data)
     case constants.CLOSE_START_BOX: //关闭开始菜单
       return state.set('isOpenStartBox',action.data)
+    case constants.ADD_WINDOW_LIST: //添加工具栏列表
+      return state.set('openWindowList',action.openWindowList)
+    case constants.SHOW_WINDOW://显示窗口
+      return state.set('openWindowList',action.windowList)
+    case constants.CLOSE_WINDOW://关闭窗口
+      return state.set('openWindowList',action.openWindowList)
+    case constants.HIDDEN_WINDOW://隐藏窗口
+      return state.set('openWindowList',action.windowList)
+    case constants.LOAD_WINDOW://读取完成窗口
+      return state.set('openWindowList',action.windowList)
     default:
       return state;
   }

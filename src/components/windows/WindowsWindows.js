@@ -1,21 +1,22 @@
 import React, {Component, Fragment} from 'react'
-import { View,Window,TitleBar } from 'react-desktop'
+import { Window,TitleBar,View } from 'react-desktop/windows'
+
 const WindowOffsetWidth = window.innerWidth
 const WindowOffsetHeight = window.innerHeight
 let lastWindowStyleState = null //记录前一次设置的屏幕属性
-class WindowsMac extends Component {
+
+class WindowsWindows extends Component {
   constructor(props){
     super(props)
     this.moving = false
     this.type=''
-    this.width = WindowOffsetWidth-105 + 'px'
-    this.height = WindowOffsetHeight-50 + 'px'
-    this.windowTop = 26
-    this.windowLeft= 80
+    this.width =  800
+    this.height = WindowOffsetHeight-100
+    this.windowTop = 26 + props.zIndex
+    this.windowLeft= (WindowOffsetWidth - this.width)/2 + props.zIndex
   }
   state = {
     isFullScreen:false,
-
   }
   componentDidMount(){
     window.addEventListener('mouseup',this.mouseUp)
@@ -23,28 +24,24 @@ class WindowsMac extends Component {
   componentWillUnmount(){
     window.removeEventListener('mouseup',this.mouseUp)
   }
-  shouldComponentUpdate(newProps,newState) {
-    if(newProps.zIndex !== this.props.zIndex){
-      return true
-    }
-    if(newProps.window !== this.props.window){
-      return true
-    }
-    if(newState.isFullScreen !== this.state.isFullScreen){
-      return true
-    }
-    return false
-  }
   render() {
     const { isFullScreen } = this.state
+    const {
+      openWindowList,window,
+      closeWindow,hiddenWindow,setWindowIndex
+    } = this.props
     const windowStyle = {
       position:'absolute',
-      display:this.props.window.isShow ? "block" : "none",
+      display:window.isShow ? "block" : "none",
       top:this.windowTop+"px",
       left:this.windowLeft+"px",
       width:this.width,
       height:this.height,
       zIndex:this.props.zIndex
+    }
+    const titleBarStyle={
+      position:'relative',
+      zIndex:this.props.zIndex + 1
     }
     const buttonStyle={
       width: '50px',
@@ -53,50 +50,42 @@ class WindowsMac extends Component {
       bottom: '-15px',
       right: '-15px',
       cursor: 'se-resize',
-      zIndex: this.props.zIndex+9
+      zIndex: this.props.zIndex + 9
     }
-
-    const showCover = this.props.window.isTop ? 'none' : 'block'
     const cover={
       width:'100%',
       height:'100%',
       position:'absolute',
-      zIndex:this.props.zIndex+8,
-      display: showCover
+      top:0,
+      backgroundColor:'rgba(255,255,255,0.6)',
+      zIndex:this.props.zIndex + 8,
+      display: window.isTop ? 'none' : 'block'
     }
     return (
       <Fragment>
-        <span
-            style={windowStyle}
-            ref={e => this.window = e}
+        <span style={windowStyle} ref={e => this.window = e}>
+          <Window
+            chrome
+            width='100%'
+            height='100%'
           >
-        <Window
-          chrome
-          width="100%"
-          height="100%"
-          padding="0px"
-        >
-          <TitleBar
-            title={this.props.window.name}
-            controls
-            isFullscreen={isFullScreen}
-            onCloseClick={() => {
-              this.props.closeWindow(this.props.window.type,this.props.openWindowList)
-            }}
-            onMinimizeClick={()=>this.props.hiddenWindow(this.props.window,this.props.openWindowList)}
-            onResizeClick={() => {
-              this.handleClickSetScreen()
-            }}
-            onMouseDown={e => {
-              this.mouseMoveDown(e,'position')
-              this.props.setWindowIndex(this.props.window,this.props.openWindowList)
-            }}
-          />
-          <View
-            padding="0px"
-            width="100%"
-            style={{overflow: 'scroll'}}
-          >
+            <TitleBar
+              style={titleBarStyle}
+              title={window.name}
+              controls
+              onMouseDown={e => {
+                this.mouseMoveDown(e,'position')
+                setWindowIndex(window,openWindowList)
+              }}
+              onMinimizeClick={()=>hiddenWindow(window,openWindowList)}
+              onMaximizeClick={this.handleClickSetScreen}
+              onCloseClick={() => {closeWindow(window.type,openWindowList)}}
+            />
+            <View
+              padding="0px"
+              width="100%"
+              style={{overflow: 'scroll'}}
+            >
             {this.props.children}
           </View>
           <div
@@ -104,23 +93,21 @@ class WindowsMac extends Component {
             style={cover}
             onClick={()=>this.props.setWindowIndex(this.props.window,this.props.openWindowList)}
           />
-        </Window>
+          </Window>
+
           {!isFullScreen &&
           <span
             onMouseDown={e => {
               this.mouseMoveDown(e,'wh')
-              this.props.setWindowIndex(this.props.window,this.props.openWindowList)
+              // this.props.setWindowIndex(this.props.window,this.props.openWindowList)
             }}
             style={buttonStyle}
           />
           }
         </span>
-
       </Fragment>
-
     )
   }
-
   mouseMoveDown = (e,type) => {
     if(!this.state.isFullScreen) {
       e.stopPropagation() //防止事件冒泡
@@ -139,13 +126,14 @@ class WindowsMac extends Component {
     if(this.moving){
       const moveEndX = e.clientX
       const moveEndY = e.clientY
-      const width = this.windowWidth + moveEndX - this.moveStartX
-      const height = this.windowHeight + moveEndY - this.moveStartY
-      if(width>460 &&  width<(WindowOffsetWidth-77)){
-        this.window.style.width = width + 'px'
+      this.width = this.windowWidth + moveEndX - this.moveStartX
+      this.height = this.windowHeight + moveEndY - this.moveStartY
+
+      if(this.width>460 &&  this.width<(WindowOffsetWidth-77)){
+        this.window.style.width = this.width + 'px'
       }
-      if(height>400 && height<(WindowOffsetHeight-26)){
-        this.window.style.height = height + 'px'
+      if(this.height>400 && this.height<(WindowOffsetHeight-37)){
+        this.window.style.height = this.height + 'px'
       }
     }
   }
@@ -171,31 +159,30 @@ class WindowsMac extends Component {
         isFullScreen:true
       },()=>{
         this.window.style.width = WindowOffsetWidth + 'px'
-        this.window.style.height = WindowOffsetHeight + 'px'
+        this.window.style.height = WindowOffsetHeight-37 + 'px'
         this.window.style.top = '0px'
         this.window.style.left = '0px'
         this.window.style.zIndex = '10'
       })
     }
   }
-
   mouseMovePosition = (e) => {
     e.preventDefault();
     const mouseEndX = e.clientX
     const mouseEndY = e.clientY
     this.windowLeftEnd = this.windowLeft + mouseEndX - this.moveStartX;
     this.windowTopEnd = this.windowTop + mouseEndY - this.moveStartY;
-    if(this.windowTopEnd<26){  //防止移动和工具栏重叠
-      this.windowTopEnd = 26
+    if(this.windowTopEnd<-1){  //防止移动超过顶部
+      this.windowTopEnd = -1
     }
-    if(this.windowTopEnd>=(document.body.clientHeight - 26)){
-      this.windowTopEnd = document.body.clientHeight - 26
+    if(this.windowTopEnd>=(document.body.clientHeight - this.height)){
+      this.windowTopEnd = document.body.clientHeight - this.height
     }
-    if(this.windowLeftEnd<(80 - this.windowWidth)){
-      this.windowLeftEnd = 80 - this.windowWidth
+    if(this.windowLeftEnd<0){
+      this.windowLeftEnd = 0
     }
-    if(this.windowLeftEnd>=(document.body.clientWidth - 80)){
-      this.windowLeftEnd = document.body.clientWidth - 80
+    if(this.windowLeftEnd>=(document.body.clientWidth - this.width)){
+      this.windowLeftEnd = document.body.clientWidth - this.width
     }
     this.window.style.top=this.windowTopEnd + 'px'
     this.window.style.left=this.windowLeftEnd + 'px'
@@ -230,4 +217,5 @@ class WindowsMac extends Component {
   }
 }
 
-export default WindowsMac
+
+export default WindowsWindows

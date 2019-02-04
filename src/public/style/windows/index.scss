@@ -66,7 +66,8 @@
 }
 
 .start_menus{
-  z-index: 10;
+  $menu_zIndex:1000;
+  z-index: $menu_zIndex;
   color: #fff;
   .start_menus_logo{
     font-size: 34px;
@@ -76,6 +77,58 @@
     cursor: pointer;
     &:hover{
       background-color: rgba(255,255,255,.1);
+    }
+  }
+  .start_menus_win{
+    z-index: $menu_zIndex + 1;
+    width: 140px;
+    height: 37px;
+    border-bottom: 2px solid rgba(255,255,255,.6);
+    cursor: pointer;
+    margin-left: 2px;
+    transition: background-color .3s ease-out;
+    &:hover{
+      background-color: rgba(255,255,255,.3)!important;
+      .start_menus_win_box {
+        i{
+          visibility: visible;
+        }
+      }
+    }
+    &.active{
+      background-color: rgba(255,255,255,.2);
+    }
+    .start_menus_win_box{
+      width: 100%;
+      padding: 0 10px;
+      img{
+        margin:auto 5px auto 0px;
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+      h3{
+        display: block;
+        line-height: 37px;
+      }
+      i{
+        display: block;
+        position: absolute;
+        top:3px;
+        right: 5px;
+        color: rgba(255,255,255,0.4);
+        visibility: hidden;
+        z-index: $menu_zIndex + 3;
+        &:hover{
+          color: rgba(255,255,255,0.8);
+        }
+      }
+    }
+    .start_menus_win_cover{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: $menu_zIndex + 2;
     }
   }
   .data_time{

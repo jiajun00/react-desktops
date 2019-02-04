@@ -63,3 +63,5 @@ redux-devtools [redux-devtools-extension](https://github.com/zalmoxisus/redux-de
 fusion design [官网地址](https://fusion.design/).
 
 react-router [官网地址](https://reacttraining.com/react-router/web/guides/quick-start).
+
+create-react-app [文档地址](https://www.html.cn/create-react-app/docs/documentation-intro/)

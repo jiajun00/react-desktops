@@ -6,10 +6,14 @@ import {actionCreators} from "./store";
 import "../../../public/style/windows/index.scss"
 
 import desktopImage from "../../../public/images/home/desktop-2.jpg"
+
 import StartMenuWindows from "../../../components/menu/StartMenuWindows";
 import MessageBox from "../../../components/block/MessageBox";
 import StartBoxWindows from "../../../components/menu/StartBoxWindows";
 import DesktopApps from "../../../components/block/DesktopApps";
+import WindowsWindows from "../../../components/windows/WindowsWindows";
+import Iframe from "../../../components/block/Iframe";
+
 
 class HomeWindows extends Component {
 
@@ -21,8 +25,8 @@ class HomeWindows extends Component {
 
   render() {
     const {
-      dataTime,isOpenMessageBox,isOpenStartBox,
-      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox
+      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,
+      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow
     } = this.props
     return (
       <View
@@ -38,11 +42,15 @@ class HomeWindows extends Component {
           layout="vertical"
           className="desktop"
         >
-          <DesktopApps/>
+          <DesktopApps desktopApps={desktopApps} setWindowOpenList={setWindowOpenList} openWindowList={openWindowList}/>
           <StartBoxWindows isOpenStartBox={isOpenStartBox} openStartBox={openStartBox} closeStartBox={closeStartBox}/>
           <MessageBox isOpenMessageBox={isOpenMessageBox} openMessageBox={openMessageBox} closeMessageBox={closeMessageBox}/>
         </View>
         <StartMenuWindows
+          openWindowList={openWindowList}
+          setWindowOpenList={setWindowOpenList}
+          closeWindow={closeWindow}
+          hiddenWindow={hiddenWindow}
           dataTime={dataTime}
           isOpenMessageBox={isOpenMessageBox}
           closeMessageBox={closeMessageBox}
@@ -52,6 +60,22 @@ class HomeWindows extends Component {
           openStartBox={openStartBox}
           closeStartBox={closeStartBox}
         />
+        {openWindowList.map((row)=>(
+        <WindowsWindows
+          id={row.type}
+          key={row.type}
+          window={row}
+          zIndex={row.zIndex}
+          openWindowList={openWindowList}
+          setWindowIndex={setWindowOpenList}
+          closeWindow={closeWindow}
+          hiddenWindow={hiddenWindow}
+        >
+          {row.isIframe &&
+          <Iframe title={row.type} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
+          }
+        </WindowsWindows>
+        ))}
       </View>
     )
   }
@@ -60,7 +84,9 @@ class HomeWindows extends Component {
 const initMapStateToProps = (state) => ({
   dataTime:state.getIn(['homeWindows','dataTime']).toJS(),
   isOpenMessageBox:state.getIn(['homeWindows','isOpenMessageBox']),
-  isOpenStartBox:state.getIn(['homeWindows','isOpenStartBox'])
+  isOpenStartBox:state.getIn(['homeWindows','isOpenStartBox']),
+  desktopApps:state.getIn(['homeWindows','desktopApps']).toJS(),
+  openWindowList:state.getIn(['homeWindows','openWindowList']).toJS(),
 })
 
 const initMapDispatchToProps = (dispatch) => ({
@@ -94,6 +120,30 @@ const initMapDispatchToProps = (dispatch) => ({
    */
   closeStartBox(){
     dispatch(actionCreators.closeStartBox())
+  },
+  /*
+   * 添加或显示窗口列表
+   */
+  setWindowOpenList(window,openWindowList){
+    dispatch(actionCreators.setWindowOpenList(window,openWindowList))
+  },
+  /*
+   * 关闭窗口
+   */
+  closeWindow(type,openWindowList){
+    dispatch(actionCreators.closeWindow(type,openWindowList))
+  },
+  /*
+   * 隐藏窗口
+   */
+  hiddenWindow(window,windowList){
+    dispatch(actionCreators.hiddenWindow(window,windowList))
+  },
+  /*
+   * 窗口读取完成
+   */
+  loadWindow(window,openWindowList){
+    dispatch(actionCreators.loadWindow(window,openWindowList))
   }
 })
 

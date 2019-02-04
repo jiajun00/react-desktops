@@ -12,17 +12,19 @@ class Iframe extends Component {
   }
 
   render() {
-    let { style } = this.props
-    if(this.props.isLoad){      style.visibility="visible"
-    }else{
-      style.visibility="hidden"
+    const {
+      style,isLoad
+    } = this.props
+    const iStyle = {
+      ...style,
+      visibility:isLoad?"visible":"hidden"
     }
     return (
       <Fragment>
         <iframe
           title={this.props.title}
           frameBorder={this.props.frameBorder}
-          style={style}
+          style={iStyle}
           width={this.props.width}
           src={this.props.src}
           onLoad={this.props.onLoad}

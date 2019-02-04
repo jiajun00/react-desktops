@@ -59,7 +59,7 @@
       cursor: pointer; }
 
 .start_menus {
-  z-index: 10;
+  z-index: 1000;
   color: #fff; }
   .start_menus .start_menus_logo {
     font-size: 34px;
@@ -69,6 +69,46 @@
     cursor: pointer; }
     .start_menus .start_menus_logo:hover {
       background-color: rgba(255, 255, 255, 0.1); }
+  .start_menus .start_menus_win {
+    z-index: 1001;
+    width: 140px;
+    height: 37px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    margin-left: 2px;
+    transition: background-color .3s ease-out; }
+    .start_menus .start_menus_win:hover {
+      background-color: rgba(255, 255, 255, 0.3) !important; }
+      .start_menus .start_menus_win:hover .start_menus_win_box i {
+        visibility: visible; }
+    .start_menus .start_menus_win.active {
+      background-color: rgba(255, 255, 255, 0.2); }
+    .start_menus .start_menus_win .start_menus_win_box {
+      width: 100%;
+      padding: 0 10px; }
+      .start_menus .start_menus_win .start_menus_win_box img {
+        margin: auto 5px auto 0px;
+        display: block;
+        width: 24px;
+        height: 24px; }
+      .start_menus .start_menus_win .start_menus_win_box h3 {
+        display: block;
+        line-height: 37px; }
+      .start_menus .start_menus_win .start_menus_win_box i {
+        display: block;
+        position: absolute;
+        top: 3px;
+        right: 5px;
+        color: rgba(255, 255, 255, 0.4);
+        visibility: hidden;
+        z-index: 1003; }
+        .start_menus .start_menus_win .start_menus_win_box i:hover {
+          color: rgba(255, 255, 255, 0.8); }
+    .start_menus .start_menus_win .start_menus_win_cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1002; }
   .start_menus .data_time {
     height: 100%;
     font-size: 13px;

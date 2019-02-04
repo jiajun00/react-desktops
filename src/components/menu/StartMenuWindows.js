@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { View } from 'react-desktop'
+import { Icon } from '@alifd/next'
 import DateComponent from "../block/DateComponent";
 class StartMenuWindows extends Component {
 
@@ -7,8 +8,8 @@ class StartMenuWindows extends Component {
 
   render() {
     const {
-      dataTime,isOpenMessageBox,isOpenStartBox,
-      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox
+      dataTime,isOpenMessageBox,isOpenStartBox,openWindowList,
+      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow
     } = this.props
 
     return (
@@ -24,8 +25,21 @@ class StartMenuWindows extends Component {
           <i className="iconfont">&#xe64b;</i>
         </View>
         <View
-          width={300}
+          width="calc(100% - 206px)"
         >
+          {openWindowList.map((row)=>(
+            <View
+              key={row.type}
+              className={row.isTop?"start_menus_win active":"start_menus_win"}
+            >
+              <View className="start_menus_win_box">
+                <img src={row.logo} alt={row.type}/>
+                <h3>{row.name}</h3>
+                <Icon onClick={()=>{closeWindow(row.type,openWindowList)}} type="delete-filling" size="xs"/>
+              </View>
+              <div className="start_menus_win_cover" onClick={()=>{row.isTop?hiddenWindow(row,openWindowList):setWindowOpenList(row,openWindowList)}}/>
+            </View>
+          ))}
 
         </View>
         <View
