@@ -12,7 +12,8 @@
   -moz-osx-font-smoothing: grayscale; }
 
 .desktop {
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 1; }
 
 .message_box_expand-enter {
   overflow: hidden; }
@@ -93,7 +94,8 @@
         height: 24px; }
       .start_menus .start_menus_win .start_menus_win_box h3 {
         display: block;
-        line-height: 37px; }
+        line-height: 37px;
+        font-size: 12px; }
       .start_menus .start_menus_win .start_menus_win_box i {
         display: block;
         position: absolute;
@@ -140,7 +142,7 @@
 .start_box {
   width: 854px;
   height: 370px;
-  z-index: 9; }
+  z-index: 1001; }
   .start_box .start_box_left {
     padding: 40px 20px 20px 0px; }
     .start_box .start_box_left .start_box_left_user {
@@ -219,8 +221,9 @@
           height: 100%; }
         .start_box .start_box_right .start_box_right_content .start_box_application h4 {
           position: absolute;
-          bottom: 0px;
-          left: 5px; }
+          bottom: -5px;
+          left: 5px;
+          font-size: 12px; }
         .start_box .start_box_right .start_box_right_content .start_box_application .start_box_application_hover {
           width: 100%;
           height: 100%;
@@ -228,6 +231,11 @@
           top: 0;
           border: 2px solid rgba(255, 255, 255, 0.5);
           visibility: hidden; }
+  .start_box .start_box_cover {
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 37px);
+    z-index: 1000; }
 
 .desktop_apps {
   justify-content: flex-start;
@@ -243,12 +251,26 @@
     .desktop_apps .desktop_app:hover {
       background-color: rgba(255, 255, 255, 0.3); }
     .desktop_apps .desktop_app img {
+      border-radius: 3px;
       height: 50px;
       width: 50px; }
     .desktop_apps .desktop_app h3 {
       font-family: "Microsoft YaHei";
-      line-height: 20px;
+      padding: 0 3px;
+      line-height: 17px;
       font-weight: normal;
       font-size: 12px; }
+
+.window_expand-enter {
+  overflow: hidden; }
+
+.window_expand-enter-active {
+  transition: all 0.1s ease-out; }
+
+.window_expand-leave {
+  overflow: hidden; }
+
+.window_expand-leave-active {
+  transition: all 0.2s ease-out; }
 
 /*# sourceMappingURL=index.css.map */

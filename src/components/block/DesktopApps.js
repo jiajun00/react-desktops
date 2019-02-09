@@ -21,7 +21,7 @@ class DesktopApps extends Component {
             <div
               key={row.type}
               className="desktop_app"
-              onDoubleClick={()=>{setWindowOpenList(row,openWindowList)}}
+              onDoubleClick={()=>{row.isBlank?window.open(row.url):setWindowOpenList(row,openWindowList)}}
             >
               <img src={row.logo} alt="file1"/>
               <h3>{row.name}</h3>

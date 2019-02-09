@@ -3,6 +3,7 @@
 
 .desktop{
   overflow: hidden;
+  z-index: 1;
 }
 
 .message_box_expand-enter {
@@ -110,6 +111,7 @@
       h3{
         display: block;
         line-height: 37px;
+        font-size: 12px;
       }
       i{
         display: block;
@@ -169,9 +171,10 @@
   transition: bottom 0.1s ease-out;
 }
 .start_box{
+  $box_zIndex:1000;
   width: 854px;
   height: 370px;
-  z-index: 9;
+  z-index: $box_zIndex + 1;
   .start_box_left{
     padding: 40px 20px 20px 0px;
     .start_box_left_user{
@@ -277,8 +280,9 @@
         }
         h4{
           position: absolute;
-          bottom: 0px;
+          bottom: -5px;
           left: 5px;
+          font-size: 12px;
         }
         .start_box_application_hover{
           width: 100%;
@@ -290,6 +294,12 @@
         }
       }
     }
+  }
+  .start_box_cover{
+    position:absolute;
+    width:100%;
+    height:calc(100% + 37px);
+    z-index:$box_zIndex;
   }
 }
 
@@ -308,14 +318,29 @@
       background-color: rgba(255,255,255,0.3);
     }
     img{
+      border-radius: 3px;
       height: 50px;
       width: 50px;
     }
     h3{
       font-family: "Microsoft YaHei";
-      line-height: 20px;
+      padding: 0 3px;
+      line-height: 17px;
       font-weight: normal;
       font-size: 12px;
     }
   }
+}
+
+.window_expand-enter {
+  overflow: hidden;
+}
+.window_expand-enter-active {
+  transition: all 0.1s ease-out;
+}
+.window_expand-leave {
+  overflow: hidden;
+}
+.window_expand-leave-active {
+  transition: all 0.2s ease-out;
 }

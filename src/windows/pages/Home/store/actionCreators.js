@@ -118,7 +118,7 @@ export const addWindowList = (list) => ({
   openWindowList: fromJS(list)
 })
 /*
- * 处理增加或者显示窗口数据
+ * 处理增加或者显示窗口
  * @param window Object 窗口对象
  * @param array openWindowList 已打开窗口列表
  */
@@ -128,14 +128,17 @@ export const setWindowOpenList = (window,openWindowList) => {
       return row.type === window.type
     })
     let list = openWindowList
-    if (openWindowIndex >= 0) { //判断窗口是否已打开
+    if (openWindowIndex >= 0) { //窗口已打开
       const zIndexMax = Math.max.apply(Math, openWindowList.map((o) => o.zIndex)) //当前最大层级
+      if(!window.hasOwnProperty("zIndex")){
+        window = openWindowList[openWindowIndex]
+      }
       if (zIndexMax !== window.zIndex) {  //点击窗口不是最顶层窗口
         openWindowList.forEach((row, i) => {
-            if(row.zIndex > window.zIndex){
-              list[i].zIndex = row.zIndex - 10
-              list[i].isTop = false
-            }
+          list[i].isTop = false
+          if(row.zIndex >= window.zIndex){
+            list[i].zIndex = row.zIndex - 10
+          }
         })
       }
       list[openWindowIndex].zIndex = zIndexMax

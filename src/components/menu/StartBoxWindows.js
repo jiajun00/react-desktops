@@ -112,7 +112,7 @@ class StartBoxWindows extends Component {
           null
         }
         </Animate>
-        {isOpenStartBox && <div onClick={closeStartBox} style={{position:'absolute',width:'100%',height:'calc(100% + 37px)',zIndex:1}} /> }
+        {isOpenStartBox && <div onClick={closeStartBox} className="start_box_cover" style={{position:'absolute',width:'100%',height:'calc(100% + 37px)',zIndex:999}} /> }
       </Fragment>
     )
   }

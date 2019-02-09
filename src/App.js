@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Portal from "./Portal"
-import Mac from "./mac"
-import Windows from "./windows"
+import Mac from "./mac/indexLoadable"
+import Windows from "./windows/indexLoadable"
 
 class App extends React.Component {
   render() {
