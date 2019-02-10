@@ -95,6 +95,7 @@ export const hiddenWindow = (window,windowList) => {
   })
   list[index].isShow = false
   list[index].zIndex = 10
+  list[index].isLoad = false
   if(win.i >= 0){
     list[win.i].isTop = true
   }

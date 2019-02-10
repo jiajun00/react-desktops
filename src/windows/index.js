@@ -9,7 +9,9 @@ import SystemControl from "./pages/SystemControl/SystemControl";
 class index extends Component {
 
   state = {}
-
+  componentDidMount(){
+    import("../public/style/themes/windows-themes-black.scss")
+  }
   render() {
     const { match } = this.props
     return (

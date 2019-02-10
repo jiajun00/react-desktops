@@ -273,4 +273,7 @@
 .window_expand-leave-active {
   transition: all 0.2s ease-out; }
 
+.next-loading-wrap {
+  height: 100%; }
+
 /*# sourceMappingURL=index.css.map */

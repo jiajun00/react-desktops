@@ -19,10 +19,6 @@ class HomeWindows extends Component {
 
   state = {}
 
-  componentDidMount(){
-    import("../../../public/style/theme/windows-theme-black.scss")
-  }
-
   render() {
     const {
       dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,
@@ -72,7 +68,7 @@ class HomeWindows extends Component {
           hiddenWindow={hiddenWindow}
         >
           {row.isIframe &&
-          <Iframe title={row.type} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
+          <Iframe title={row.type} frameBorder={0} style={{background:'#fff',height:'100%'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
           }
         </WindowsWindows>
         ))}

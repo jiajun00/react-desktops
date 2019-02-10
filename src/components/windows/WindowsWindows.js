@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Window,TitleBar,View } from 'react-desktop/windows'
-import { Animate } from '@alifd/next'
+import { Animate,Loading } from '@alifd/next'
 
 const WindowOffsetWidth = window.innerWidth
 const WindowOffsetHeight = window.innerHeight
@@ -14,7 +14,7 @@ class WindowsWindows extends Component {
   init(){
     this.moving = false
     this.type=''
-    this.width =  900
+    this.width =  1230
     this.height = WindowOffsetHeight-100
     this.winTop = 26 + this.props.zIndex*2
     this.winLeft= (WindowOffsetWidth - this.width)/2 + this.props.zIndex*2
@@ -40,7 +40,7 @@ class WindowsWindows extends Component {
       left:this.winLeft,
       width:this.width,
       height:this.height,
-      zIndex:this.props.zIndex
+      zIndex:this.props.zIndex,
     }
     const titleBarStyle={
       position:'relative',
@@ -69,6 +69,12 @@ class WindowsWindows extends Component {
       backgroundColor:'rgba(255,255,255,0.6)',
       zIndex:this.props.zIndex + 8,
       display: window.isTop ? 'none' : 'block'
+    }
+    const loading={
+      width:'100%',
+      height:'100%',
+      display: 'block',
+      position:'absolute'
     }
     return (
         <Animate
@@ -107,8 +113,12 @@ class WindowsWindows extends Component {
                 <View
                   padding="0px"
                   width="100%"
-                  style={{overflow: 'scroll'}}
+                  height='100%'
+                  style={{overflow: 'scroll',position:'absolute',borderTop:'1px solid #eee'}}
                 >
+                {!window.isLoad &&
+                <Loading style={loading} tip="loading..."/>
+                }
                 {this.props.children}
               </View>
               <div
@@ -202,6 +212,7 @@ class WindowsWindows extends Component {
    */
   handleClickSetScreen = () => {
     const { isFullScreen } = this.state
+    this.window.style.opacity = 0.1
     if(isFullScreen){
       this.setState({
         isFullScreen:false
@@ -214,6 +225,7 @@ class WindowsWindows extends Component {
         this.window.style.height = this.height + 'px'
         this.window.style.left = this.winLeft + 'px'
         this.window.style.top = this.winTop + 'px'
+        this.window.style.opacity = 1
         lastWindowStyleState = {}
       })
     }else{
@@ -235,6 +247,7 @@ class WindowsWindows extends Component {
         this.window.style.top = this.winTop + 'px'
         this.window.style.left = this.winLeft + 'px'
         this.window.style.zIndex = this.props.zIndex
+        this.window.style.opacity = 1
       })
     }
   }

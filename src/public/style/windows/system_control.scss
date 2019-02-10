@@ -1,0 +1,21 @@
+.system_control{
+  height: 100%;
+  nav{
+    height: 100%;
+  }
+  main{
+    background-color: #fff;
+    height: 100%;
+    .next-breadcrumb{
+      height: auto;
+      padding: 8px 0 8px 10px;
+    }
+    .system_control_main_table{
+      margin: 10px 20px;
+      .next-pagination{
+        text-align: right;
+        margin-top: 10px;
+      }
+    }
+  }
+}
