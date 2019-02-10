@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable'
-import FileImg1 from '../../../../public/images/logo/file/file.ico'
-import FileImg2 from '../../../../public/images/logo/file/fileimg.ico'
+import FileImg1 from '../../../../public/images/logo/file/file.png'
+import FileImg2 from '../../../../public/images/logo/file/fileimg.png'
 import GitHubImg from'../../../../public/images/logo/github.png'
 import QqxioImg from '../../../../public/images/logo/qqxio.png'
 import ChartImg from '../../../../public/images/logo/chart.png'

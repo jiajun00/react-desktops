@@ -1,5 +1,5 @@
-import FileImg from "../images/logo/file/file.ico"
-import FileimgImg from "../images/logo/file/fileimg.ico"
+import FileImg from "../images/logo/file/file.png"
+import FileimgImg from "../images/logo/file/fileimg.png"
 /*
  * 根据文件类型转化为图标路径
  * @param string type 文件类型
