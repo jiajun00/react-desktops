@@ -18,7 +18,7 @@ class index extends Component {
       <Provider store={store}>
         <Switch>
           <Route path={`${match.path}`} exact component={HomeWindows}/>
-          <Route path={`${match.path}/system`} exact component={SystemControl}/>
+          <Route path={`${match.path}/system`} component={SystemControl}/>
         </Switch>
       </Provider>
     )

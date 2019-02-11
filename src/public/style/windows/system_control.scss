@@ -2,6 +2,22 @@
   height: 100%;
   nav{
     height: 100%;
+    .next-tree{
+      .next-tree-node-inner{
+        &:focus{
+          outline: none;
+        }
+        .next-tree-node-label{
+          a{
+            text-decoration:none;
+            &.active{
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
   }
   main{
     background-color: #fff;
@@ -9,6 +25,9 @@
     .next-breadcrumb{
       height: auto;
       padding: 8px 0 8px 10px;
+    }
+    .system_control_main_search{
+      padding: 10px 20px 0;
     }
     .system_control_main_table{
       margin: 10px 20px;

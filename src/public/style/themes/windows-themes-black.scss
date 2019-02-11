@@ -4,6 +4,8 @@ $white_transparent: rgba(255,255,255,.2); //白色透明
 $gray_font_title:#c7c7c7; //灰色字体标题
 $gray_font:#999;    //灰色字体
 $fill1-1_color:#333646; //填充色Fill1-1
+$line1-1_color:#434557; //填充色Line1-1
+$text1-2_color:#767682; //字体色Text1-2
 
 .message_box{
   background-color: $message_box_background;
@@ -99,6 +101,17 @@ $fill1-1_color:#333646; //填充色Fill1-1
   }
 }
 .system_control{
+  nav {
+    .next-tree {
+      .next-tree-node-inner {
+        .next-tree-node-label{
+          a{
+            color: $text1-2_color;
+          }
+        }
+      }
+    }
+  }
   main{
     .system_control_main_table{
       h2{

@@ -16,11 +16,11 @@ class LeftnavRightContent extends Component {
   render() {
     const borderDivStyle={
       cursor:'col-resize',
-      padding:'0 3px',
-      backgroundColor:'#fff'
+      padding:'0 1px',
     }
     const borderCenter = {
-      backgroundColor:'#eee'
+      backgroundColor:'#eee',
+      boxShadow: '0 0 1px rgba(255,255,255,0.4)'
     }
     if(this.props.borderCenter){
       borderCenter.background=this.props.borderCenter

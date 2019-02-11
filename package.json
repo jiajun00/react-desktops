@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@alifd/next": "^1.11.11",
-    "@alifd/theme-2786": "^0.1.6",
+    "@alifd/theme-2786": "^0.1.7",
     "react-desktop": "^0.3.7"
   },
   "scripts": {
