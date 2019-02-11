@@ -12,10 +12,16 @@ class WindowsWindows extends Component {
     this.init()
   }
   init(){
+    const { window } = this.props
     this.moving = false
     this.type=''
-    this.width =  1230
-    this.height = WindowOffsetHeight-100
+    if(window.style){
+      this.width = window.style.width
+      this.height = window.style.height + 32
+    }else{
+      this.width =  1230
+      this.height = WindowOffsetHeight-100
+    }
     this.winTop = 26 + this.props.zIndex*2
     this.winLeft= (WindowOffsetWidth - this.width)/2 + this.props.zIndex*2
   }
