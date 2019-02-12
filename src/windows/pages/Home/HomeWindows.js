@@ -21,7 +21,7 @@ class HomeWindows extends Component {
 
   render() {
     const {
-      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,
+      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,
       setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow
     } = this.props
     return (
@@ -39,7 +39,14 @@ class HomeWindows extends Component {
           className="desktop"
         >
           <DesktopApps desktopApps={desktopApps} setWindowOpenList={setWindowOpenList} openWindowList={openWindowList}/>
-          <StartBoxWindows isOpenStartBox={isOpenStartBox} openStartBox={openStartBox} closeStartBox={closeStartBox}/>
+          <StartBoxWindows
+            isOpenStartBox={isOpenStartBox}
+            openStartBox={openStartBox}
+            setWindowOpenList={setWindowOpenList}
+            openWindowList={openWindowList}
+            closeStartBox={closeStartBox}
+            startBoxLeftApps={startBoxLeftApps}
+          />
           <MessageBox isOpenMessageBox={isOpenMessageBox} openMessageBox={openMessageBox} closeMessageBox={closeMessageBox}/>
         </View>
         <StartMenuWindows
@@ -83,6 +90,7 @@ const initMapStateToProps = (state) => ({
   isOpenStartBox:state.getIn(['homeWindows','isOpenStartBox']),
   desktopApps:state.getIn(['homeWindows','desktopApps']).toJS(),
   openWindowList:state.getIn(['homeWindows','openWindowList']).toJS(),
+  startBoxLeftApps:state.getIn(['homeWindows','startBoxLeftApps']).toJS(),
 })
 
 const initMapDispatchToProps = (dispatch) => ({

@@ -21,7 +21,7 @@ export default fromJS({
   },
   isOpenMessageBox:false,//是否打开消息框
   isOpenStartBox:false,//是否打开开始菜单
-  desktopApps:[ //桌面应用图标
+  desktopApps:[ //桌面应用图标  isBlank是否在新标签页中打开
     {name:'系统管理',type:'system',logo:SystemControl,isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:1},
     {name:'博客', type:'qqxio', logo:QqxioImg,isShow:true,url:'https://www.qqxio.cn',isIframe:true,isBlank:false,sort:2},
     {name:'文件夹',type:'filename3',logo:FileImg1,isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:3},
@@ -33,4 +33,62 @@ export default fromJS({
     {name:'太空战机',type:'fly',logo:Fly,isShow:true,url:'http://game.qqxio.cn/fly',isIframe:true,isBlank:false,style:{width:622,height:467},sort:9}
   ],
   openWindowList: [],  //已打开的应用
+  startBoxLeftApps:[  //开始菜单左侧应用列表
+    {
+      lab:'A',
+      list:[
+        {name:'Adobe',type:'Adobe',logo:FileImg1,isShow:true,url:null,isIframe:true,isBlank:false,sort:0,children:[{name:'系统管理',type:'system',logo:SystemControl,isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:1},{name:'博客', type:'qqxio', logo:QqxioImg,isShow:true,url:'https://www.qqxio.cn',isIframe:true,isBlank:false,sort:2}]}
+      ]
+    },
+    {
+      lab:'B',
+      list:[
+        {name:'博客', type:'qqxio', logo:QqxioImg,isShow:true,url:'https://www.qqxio.cn',isIframe:true,isBlank:false,sort:2,children:null},
+        {name:'捕鱼达人',type:'fish',logo:Fish,isShow:true,url:'http://game.qqxio.cn/fish',isIframe:true,isBlank:false,sort:8,children:null},
+      ]
+    },
+    {
+      lab:'B',
+      list:[
+        {name:'博客', type:'qqxio', logo:QqxioImg,isShow:true,url:'https://www.qqxio.cn',isIframe:true,isBlank:false,sort:2,children:null},
+      ]
+    },
+    {
+      lab:'G',
+      list:[
+        {name:'github',type:'github',logo:GitHubImg,isShow:true,url:'https://github.com/jiajun00',isIframe:false,isBlank:true,sort:5,children:null},
+      ]
+    },
+    {
+      lab:'S',
+      list:[
+        {name:'数据驾驶舱',type:'data_driver',logo:ChartImg,isShow:true,url:'https://github.com/jiajun00',isIframe:false,isBlank:false,sort:6,children:null},
+        {name:'水果忍者',type:'fruit_ninja',logo:FruitNinja,isShow:true,url:'http://game.qqxio.cn/fruit_ninja',isIframe:true,isBlank:false,sort:7,children:null},
+      ]
+    },
+    {
+      lab:'T',
+      list:[
+        {name:'太空战机',type:'fly',logo:Fly,isShow:true,url:'http://game.qqxio.cn/fly',isIframe:true,isBlank:false,style:{width:622,height:467},sort:9,children:null}
+      ]
+    },
+    {
+      lab:'W',
+      list:[
+        {name:'文件夹',type:'filename3',logo:FileImg1,isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:3,children:null},
+      ]
+    },
+    {
+      lab:'X',
+      list:[
+        {name:'系统管理',type:'system',logo:SystemControl,isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:1,children:null},
+      ]
+    },
+    {
+      lab:'Y',
+      list:[
+        {name:'云盘',type:'cloud',logo:CloudPan,isShow:true,url:'http://cloud.qqxio.cn',isIframe:true,isBlank:false,sort:4,children:null},
+      ]
+    },
+  ]
 })

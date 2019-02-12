@@ -249,6 +249,19 @@
         box-shadow: none!important;
         .next-nav-item{
           background-color: transparent;
+          .next-menu-item-text{
+            display: block;
+            overflow: hidden;
+            height: 40px;
+            img{
+              float: left;
+              margin: 7px 8px 0 0;
+              border-radius: 3px;
+              line-height: 40px;
+              width: 24px;
+              height: 24px;
+            }
+          }
         }
       }
     }

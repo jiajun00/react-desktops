@@ -12,15 +12,58 @@ const { Item, Group,SubNav } = Nav
 
 const Logout = <i className="iconfont">&#xeaf7;</i>
 
+//左侧应用列表
+class StartBoxLeftTree extends Component {
+  render(){
+    const { startBoxLeftApps } = this.props
+    return (
+      <Nav style={{width: '100%', height: 330, overflowY: 'auto'}}>
+        {startBoxLeftApps.map((row,i)=>(
+          <Group key={i} label={row.lab}>
+            {this.tree(row.list)}
+          </Group>
+        ))}
+      </Nav>
+    )
+  }
+  tree = (data) => {
+    const {
+      openWindowList,
+      setWindowOpenList,closeStartBox
+    } = this.props
+    return data.map((row)=>{
+      if(row.children){
+        return (
+          <SubNav key={row.type} icon={<img src={row.logo}/>} label={row.name}>
+            {this.tree(row.children)}
+          </SubNav>
+        )
+      }else{
+        return(
+          <Item
+            key={row.type}
+            onClick={()=>{
+              row.isBlank ? window.open(row.url) : setWindowOpenList(row,openWindowList)
+              closeStartBox()
+            }}
+            icon={<img src={row.logo}/>}>{row.name}</Item>
+        )
+      }
+    })
+  }
+}
+
+
 class StartBoxWindows extends Component {
 
   state = {}
 
   render() {
     const {
-      isOpenStartBox,
-      closeStartBox
+      isOpenStartBox,startBoxLeftApps,openWindowList,
+      closeStartBox,setWindowOpenList
     } = this.props
+
     return (
       <Fragment>
         <Animate
@@ -59,24 +102,12 @@ class StartBoxWindows extends Component {
               </div>
             </div>
             <div className="start_box_left_menus">
-              <Nav style={{width: '100%', height: 330, overflowY: 'auto'}}>
-                <Group label="A">
-                  <Item icon="account">Navigation One</Item>
-                  <Item icon="account">Navigation Two</Item>
-                  <Item icon="account">Navigation Three</Item>
-                </Group>
-                <Group label="B">
-                  <Item icon="account">Navigation Four</Item>
-                  <Item icon="account">Navigation Five</Item>
-                  <Item icon="account">Navigation Six</Item>
-                  <SubNav icon="account" label="Sub Nav">
-                    <Item icon="account">Item 1</Item>
-                    <Item icon="account">Item 2</Item>
-                    <Item icon="account">Item 3</Item>
-                    <Item icon="account">Item 4</Item>
-                  </SubNav>
-                </Group>
-              </Nav>
+                <StartBoxLeftTree
+                  startBoxLeftApps={startBoxLeftApps}
+                  setWindowOpenList={setWindowOpenList}
+                  openWindowList={openWindowList}
+                  closeStartBox={closeStartBox}
+                />
             </div>
           </View>
           <View className="start_box_right" layout="vertical">
