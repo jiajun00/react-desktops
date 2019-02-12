@@ -20,6 +20,10 @@ react-desktops是基于react-desktop基础上，封装桌面操作系统前端UI
 稳定版 
 你可以订阅：https://github.com/jiajun00/react-desktops 来获得稳定版发布的通知。
 
+### 使用文档
+[查看文档](http://showdoc.qqxio.cn/web/#/1?page_id=1)
+访问密码：desktops
+
 ## 安装部署运行
 ```
 // 下载源码
