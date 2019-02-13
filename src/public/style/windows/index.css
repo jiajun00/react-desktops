@@ -12,8 +12,7 @@
   -moz-osx-font-smoothing: grayscale; }
 
 .desktop {
-  overflow: hidden;
-  z-index: 1; }
+  overflow: hidden; }
 
 .message_box_expand-enter {
   overflow: hidden; }
