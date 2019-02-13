@@ -2,10 +2,7 @@ import React, {Component, Fragment} from 'react'
 import { View } from 'react-desktop'
 import { Nav,Button,Balloon,Grid,Animate } from '@alifd/next'
 
-import DefaultHeaderImg from '../../public/images/logo/default_header.jpg'
-import WanyiApp from '../../public/images/application/wangyi.jpg'
-import WeatherApp from '../../public/images/application/weather.png'
-import XiamiApp from '../../public/images/application/xiami.jpg'
+
 
 const{ Row,Col } = Grid
 const { Item, Group,SubNav } = Nav
@@ -34,7 +31,7 @@ class StartBoxLeftTree extends Component {
     return data.map((row)=>{
       if(row.children){
         return (
-          <SubNav key={row.type} icon={<img src={row.logo}/>} label={row.name}>
+          <SubNav key={row.type} icon={<img src={row.logo} alt={row.name}/>} label={row.name}>
             {this.tree(row.children)}
           </SubNav>
         )
@@ -46,7 +43,7 @@ class StartBoxLeftTree extends Component {
               row.isBlank ? window.open(row.url) : setWindowOpenList(row,openWindowList)
               closeStartBox()
             }}
-            icon={<img src={row.logo}/>}>{row.name}</Item>
+            icon={<img src={row.logo} alt={row.name}/>}>{row.name}</Item>
         )
       }
     })
@@ -80,7 +77,7 @@ class StartBoxWindows extends Component {
           <View className="start_box_left">
             <div className="start_box_left_user">
               <div className="start_box_left_info">
-                <img src={DefaultHeaderImg} alt="header_img"/>
+                <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/default_header.jpg" alt="header_img"/>
                 <h3>用户名</h3>
                 <p>系统管理员</p>
               </div>
@@ -118,20 +115,20 @@ class StartBoxWindows extends Component {
               <Row gutter={8}>
                 <Col span="6">
                   <div className="start_box_application">
-                    <img src={WanyiApp} alt="wangyi"/>
+                    <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/wangyi.jpg" alt="wangyi"/>
                     <h4>标题</h4>
                     <div className="start_box_application_hover"/>
                   </div>
                 </Col>
                 <Col span="6">
                   <div className="start_box_application">
-                    <img src={WeatherApp} alt="wangyi"/>
+                    <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/weather.png" alt="weather"/>
                     <div className="start_box_application_hover"/>
                   </div>
                 </Col>
                 <Col span="12">
                   <div className="start_box_application">
-                    <img src={XiamiApp} alt="xiami"/>
+                    <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/xiami.jpg" alt="xiami"/>
                     <div className="start_box_application_hover"/>
                   </div>
                 </Col>

@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
 import { View } from 'react-desktop'
 import { actionCreators } from './store/index'
-import desktopImage from "../../../public/images/home/desktop-1.jpg"
 
 import WindowsMac from "../../../components/windows/WindowsMac"
 import NavMenuMac from "../../../components/menu/NavMenuMac";
@@ -25,7 +24,7 @@ class HomeMac extends Component {
         width="100%"
         height="100%"
         layout="vertical"
-        background={"url("+desktopImage+") no-repeat center center / cover"}
+        background={"url(https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-1.jpg) no-repeat center center / cover"}
         style={{backgroundSize:'cover'}}
       >
         <View

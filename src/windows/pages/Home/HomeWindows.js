@@ -5,7 +5,6 @@ import {actionCreators} from "./store";
 
 import "../../../public/style/windows/index.scss"
 
-import desktopImage from "../../../public/images/home/desktop-2.jpg"
 
 import StartMenuWindows from "../../../components/menu/StartMenuWindows";
 import MessageBox from "../../../components/block/MessageBox";
@@ -29,7 +28,7 @@ class HomeWindows extends Component {
         width="100%"
         height="100%"
         layout="vertical"
-        background={"url("+desktopImage+") no-repeat center center / cover"}
+        background={"url(https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-2.jpg) no-repeat center center / cover"}
         style={{backgroundSize:'cover',overflow:'hidden'}}
       >
         <View

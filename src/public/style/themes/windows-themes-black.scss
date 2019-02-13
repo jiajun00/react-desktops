@@ -1,5 +1,6 @@
 $start_menus_background: rgba(0,0,0,.3);    //开始菜单栏背景颜色
 $message_box_background: rgba(19,23,28,.81);   //消息栏背景颜色
+$start_box_background:rgba(3,12,27,.95);   //开始菜单背景颜色
 $white_transparent: rgba(255,255,255,.2); //白色透明
 $gray_font_title:#c7c7c7; //灰色字体标题
 $gray_font:#999;    //灰色字体
@@ -51,7 +52,7 @@ $text1-2_color:#767682; //字体色Text1-2
   background-color: $start_menus_background;
 }
 .start_box{
-  background-color: $message_box_background;
+  background-color: $start_box_background;
   .start_box_left{
     .start_box_left_user{
       color:$gray_font;

@@ -1,6 +1,4 @@
 import { fromJS } from 'immutable'
-import finderImage from "../../../../public/images/logo/finder.png"
-import launchpadImage from "../../../../public/images/logo/launchpad.png"
 export default fromJS({
   dataTime:{
     year:'0000',
@@ -11,8 +9,8 @@ export default fromJS({
     week:''
   },
   tools:[ //工具栏
-    {name:'访达',type:'finder',logo:finderImage,isShow:true,url:'/mac/finder',isIframe:true},
-    {name:'chrome', type:'chrome', logo:launchpadImage,isShow:true,url:'http://www.baidu.com',isIframe:true}
+    {name:'访达',type:'finder',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/finder.png',isShow:true,url:'/mac/finder',isIframe:true},
+    {name:'chrome', type:'chrome', logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/launchpad.png',isShow:true,url:'http://www.baidu.com',isIframe:true}
   ],
   openWindowList: [],  //已打开的应用
   homeNav:{

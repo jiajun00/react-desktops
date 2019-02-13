@@ -270,7 +270,9 @@
       padding: 0 3px;
       line-height: 17px;
       font-weight: normal;
-      font-size: 12px; }
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis; }
 
 .window_expand-enter {
   overflow: hidden; }

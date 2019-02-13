@@ -21,7 +21,7 @@ const dataSource = (j) => {
     return result;
 }
 const render = (value, index, record) => {
-    return <a href="javascript:;">Remove({record.id})</a>
+    return <a href="/win/system">Remove({record.id})</a>
 }
 
 class DeskManage extends Component{
@@ -32,7 +32,7 @@ class DeskManage extends Component{
     return (
       <Fragment>
         <Breadcrumb>
-          <Breadcrumb.Item link="javascript:void(0);">首页</Breadcrumb.Item>
+          <Breadcrumb.Item link="/win/system">首页</Breadcrumb.Item>
           <Breadcrumb.Item link="javascript:void(0);">列表页</Breadcrumb.Item>
           <Breadcrumb.Item link="javascript:void(0);">XXX内容</Breadcrumb.Item>
         </Breadcrumb>

@@ -51,6 +51,10 @@ table {
 div {
   box-sizing: border-box; }
 
+body {
+  height: 100%;
+  overflow: hidden; }
+
 body, #system, .App, .box {
   position: absolute;
   width: 100%;
