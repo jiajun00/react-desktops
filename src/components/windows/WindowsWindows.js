@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import { Window,TitleBar,View } from 'react-desktop/windows'
 import { Animate,Loading } from '@alifd/next'
 
@@ -24,6 +24,7 @@ class WindowsWindows extends Component {
     }
     this.winTop = 26 + this.props.zIndex*2
     this.winLeft= (WindowOffsetWidth - this.width)/2 + this.props.zIndex*2
+    this.winRight = null
   }
   state = {
     isFullScreen:false,
@@ -59,12 +60,40 @@ class WindowsWindows extends Component {
       width: 'calc(100% - 138px)'
     }
     const buttonStyle={
-      width: 50,
-      height: 50,
+      width: 30,
+      height: 30,
       position: 'absolute',
       bottom: -15,
       right: -15,
       cursor: 'se-resize',
+      zIndex: this.props.zIndex + 9
+    }
+    const leftWidthButtonStyle = {
+      width:15,
+      height:'100%',
+      position:'absolute',
+      top:0,
+      left:-9,
+      cursor:'w-resize',
+      zIndex: this.props.zIndex + 9
+    }
+    const rightWidthButtonStyle = {
+      width:15,
+      height:'100%',
+      position:'absolute',
+      top:0,
+      right:-9,
+      cursor:'e-resize',
+      zIndex: this.props.zIndex + 9
+    }
+
+    const bottomHeightButtonStyle = {
+      width:'100%',
+      height:15,
+      position:'absolute',
+      left:0,
+      bottom:-9,
+      cursor:'s-resize',
       zIndex: this.props.zIndex + 9
     }
     const cover={
@@ -83,17 +112,17 @@ class WindowsWindows extends Component {
       position:'absolute'
     }
     return (
-        <Animate
-          animation="window_expand"
-          beforeEnter={this.beforeEnter}
-          onEnter={this.onEnter}
-          afterEnter={this.afterEnter}
-          beforeLeave={this.beforeLeave}
-          onLeave={this.onLeave}
-          afterLeave={this.afterLeave}
-        >
-          {window.isShow ?
-            <span style={windowStyle} ref={e => this.window = e}>
+      <Animate
+        animation="window_expand"
+        beforeEnter={this.beforeEnter}
+        onEnter={this.onEnter}
+        afterEnter={this.afterEnter}
+        beforeLeave={this.beforeLeave}
+        onLeave={this.onLeave}
+        afterLeave={this.afterLeave}
+      >
+        {window.isShow ?
+          <span style={windowStyle} ref={e => this.window = e}>
               <Window
                 chrome
                 width='100%'
@@ -125,7 +154,7 @@ class WindowsWindows extends Component {
                 {!window.isLoad &&
                 <Loading style={loading} tip="loading..."/>
                 }
-                {this.props.children}
+                  {this.props.children}
               </View>
               <div
                 ref={el=>this.windowCover=el}
@@ -134,20 +163,40 @@ class WindowsWindows extends Component {
               />
               </Window>
 
-              {!isFullScreen &&
+            {!isFullScreen &&
+            <Fragment>
+                  <span
+                    onMouseDown={e => {
+                      this.mouseMoveDown(e,'lw')
+                    }}
+                    style={leftWidthButtonStyle}
+                  />
+              <span
+                onMouseDown={e => {
+                  this.mouseMoveDown(e,'rw')
+                }}
+                style={rightWidthButtonStyle}
+              />
+              <span
+                onMouseDown={e => {
+                  this.mouseMoveDown(e,'bh')
+                }}
+                style={bottomHeightButtonStyle}
+              />
               <span
                 onMouseDown={e => {
                   this.mouseMoveDown(e,'wh')
-                  // this.props.setWindowIndex(this.props.window,this.props.openWindowList)
                 }}
                 style={buttonStyle}
               />
-              }
+            </Fragment>
+
+            }
             </span>
-            :
-            null
-          }
-        </Animate>
+          :
+          null
+        }
+      </Animate>
     )
   }
   beforeEnter = (node) => {
@@ -186,12 +235,17 @@ class WindowsWindows extends Component {
       this.moveStartY = e.clientY
       this.moving = true
       this.type = type
+      if(type === 'lw'){ //相对右边位置不存在时执行
+        this.winRight = WindowOffsetWidth - this.winLeft - this.width
+        this.window.style.right = this.winRight + 'px'
+        this.window.style.left = null
+      }
       window.addEventListener('mousemove', this.mouseMove)
       this.windowCover.style.display = 'block'
     }
   }
-  moveDivWeightHeight = (e) => {
-    e.preventDefault();
+  moveDivWidthHeight = (e) => {
+    e.preventDefault()
     if(this.moving){
       const moveEndX = e.clientX
       const moveEndY = e.clientY
@@ -204,6 +258,49 @@ class WindowsWindows extends Component {
         this.width = WindowOffsetWidth-77
       }
       this.window.style.width = this.width + 'px'
+      if(this.height<=400){
+        this.height = 400
+      }
+      if(this.height>=(WindowOffsetHeight-37)){
+        this.height = WindowOffsetHeight-37
+      }
+      this.window.style.height = this.height + 'px'
+    }
+  }
+  moveDivLeftWidth = (e) => {
+    e.preventDefault()
+    if(this.moving){
+      const moveEndX = e.clientX
+      this.width = this.windowWidth - moveEndX + this.moveStartX
+      if(this.width<=460){
+        this.width = 460
+      }
+      if(this.width>=(WindowOffsetWidth-77)){
+        this.width = WindowOffsetWidth-77
+      }
+      this.window.style.width = this.width + 'px'
+
+    }
+  }
+  moveDivRightWidth = (e) => {
+    e.preventDefault()
+    if(this.moving){
+      const moveEndX = e.clientX
+      this.width = this.windowWidth + moveEndX - this.moveStartX
+      if(this.width<=460){
+        this.width = 460
+      }
+      if(this.width>=(WindowOffsetWidth-77)){
+        this.width = WindowOffsetWidth-77
+      }
+      this.window.style.width = this.width + 'px'
+    }
+  }
+  moveDivBottomHeight = (e) => {
+    e.preventDefault()
+    if(this.moving){
+      const moveEndY = e.clientY
+      this.height = this.windowHeight + moveEndY - this.moveStartY
       if(this.height<=400){
         this.height = 400
       }
@@ -284,8 +381,17 @@ class WindowsWindows extends Component {
       if(this.type === 'position'){
         this.mouseMovePosition(e)
       }
-      if(this.type === 'wh'){
-        this.moveDivWeightHeight(e)
+      if(this.type === 'wh'){ //右下宽高
+        this.moveDivWidthHeight(e)
+      }
+      if(this.type === 'lw'){ //左边宽度
+        this.moveDivLeftWidth(e)
+      }
+      if(this.type === 'rw'){ //右边宽度
+        this.moveDivRightWidth(e)
+      }
+      if(this.type === 'bh'){ //底部高度
+        this.moveDivBottomHeight(e)
       }
     }
   }
@@ -296,12 +402,18 @@ class WindowsWindows extends Component {
       this.winTop = this.windowTopEnd
       this.windowCover.style.display = 'none'
     }
-    if(this.type === 'wh'){
+    if(this.type === 'wh' || this.type === 'lw' || this.type === 'rw' || this.type === 'bh'){
       this.moveStartX = null
       this.moveStartY = null
       this.windowWidth = null
       this.windowHeight = null
       this.windowCover.style.display = 'none'
+      if(this.type === 'lw'){
+        this.winLeft = WindowOffsetWidth - this.winRight - this.width
+        this.window.style.left = this.winLeft + 'px'
+        this.window.style.right = null
+        this.winRight = null
+      }
     }
     this.type = ''
     window.removeEventListener('mousemove',this.mouseMove)
