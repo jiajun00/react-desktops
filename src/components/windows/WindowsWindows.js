@@ -264,12 +264,13 @@ class WindowsWindows extends Component {
     if(this.moving){
       const moveEndX = e.clientX
       const moveEndY = e.clientY
-      this.width = this.windowWidth - moveEndX + this.moveStartX
-      if(this.type === 'wh'){
-        this.height = this.windowHeight - moveEndY + this.moveStartY
+      if(this.type === 'lwh') {
+        this.width = this.windowWidth - moveEndX + this.moveStartX
       }else{
-        this.height = this.windowHeight + moveEndY - this.moveStartY
+        this.width = this.windowWidth + moveEndX - this.moveStartX
       }
+
+      this.height = this.windowHeight + moveEndY - this.moveStartY
       if(this.width<=460){
         this.width = 460
       }
