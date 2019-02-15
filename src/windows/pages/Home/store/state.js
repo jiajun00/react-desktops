@@ -23,8 +23,8 @@ export default fromJS({
     {name:'太空战机',type:'fly',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/fly.png',isShow:true,url:'http://game.qqxio.cn/fly',isIframe:true,isBlank:false,style:{width:622,height:467},sort:9},
     {name:'使用文档(访问密码:desktops)',type:'course',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/course.png',isShow:true,url:'http://showdoc.qqxio.cn/web/#/1?page_id=1',isIframe:true,isBlank:false,sort:10},
     {name:'考试系统',type:'exam',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/exam.png',isShow:true,url:'http://ems.qqxio.cn',isIframe:true,isBlank:false,style:{width:1230,height:601},sort:11},
-    {name:'招聘信息',type:'exam',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/vue.png',isShow:true,url:'http://splider.qqxio.cn',isIframe:true,isBlank:false,style:{width:600,height:600},sort:12},
-    {name:'CRM',type:'exam',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/crm.png',isShow:true,url:'http://xcrm.qqxio.cn',isIframe:true,isBlank:false,sort:13}
+    {name:'招聘信息',type:'job',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/vue.png',isShow:true,url:'http://splider.qqxio.cn',isIframe:true,isBlank:false,style:{width:600,height:600},sort:12},
+    {name:'CRM',type:'crm',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/crm.png',isShow:true,url:'http://xcrm.qqxio.cn',isIframe:true,isBlank:false,sort:13}
   ],
   openWindowList: [],  //已打开的应用
   startBoxLeftApps:[  //开始菜单左侧应用列表

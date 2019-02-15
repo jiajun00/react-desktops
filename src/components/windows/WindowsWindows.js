@@ -59,7 +59,16 @@ class WindowsWindows extends Component {
       height:32,
       width: 'calc(100% - 138px)'
     }
-    const buttonStyle={
+    const leftWHStyle={
+      width: 30,
+      height: 30,
+      position: 'absolute',
+      bottom: -15,
+      left: -15,
+      cursor: 'sw-resize',
+      zIndex: this.props.zIndex + 9
+    }
+    const rightWHStyle={
       width: 30,
       height: 30,
       position: 'absolute',
@@ -165,12 +174,12 @@ class WindowsWindows extends Component {
 
             {!isFullScreen &&
             <Fragment>
-                  <span
-                    onMouseDown={e => {
-                      this.mouseMoveDown(e,'lw')
-                    }}
-                    style={leftWidthButtonStyle}
-                  />
+              <span
+                onMouseDown={e => {
+                  this.mouseMoveDown(e,'lw')
+                }}
+                style={leftWidthButtonStyle}
+              />
               <span
                 onMouseDown={e => {
                   this.mouseMoveDown(e,'rw')
@@ -185,9 +194,15 @@ class WindowsWindows extends Component {
               />
               <span
                 onMouseDown={e => {
+                  this.mouseMoveDown(e,'lwh')
+                }}
+                style={leftWHStyle}
+              />
+              <span
+                onMouseDown={e => {
                   this.mouseMoveDown(e,'wh')
                 }}
-                style={buttonStyle}
+                style={rightWHStyle}
               />
             </Fragment>
 
@@ -235,7 +250,7 @@ class WindowsWindows extends Component {
       this.moveStartY = e.clientY
       this.moving = true
       this.type = type
-      if(type === 'lw'){ //相对右边位置不存在时执行
+      if(type === 'lw' || type === 'lwh'){ //相对右边位置不存在时执行
         this.winRight = WindowOffsetWidth - this.winLeft - this.width
         this.window.style.right = this.winRight + 'px'
         this.window.style.left = null
@@ -249,8 +264,12 @@ class WindowsWindows extends Component {
     if(this.moving){
       const moveEndX = e.clientX
       const moveEndY = e.clientY
-      this.width = this.windowWidth + moveEndX - this.moveStartX
-      this.height = this.windowHeight + moveEndY - this.moveStartY
+      this.width = this.windowWidth - moveEndX + this.moveStartX
+      if(this.type === 'wh'){
+        this.height = this.windowHeight - moveEndY + this.moveStartY
+      }else{
+        this.height = this.windowHeight + moveEndY - this.moveStartY
+      }
       if(this.width<=460){
         this.width = 460
       }
@@ -358,8 +377,8 @@ class WindowsWindows extends Component {
     e.preventDefault();
     const mouseEndX = e.clientX
     const mouseEndY = e.clientY
-    this.windowLeftEnd = this.winLeft + mouseEndX - this.moveStartX;
-    this.windowTopEnd = this.winTop + mouseEndY - this.moveStartY;
+    this.windowLeftEnd = this.winLeft + mouseEndX - this.moveStartX
+    this.windowTopEnd = this.winTop + mouseEndY - this.moveStartY
     if(this.windowTopEnd<-1){  //防止移动超过顶部
       this.windowTopEnd = -1
     }
@@ -381,7 +400,7 @@ class WindowsWindows extends Component {
       if(this.type === 'position'){
         this.mouseMovePosition(e)
       }
-      if(this.type === 'wh'){ //右下宽高
+      if(this.type === 'wh' || this.type === 'lwh'){ //右下宽高
         this.moveDivWidthHeight(e)
       }
       if(this.type === 'lw'){ //左边宽度
@@ -402,13 +421,13 @@ class WindowsWindows extends Component {
       this.winTop = this.windowTopEnd
       this.windowCover.style.display = 'none'
     }
-    if(this.type === 'wh' || this.type === 'lw' || this.type === 'rw' || this.type === 'bh'){
+    if(this.type === 'wh' || this.type === 'lw' || this.type === 'rw' || this.type === 'bh' || this.type === 'lwh'){
       this.moveStartX = null
       this.moveStartY = null
       this.windowWidth = null
       this.windowHeight = null
       this.windowCover.style.display = 'none'
-      if(this.type === 'lw'){
+      if(this.type === 'lw' || this.type === 'lwh'){
         this.winLeft = WindowOffsetWidth - this.winRight - this.width
         this.window.style.left = this.winLeft + 'px'
         this.window.style.right = null
