@@ -10,6 +10,7 @@ import DesktopSet from "../../../components/desktop/DesktopSet"
 import DataManage from "./system/DataManage"
 import PrivilegeManage from "./system/PrivilegeManage"
 import RoleManage from "./system/RoleManage"
+import UserManage from "./system/UserManage";
 
 const TreeNode = Tree.Node
 
@@ -45,6 +46,7 @@ class SystemControl extends Component {
               <Route path={`${match.path}/data_manage`} exact component={DataManage}/>
               <Route path={`${match.path}/privilege_manage`} exact component={PrivilegeManage}/>
               <Route path={`${match.path}/role_manage`} exact component={RoleManage}/>
+              <Route path={`${match.path}/user_manage`} exact component={UserManage}/>
             </Switch>
           </main>
         </LeftnavRightContent>

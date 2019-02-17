@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import { Table,Pagination,Search,Button } from '@alifd/next'
+import { Table,Pagination,Search,Button,Dialog } from '@alifd/next'
 
 import ContentRight from "../../../../components/content/ContentRight"
+import PrivilegeTree from "../../../../components/tree/PrivilegeTree";
 
 const dataSource = (j) => {
   const result = [];
@@ -16,23 +17,16 @@ const dataSource = (j) => {
   return result;
 }
 
-const render = (value, index, record) => {
-  return (
-    <div className="system_control_main_table_operation">
-      <Button onClick={()=>{console.log(record.id)}}>查看权限</Button>
-      <Button onClick={()=>{console.log(record.id)}}>修改</Button>
-      <Button onClick={()=>{console.log(record.id)}}>删除</Button>
-    </div>
-  )
-}
 
 class RoleManage extends Component {
 
   state = {
-    dataSource: dataSource(10)
+    dataSource: dataSource(10),
+    privilege_visible:false
   }
 
   render() {
+    const {privilege_visible} = this.state
     return (
       <ContentRight
         className="role_manage"
@@ -44,16 +38,42 @@ class RoleManage extends Component {
           <Search key="2" type="dark" shape="simple" placeholder="请输入管理员名" style={{width: 250}}/>
         </div>
         <div className='system_control_main_table'>
-          <h2>表数据</h2>
+          <h2>角色列表</h2>
           <Table dataSource={this.state.dataSource}
                  loading={this.state.loading}>
             <Table.Column align="center" title="Id" dataIndex="id" width={140} />
             <Table.Column align="center" title="管理员" dataIndex="name" width={140} />
             <Table.Column align="center" title="创建时间" dataIndex="time" width={200} />
-            <Table.Column align="center" title="操作" cell={render} width={200} />
+            <Table.Column
+              align="center"
+              title="操作"
+              cell={
+                (value, index, record) => {
+                  return (
+                    <div className="system_control_main_table_operation">
+                      <Button onClick={()=>{this.showDialog('privilege_visible')}}>查看权限</Button>
+                      <Button onClick={()=>{console.log(record.id)}}>修改</Button>
+                      <Button onClick={()=>{this.deleteRole(record.id)}}>删除</Button>
+                    </div>
+                )}
+              }
+              width={200}
+            />
           </Table>
           <Pagination onChange={this.onChange} className="page-demo" />
         </div>
+        <Dialog
+          title="权限列表"
+          closeable="mask,close,esc"
+          visible={privilege_visible}
+          isFullScreen={false}
+          footer={<Button type="primary" onClick={()=>{this.onClose('privilege_visible')}}>关闭</Button>}
+        >
+          <div style={{width:300}}>
+            <PrivilegeTree isShow/>
+          </div>
+
+        </Dialog>
       </ContentRight>
     )
   }
@@ -67,6 +87,24 @@ class RoleManage extends Component {
         loading: false
       });
     }, 200);
+  }
+  showDialog = (state) => {
+    this.setState({
+      [state]: true
+    })
+  }
+  onClose = (state) => {
+    this.setState({
+      [state]: false
+    })
+  }
+  deleteRole = (id) => {
+    Dialog.confirm({
+      title: '删除角色',
+      content: '是否确认删除该角色?',
+      onOk: () => console.log('ok'),
+      onCancel: () => console.log('cancel')
+    })
   }
 }
 

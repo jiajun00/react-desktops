@@ -1,7 +1,25 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import { Button,Tree } from '@alifd/next'
 
 const TreeNode = Tree.Node
+
+const dataList =
+  {id:0,name:'系统',url:null,children:[
+    {id:1,name:'系统管理',url:'/win/system',children:[
+        {id:2,name:'系统配置',url:'/win/system',children:[
+            {id:3,name:'桌面管理',url:'/win/system',children:null},
+            {id:4,name:'系统参数',url:'/win/system',children:null}
+        ]},
+        {id:5,name:'用户配置',url:'/win/system',children:[
+            {id:6,name:'权限管理',url:'/win/system',children:null},
+            {id:7,name:'角色管理',url:'/win/system',children:null},
+            {id:8,name:'管理员管理',url:'/win/system',children:null},
+            {id:9,name:'用户管理',url:'/win/system',children:null}
+        ]}
+    ]},
+    {id:10,name:'博客',url:'',children:null},
+    {id:11,name:'博客',url:'',children:null}
+  ]}
 
 class PrivilegeTree extends Component {
 
@@ -10,24 +28,47 @@ class PrivilegeTree extends Component {
   render() {
     return (
       <Tree defaultExpandAll showLine>
-        <TreeNode label="系统">
-          <TreeNode label={<div className="privilege_manage_tree_leaf"><span>系统管理</span> <Button size="small">修改</Button></div>}>
-            <TreeNode label={<div className="privilege_manage_tree_leaf"><span>系统配置</span> <Button size="small">修改</Button></div>}>
-              <TreeNode label={<div className="privilege_manage_tree_leaf"><span>桌面管理</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>} />
-              <TreeNode label={<div className="privilege_manage_tree_leaf"><span>系统参数</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>} />
-            </TreeNode>
-            <TreeNode label={<div className="privilege_manage_tree_leaf"><span>用户配置</span> <Button size="small">修改</Button></div>}>
-              <TreeNode label={<div className="privilege_manage_tree_leaf"><span>权限管理</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>} />
-              <TreeNode label={<div className="privilege_manage_tree_leaf"><span>角色管理</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>} />
-              <TreeNode label={<div className="privilege_manage_tree_leaf"><span>管理员管理</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>} />
-              <TreeNode label={<div className="privilege_manage_tree_leaf"><span>用户管理</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>} />
-            </TreeNode>
-          </TreeNode>
-          <TreeNode label={<div className="privilege_manage_tree_leaf"><span>博客</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>}/>
-          <TreeNode label={<div className="privilege_manage_tree_leaf"><span>云盘</span> <Button size="small">修改</Button><Button size="small">删除</Button></div>}/>
+        <TreeNode label={dataList.name}>
+          {this.tree(dataList.children)}
         </TreeNode>
       </Tree>
     )
+  }
+  tree = (data) => {
+    const { isShow } = this.props
+    return data.map((row)=>{
+      if(row.children){
+        return (
+          <TreeNode
+            key = {row.id}
+            label={
+              <div className="privilege_manage_tree_leaf">
+                <span>系统管理</span>
+                {!isShow && <Button size="small">修改</Button>}
+                </div>
+            }
+          >
+            {row.children && this.tree(row.children)}
+          </TreeNode>
+        )
+      }else{
+        return (
+            <TreeNode
+              key = {row.id}
+              label={
+                <div className="privilege_manage_tree_leaf">
+                  <span>桌面管理</span>
+                  {!isShow &&
+                    <Fragment>
+                      <Button size="small">修改</Button>
+                      <Button size="small">删除</Button>
+                    </Fragment>}
+                </div>
+              }
+            />
+        )
+      }
+    })
   }
 }
 
