@@ -84,5 +84,8 @@ export default fromJS({
         {name:'云盘',type:'cloud',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/cloudpan.png',isShow:true,url:'http://cloud.qqxio.cn',isIframe:true,isBlank:false,sort:4,children:null},
       ]
     },
+  ],
+  startBoxRightApps:[ //开始菜单右侧应用
+
   ]
 })

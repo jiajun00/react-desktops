@@ -8,6 +8,14 @@ $fill1-1_color:#333646; //填充色Fill1-1
 $line1-1_color:#434557; //填充色Line1-1
 $text1-2_color:#767682; //字体色Text1-2
 
+.next-tree {
+  .next-tree-node-inner {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 .message_box{
   background-color: $message_box_background;
   .message_box_header{
@@ -119,5 +127,18 @@ $text1-2_color:#767682; //字体色Text1-2
         color: $fill1-1_color;
       }
     }
+  }
+}
+
+.content_right{
+  color: $text1-2_color;
+  .desktop_set_preview_start{
+    background-color: $start_menus_background;
+  }
+  .desktop_set_preview_start_box{
+    background-color: $start_box_background;
+  }
+  .next-radio-label{
+    color: $text1-2_color;
   }
 }

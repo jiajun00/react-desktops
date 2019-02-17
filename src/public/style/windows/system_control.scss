@@ -4,14 +4,17 @@
     height: 100%;
     .next-tree{
       .next-tree-node-inner{
-        &:focus{
-          outline: none;
+        .next-noop-noline{
+          display: none;
         }
         .next-tree-node-label{
           a{
             text-decoration:none;
             &.active{
               font-weight: bold;
+            }
+            .next-icon{
+              margin:0 5px;
             }
           }
         }
@@ -34,6 +37,49 @@
       .next-pagination{
         text-align: right;
         margin-top: 10px;
+      }
+      .system_control_main_table_operation{
+        button{
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.data_manage{
+  .data_manage_content {
+    padding: 0 15px;
+  }
+}
+
+.privilege_manage{
+  height: 100%;
+  .privilege_manage_content {
+    padding: 0 15px;
+    header{
+      overflow: hidden;
+      h2{
+        float: left;
+      }
+      button{
+        float: right;
+        margin-right: 8px;
+      }
+    }
+    .privilege_manage_trees{
+      height: calc(100% - 40px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      .next-tree{
+        .privilege_manage_tree_leaf{
+          span{
+            margin-right: 35px;
+          }
+          button{
+            margin-left: 8px;
+          }
+        }
       }
     }
   }

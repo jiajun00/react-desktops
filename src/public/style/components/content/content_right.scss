@@ -1,0 +1,12 @@
+.content_right {
+  height: 100%;
+  font-size: 14px;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .content_right_main {
+    height: calc(100% - 35px);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
