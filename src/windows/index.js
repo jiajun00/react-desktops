@@ -3,8 +3,9 @@ import store from './store/index'
 import { Provider } from 'react-redux'
 import {  Route, Switch } from 'react-router-dom'
 
-import HomeWindows from "./pages/Home/HomeWindows";
-import SystemControl from "./pages/SystemControl/SystemControl";
+import HomeWindows from "./pages/Home/HomeWindows"
+import SystemControl from "./pages/SystemControl/SystemControl"
+import File from "./pages/FileManage"
 
 class index extends Component {
 
@@ -19,6 +20,7 @@ class index extends Component {
         <Switch>
           <Route path={`${match.path}`} exact component={HomeWindows}/>
           <Route path={`${match.path}/system`} component={SystemControl}/>
+          <Route path={`${match.path}/file`} component={File}/>
         </Switch>
       </Provider>
     )

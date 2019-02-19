@@ -3,10 +3,14 @@
   font-size: 14px;
   overflow: hidden;
   box-sizing: border-box;
-
+  .next-breadcrumb{
+    height: auto;
+    padding: 8px 0 8px 10px;
+  }
   .content_right_main {
     height: calc(100% - 35px);
     overflow-x: hidden;
     overflow-y: auto;
+
   }
 }

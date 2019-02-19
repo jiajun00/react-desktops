@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Table,Pagination,Search,Button,Dialog } from '@alifd/next'
+import { Search } from '@alifd/next'
 
 import ContentRight from "../../../../components/content/ContentRight";
 

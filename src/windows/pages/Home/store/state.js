@@ -14,7 +14,7 @@ export default fromJS({
   desktopApps:[ //桌面应用图标  isBlank是否在新标签页中打开
     {name:'系统管理',type:'system',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/system_control.png',isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:1},
     {name:'博客', type:'qqxio', logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/qqxio.png',isShow:true,url:'https://www.qqxio.cn',isIframe:true,isBlank:false,sort:2},
-    {name:'文件夹',type:'filename3',logo:'Https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/file/file.png',isShow:true,url:'/win/system',isIframe:true,isBlank:false,sort:3},
+    {name:'文件夹',type:'filename3',logo:'Https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/file/file.png',isShow:true,url:'/win/file/0',isIframe:true,isBlank:false,sort:3},
     {name:'云盘',type:'cloud',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/cloudpan.png',isShow:true,url:'http://cloud.qqxio.cn',isIframe:true,isBlank:false,sort:4},
     {name:'github',type:'github',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/github.png',isShow:true,url:'https://github.com/jiajun00',isIframe:false,isBlank:true,sort:5},
     {name:'数据驾驶舱',type:'data_driver',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/chart.png',isShow:true,url:'https://github.com/jiajun00',isIframe:false,isBlank:false,sort:6},

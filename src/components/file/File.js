@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {calc_empty_list} from "../../public/utils/com";
-import {file_logo} from "../../public/utils/file_logo";
+
+import "../../public/style/components/file/file.scss"
+
 
 class File extends Component {
   componentDidMount(){
@@ -11,28 +13,31 @@ class File extends Component {
     window.removeEventListener('resize', this.onWindowResize)
   }
   render() {
+    const {
+      fileLists,match,history
+    } = this.props
     return (
       <div
         ref={(files_list)=>{this.files_list=files_list}}
         className="findder_files_list"
       >
-        {this.props.fileLists.sort(this.compare('sort')).map((row)=>(
+        {fileLists.sort(this.compare('sort')).map((row)=>(
           <div
             key={row.name}
             className="finder_file"
           >
-            <div
-              className="file"
-              onDragEnter={this.dragenter}
-              onDragLeave={this.dragleave}
-              onDragStart={(el)=>{this.domdrugstart( row.sort, row.name, row.imgUrl, el)}}
-              onDrop={(el)=>{this.drop(row.sort, this.props.fileLists, 'sort', el)}}
-              onDragOver={this.allowDrop}
-            >
-              <img src={file_logo(row.type)} alt={row.name}/>
-              <span>{row.name}</span>
-            </div>
-
+              <div
+                onDoubleClick={()=>{history.push(match.path+'/'+row.id)}}
+                className="file"
+                onDragEnter={this.dragenter}
+                onDragLeave={this.dragleave}
+                onDragStart={(el)=>{this.domdrugstart( row.sort, row.name, row.imgUrl, el)}}
+                onDrop={(el)=>{this.drop(row.sort, this.props.fileLists, 'sort', el)}}
+                onDragOver={this.allowDrop}
+              >
+                <img src={row.logo} alt={row.name}/>
+                <span>{row.name}</span>
+              </div>
           </div>
         ))}
         {this.props.emptyLists}

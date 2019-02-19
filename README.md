@@ -1,5 +1,5 @@
 # 桌面系统
-![](https://img.shields.io/badge/react_desktops-0.1.2-green.svg)
+![](https://img.shields.io/badge/react_desktops-0.2.0-green.svg)
 ![](https://img.shields.io/badge/build-passing-yellow.svg)
 ![](https://img.shields.io/badge/language-javascript-red.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
@@ -46,19 +46,19 @@ npm run build
 ### Mac风格桌面
 路由：/mac
 
-![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-home.png)
+![image](https://react-desktop.oss-cn-shenzhen.aliyuncs.com/demo/mac-home.png)
 
-![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-finder-file.png)
+![image](https://react-desktop.oss-cn-shenzhen.aliyuncs.com/demo/mac-finder-file.png)
 
-![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-finder-list.png)
+![image](https://react-desktop.oss-cn-shenzhen.aliyuncs.com/demo/mac-finder-list.png)
 
-![image](https://github.com/jiajun00/react-desktops/raw/master/another/mac-lanpach.png)
+![image](https://react-desktop.oss-cn-shenzhen.aliyuncs.com/demo/mac-lanpach.png)
 
 
 ### Windows风格桌面
 路由：/win
 
-![image](https://github.com/jiajun00/react-desktops/raw/master/another/win-home.png)
+![image](https://react-desktop.oss-cn-shenzhen.aliyuncs.com/demo/win-home.png)
 
 ## 在线演示
 [演示地址](http://desk.qqxio.cn)

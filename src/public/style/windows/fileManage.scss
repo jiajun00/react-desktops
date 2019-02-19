@@ -1,0 +1,48 @@
+.file_manage{
+  height: 100%;
+  nav{
+    height: 100%;
+    .next-tree{
+      .next-tree-node-inner{
+        .next-noop-noline{
+          display: none;
+        }
+        .next-tree-node-label{
+          a{
+            text-decoration:none;
+            img{
+              float: left;
+              width:14px;
+              height: 14px;
+              margin-top: 3px;
+            }
+            span{
+              margin-left: 5px;
+            }
+            &.active{
+              font-weight: bold;
+            }
+            .next-icon{
+              margin:0 5px;
+            }
+          }
+          .file_manage_label{
+            margin-left: -8px;
+            img{
+              float: left;
+              margin-top: 3px;
+              width: 14px;
+              height: 14px;
+            }
+            span{
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  main{
+
+  }
+}

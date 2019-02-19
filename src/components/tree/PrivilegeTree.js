@@ -18,7 +18,7 @@ const dataList =
         ]}
     ]},
     {id:10,name:'博客',url:'',children:null},
-    {id:11,name:'博客',url:'',children:null}
+    {id:11,name:'文件夹',url:'',children:null}
   ]}
 
 class PrivilegeTree extends Component {
@@ -26,8 +26,9 @@ class PrivilegeTree extends Component {
   state = {}
 
   render() {
+    const { isShow } = this.props
     return (
-      <Tree defaultExpandAll showLine>
+      <Tree checkable={!isShow} defaultExpandAll showLine>
         <TreeNode label={dataList.name}>
           {this.tree(dataList.children)}
         </TreeNode>
@@ -43,7 +44,7 @@ class PrivilegeTree extends Component {
             key = {row.id}
             label={
               <div className="privilege_manage_tree_leaf">
-                <span>系统管理</span>
+                <span>{row.name}</span>
                 {!isShow && <Button size="small">修改</Button>}
                 </div>
             }
@@ -57,7 +58,7 @@ class PrivilegeTree extends Component {
               key = {row.id}
               label={
                 <div className="privilege_manage_tree_leaf">
-                  <span>桌面管理</span>
+                  <span>{row.name}</span>
                   {!isShow &&
                     <Fragment>
                       <Button size="small">修改</Button>
