@@ -4,7 +4,7 @@
     margin:48px 25px 0 0;
   }
   .desktop_set_content{
-    padding: 0 85px;
+    padding: 0 8%;
     h1{
       margin: 10px 0 5px -70px;
     }
@@ -30,9 +30,9 @@
         }
       }
     }
-    .desktop_set_images{
+    .desktop_set_main{
       margin: 25px 0;
-      ul{
+      .desktop_set_image_ul{
         display: flex;
         flex-direction: row;
         li{
@@ -77,6 +77,22 @@
                 height: 90px;
               }
             }
+          }
+        }
+      }
+      .desktop_set_color_ul{
+        width: 450px;
+        flex-wrap: wrap;
+        > div{
+          width: 50px;
+          height: 50px;
+          margin: 0 5px 5px 0;
+          cursor: pointer;
+          &:hover{
+            border:2px solid black;
+          }
+          &.action{
+            border:2px solid black;
           }
         }
       }

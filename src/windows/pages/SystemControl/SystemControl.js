@@ -43,6 +43,7 @@ class SystemControl extends Component {
             <Switch>
               <Route path={`${match.path}`} exact component={DesktopSet}/>
               <Route path={`${match.path}/desk_manage`} exact component={DesktopSet}/>
+              <Route path={`${match.path}/desk_manage/:type`} component={DesktopSet}/>
               <Route path={`${match.path}/data_manage`} exact component={DataManage}/>
               <Route path={`${match.path}/privilege_manage`} exact component={PrivilegeManage}/>
               <Route path={`${match.path}/role_manage`} exact component={RoleManage}/>

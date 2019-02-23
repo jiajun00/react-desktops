@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
-import { Button,Dialog,ConfigProvider,Upload } from '@alifd/next'
+import { Button,Dialog,ConfigProvider,Select } from '@alifd/next'
 
 import '../../public/style/components/desktop/desktop_set.scss'
-import ContentRight from "../content/ContentRight";
+import ContentRight from "../content/ContentRight"
+import ImageSet from "./DesktopSetType/ImageSet"
+import ColorSet from "./DesktopSetType/ColorSet"
+
+const Option = Select.Option
+
 
 class DesktopSet extends Component {
 
@@ -23,6 +28,7 @@ class DesktopSet extends Component {
     window.removeEventListener('resize', this.preview_init)
   }
   render() {
+    const { match } = this.props
     const { preview_background_url } = this.state
     const previewImgStyle = {
       width:'100%',
@@ -46,37 +52,15 @@ class DesktopSet extends Component {
               <div className="desktop_set_preview_start_box"/>
             </div>
           </div>
-          <div className="desktop_set_images">
-            <h2>背景图片</h2>
-            <ul>
-              <li>
-                <div className="desktop_set_image">
-                  <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-1.jpg" alt=""/>
-                  <div className="desktop_set_image_cover">
-                    <Button ghost="dark" onClick={()=>{this.preview_set('https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-1.jpg')}}>预览</Button>
-                    <Button ghost="dark" onClick={()=>{this.delete_img()}}>删除</Button>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="desktop_set_image">
-                  <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-2.jpg" alt=""/>
-                  <div className="desktop_set_image_action"/>
-                  <div className="desktop_set_image_cover">
-                    <Button ghost="dark" onClick={()=>{this.preview_set('https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-2.jpg')}}>预览</Button>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="desktop_set_image">
-                  <Upload
-                    shape="card"
-                  >
-                    上传图片（16:9）
-                  </Upload>
-                </div>
-              </li>
-            </ul>
+          <div className="desktop_set_main">
+            <h2>背景</h2>
+            <Select id="select-type" defaultValue={match.params.type?match.params.type:'image'} onChange={this.handleChangeType}>
+              <Option value="image">图片背景</Option>
+              <Option value="color">纯色背景</Option>
+            </Select>
+
+            {this.render_type(match.params.type)}
+
           </div>
         </ContentRight>
       </ConfigProvider>
@@ -99,6 +83,20 @@ class DesktopSet extends Component {
       onOk: () => console.log('ok'),
       onCancel: () => console.log('cancel')
     })
+  }
+  render_type = (type) => {
+    switch (type){
+      case "image":
+        return <ImageSet delete_img={this.delete_img} preview_set={this.preview_set}/>
+      case "color":
+        return <ColorSet/>
+      default:
+        return <ImageSet delete_img={this.delete_img} preview_set={this.preview_set}/>
+    }
+  }
+  handleChangeType = (value) => {
+    const url = "/win/system/desk_manage/" + value
+    this.props.history.push(url)
   }
 }
 
