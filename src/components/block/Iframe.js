@@ -13,7 +13,7 @@ class Iframe extends Component {
 
   render() {
     const {
-      style,isLoad
+      style,isLoad,title
     } = this.props
     const iStyle = {
       ...style,
@@ -22,7 +22,8 @@ class Iframe extends Component {
     return (
       <Fragment>
         <iframe
-          title={this.props.title}
+          name={title+"_frame"}
+          title={title}
           frameBorder={this.props.frameBorder}
           style={iStyle}
           width={this.props.width}

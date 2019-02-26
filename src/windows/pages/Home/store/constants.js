@@ -8,6 +8,7 @@ export const CLOSE_WINDOW = 'windows/CLOSE_WINDOW' //关闭窗口
 export const SHOW_WINDOW = 'windows/SHOW_WINDOW' //显示和隐藏窗口
 export const HIDDEN_WINDOW = 'windows/HIDDEN_WINDOW' //隐藏窗口
 export const LOAD_WINDOW = 'windows/LOAD_WINDOW' //窗口读取完成
+export const SET_BACKGROUND = 'windows/SET_BACKGROUND' //设置桌面背景
 
 
 

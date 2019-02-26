@@ -2,22 +2,26 @@ import React, {Component} from 'react'
 import { View } from 'react-desktop'
 import {  Route, Switch, NavLink } from 'react-router-dom'
 import { Tree,Icon } from '@alifd/next'
-
+import { connect } from "react-redux";
+import { actionCreators as actionCreatorsHome } from "../Home/store";
 import '../../../public/style/windows/system_control.scss'
 
 import LeftnavRightContent from "../../../components/layout/LeftnavRightContent"
-import DesktopSet from "../../../components/desktop/DesktopSet"
+import DesktopSet from "./system/Desktop"
 import DataManage from "./system/DataManage"
 import PrivilegeManage from "./system/PrivilegeManage"
 import RoleManage from "./system/RoleManage"
 import UserManage from "./system/UserManage";
+
 
 const TreeNode = Tree.Node
 
 class SystemControl extends Component {
 
   render() {
-    const { match } = this.props
+    const {
+      match,
+    } = this.props
     return (
       <div className='system_control'>
         <LeftnavRightContent>
@@ -56,5 +60,14 @@ class SystemControl extends Component {
   }
 }
 
-
-export default SystemControl
+const initMapStateToProps = (state) => ({
+})
+const initMapDispatchToProps = (dispatch) => ({
+  /*
+   * 设置窗口背景
+   */
+  set_background(type,value){
+    dispatch(actionCreatorsHome.set_background(type,value))
+  }
+})
+export default connect(initMapStateToProps,initMapDispatchToProps)(SystemControl)

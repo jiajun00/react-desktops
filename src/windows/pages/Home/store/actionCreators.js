@@ -173,3 +173,16 @@ export const loadWindow = (window,openWindowList) => {
     windowList:fromJS(list)
   }
 }
+/*
+ * 设置桌面背景
+ */
+export const set_background = (type,value) => {
+  const background = {
+    type,
+    value
+  }
+  return {
+    type: constants.SET_BACKGROUND,
+    backgroundDesk:fromJS(background)
+  }
+}

@@ -38,4 +38,18 @@ export const setTreeData = (data) => {
   });
   return tree     //返回树形数据
 }
+/*
+ * 向父窗口发送消息
+ * @param data 数据
+ * @param type 消息类型
+ */
+export const sendParentMessage = (value,type) => {
+  window.parent.postMessage(
+    {
+      type:type,
+      value:value
+    },
+    '*'
+  );
+}
 

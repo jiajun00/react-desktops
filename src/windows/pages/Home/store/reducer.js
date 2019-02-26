@@ -23,6 +23,8 @@ export default (state = defaultState, action) => {
       return state.set('openWindowList',action.windowList)
     case constants.LOAD_WINDOW://读取完成窗口
       return state.set('openWindowList',action.windowList)
+    case constants.SET_BACKGROUND://设置桌面背景
+      return state.set('background',action.backgroundDesk)
     default:
       return state;
   }

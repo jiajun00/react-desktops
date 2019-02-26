@@ -17,10 +17,12 @@ import Iframe from "../../../components/block/Iframe";
 class HomeWindows extends Component {
 
   state = {}
-
+  componentDidMount(){
+    window.addEventListener("message", this.receiveMessage, false)
+  }
   render() {
     const {
-      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,
+      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,background,
       setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow
     } = this.props
     return (
@@ -28,7 +30,7 @@ class HomeWindows extends Component {
         width="100%"
         height="100%"
         layout="vertical"
-        background={"url(https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-2.jpg) no-repeat center center / cover"}
+        background={background.type === 'image'?`url(${background.value}) no-repeat center center / cover`:background.value}
         style={{backgroundSize:'cover',overflow:'hidden'}}
       >
         <View
@@ -81,6 +83,14 @@ class HomeWindows extends Component {
       </View>
     )
   }
+  receiveMessage =  ( event ) => {
+    const self = this
+    if(event.data.type === 'background_set'){
+      console.log( event.data );
+      console.log(self.props)
+      self.props.set_background(event.data.value.type,event.data.value.value)
+    }
+  }
 }
 
 const initMapStateToProps = (state) => ({
@@ -90,6 +100,7 @@ const initMapStateToProps = (state) => ({
   desktopApps:state.getIn(['homeWindows','desktopApps']).toJS(),
   openWindowList:state.getIn(['homeWindows','openWindowList']).toJS(),
   startBoxLeftApps:state.getIn(['homeWindows','startBoxLeftApps']).toJS(),
+  background:state.getIn(['homeWindows','background']).toJS()
 })
 
 const initMapDispatchToProps = (dispatch) => ({
@@ -147,6 +158,12 @@ const initMapDispatchToProps = (dispatch) => ({
    */
   loadWindow(window,openWindowList){
     dispatch(actionCreators.loadWindow(window,openWindowList))
+  },
+  /*
+  * 设置窗口背景
+  */
+  set_background(type,value){
+    dispatch(actionCreators.set_background(type,value))
   }
 })
 

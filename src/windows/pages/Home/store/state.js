@@ -9,6 +9,10 @@ export default fromJS({
     minute:'00',
     week:''
   },
+  background:{
+    type:'image',
+    value:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-2.jpg'
+  },
   isOpenMessageBox:false,//是否打开消息框
   isOpenStartBox:false,//是否打开开始菜单
   desktopApps:[ //桌面应用图标  isBlank是否在新标签页中打开
