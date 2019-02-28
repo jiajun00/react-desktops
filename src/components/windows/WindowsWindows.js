@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import { Window,TitleBar,View } from 'react-desktop/windows'
-import { Animate,Loading } from '@alifd/next'
+import { Loading } from '@alifd/next'
 
 const WindowOffsetWidth = window.innerWidth
 const WindowOffsetHeight = window.innerHeight
@@ -46,11 +46,25 @@ class WindowsWindows extends Component {
     } = this.props
     const windowStyle = {
       position:'absolute',
-      top:this.winTop,
-      left:this.winLeft,
       width:this.width,
       height:this.height,
-      zIndex:this.props.zIndex,
+      overflow: 'hidden',
+      transition: window.isShow ?'all 0.25s ease-out':'all 1s ease-in-out'
+    }
+    if(window.isShow){
+      windowStyle.opacity = 1
+      windowStyle.transform = 'scale(1,1)'
+      windowStyle.visibility = 'visible'
+      windowStyle.top=this.winTop
+      windowStyle.left=this.winLeft
+      windowStyle.zIndex=this.props.zIndex
+    }else{
+      windowStyle.opacity = 0
+      windowStyle.transform = 'scale(0.6,0.8)'
+      windowStyle.visibility = 'hidden'
+      windowStyle.top= WindowOffsetHeight
+      windowStyle.left=(WindowOffsetWidth - this.width)/2
+      windowStyle.zIndex= -100
     }
     const titleBarStyle={
       position:'relative',
@@ -60,7 +74,8 @@ class WindowsWindows extends Component {
       position:'absolute',
       zIndex:this.props.zIndex + 2,
       height:32,
-      width: 'calc(100% - 138px)'
+      width: 'calc(100% - 138px)',
+      cursor:'move'
     }
     const leftWHStyle={
       width: 30,
@@ -124,126 +139,85 @@ class WindowsWindows extends Component {
       position:'absolute'
     }
     return (
-      <Animate
-        animation="window_expand"
-        beforeEnter={this.beforeEnter}
-        onEnter={this.onEnter}
-        afterEnter={this.afterEnter}
-        beforeLeave={this.beforeLeave}
-        onLeave={this.onLeave}
-        afterLeave={this.afterLeave}
-      >
-        {window.isShow ?
-          <span style={windowStyle} ref={e => this.window = e}>
-              <Window
-                chrome
-                width='100%'
-                height='100%'
-              >
-                <TitleBar
-                  style={titleBarStyle}
-                  title={window.name}
-                  controls
 
-                  onMinimizeClick={()=>hiddenWindow(window,openWindowList)}
-                  onMaximizeClick={this.handleClickSetScreen}
-                  onCloseClick={() => {closeWindow(window.type,openWindowList)}}
-                >
-                  <div
-                    onMouseDown={e => {
-                      this.mouseMoveDown(e,'position')
-                      setWindowIndex(window,openWindowList)
-                    }}
-                    style={titleBarCoverStyle}/>
-                </TitleBar>
-
-                <View
-                  padding="0px"
-                  width="100%"
-                  height='100%'
-                  style={{overflow: 'scroll',position:'absolute',borderTop:'1px solid #eee'}}
-                >
-                {!window.isLoad &&
-                <Loading style={loading} tip="loading..."/>
-                }
-                  {this.props.children}
-              </View>
+      <span style={windowStyle} ref={e => this.window = e}>
+        <Window
+            chrome
+            width='100%'
+            height='100%'
+          >
+            <TitleBar
+              style={titleBarStyle}
+              title={window.name}
+              controls
+              onMinimizeClick={()=>hiddenWindow(window,openWindowList)}
+              onMaximizeClick={this.handleClickSetScreen}
+              onCloseClick={() => {closeWindow(window.type,openWindowList)}}
+            >
               <div
-                ref={el=>this.windowCover=el}
-                style={cover}
-                onClick={()=>this.props.setWindowIndex(this.props.window,this.props.openWindowList)}
-              />
-              </Window>
+                onMouseDown={e => {
+                  this.mouseMoveDown(e,'position')
+                  setWindowIndex(window,openWindowList)
+                }}
+                style={titleBarCoverStyle}/>
+            </TitleBar>
 
-            {!isFullScreen &&
-            <Fragment>
-              <span
-                onMouseDown={e => {
-                  this.mouseMoveDown(e,'lw')
-                }}
-                style={leftWidthButtonStyle}
-              />
-              <span
-                onMouseDown={e => {
-                  this.mouseMoveDown(e,'rw')
-                }}
-                style={rightWidthButtonStyle}
-              />
-              <span
-                onMouseDown={e => {
-                  this.mouseMoveDown(e,'bh')
-                }}
-                style={bottomHeightButtonStyle}
-              />
-              <span
-                onMouseDown={e => {
-                  this.mouseMoveDown(e,'lwh')
-                }}
-                style={leftWHStyle}
-              />
-              <span
-                onMouseDown={e => {
-                  this.mouseMoveDown(e,'wh')
-                }}
-                style={rightWHStyle}
-              />
-            </Fragment>
-
+            <View
+              padding="0px"
+              width="100%"
+              height='100%'
+              style={{overflow: 'scroll',position:'absolute',borderTop:'1px solid #eee'}}
+            >
+            {!window.isLoad &&
+            <Loading style={loading} tip="loading..."/>
             }
-            </span>
-          :
-          null
+              {this.props.children}
+          </View>
+        </Window>
+        <div
+          ref={el=>this.windowCover=el}
+          style={cover}
+          onClick={()=>this.props.setWindowIndex(this.props.window,this.props.openWindowList)}
+        />
+        {window.isShow && !isFullScreen &&
+        <Fragment>
+          <span
+            onMouseDown={e => {
+              this.mouseMoveDown(e,'lw')
+            }}
+            style={leftWidthButtonStyle}
+          />
+          <span
+            onMouseDown={e => {
+              this.mouseMoveDown(e,'rw')
+            }}
+            style={rightWidthButtonStyle}
+          />
+          <span
+            onMouseDown={e => {
+              this.mouseMoveDown(e,'bh')
+            }}
+            style={bottomHeightButtonStyle}
+          />
+          <span
+            onMouseDown={e => {
+              this.mouseMoveDown(e,'lwh')
+            }}
+            style={leftWHStyle}
+          />
+          <span
+            onMouseDown={e => {
+              this.mouseMoveDown(e,'wh')
+            }}
+            style={rightWHStyle}
+          />
+        </Fragment>
+
         }
-      </Animate>
+        </span>
     )
   }
-  beforeEnter = (node) => {
-    node.style.transform = 'scale(0.8,0.8)'
-    node.style.opacity = 0.5
-  }
 
-  onEnter = (node) => {
-    node.style.transform = 'scale(1,1)'
-    node.style.opacity = 1
-  }
-
-  afterEnter = (node) => {
-    // this.width = null;
-  }
-
-  beforeLeave = (node) => {
-    node.style.transform = 'scale(1,1)'
-    node.style.opacity = 1
-  }
-
-  onLeave = (node) => {
-    node.style.transform = 'scale(0.8,0.8)'
-    node.style.opacity = 0.3
-  }
-
-  afterLeave = (node) => {
-    // node.style.bottom = null;
-  }
   mouseMoveDown = (e,type) => {
     if(!this.state.isFullScreen) {
       e.stopPropagation() //防止事件冒泡
@@ -421,8 +395,12 @@ class WindowsWindows extends Component {
   mouseUp = () => {
     this.moving = false
     if(this.type === 'position'){
-      this.winLeft = this.windowLeftEnd
-      this.winTop = this.windowTopEnd
+      if(this.windowLeftEnd){
+        this.winLeft = this.windowLeftEnd
+      }
+      if(this.windowTopEnd) {
+        this.winTop = this.windowTopEnd
+      }
       this.windowCover.style.display = 'none'
     }
     if(this.type === 'wh' || this.type === 'lw' || this.type === 'rw' || this.type === 'bh' || this.type === 'lwh'){

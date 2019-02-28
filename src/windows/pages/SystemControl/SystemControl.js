@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { View } from 'react-desktop'
-import {  Route, Switch, NavLink } from 'react-router-dom'
+import {  Route, Switch, NavLink, Redirect } from 'react-router-dom'
 import { Tree,Icon } from '@alifd/next'
 import { connect } from "react-redux";
 import { actionCreators as actionCreatorsHome } from "../Home/store";
@@ -45,8 +45,8 @@ class SystemControl extends Component {
           </nav>
           <main>
             <Switch>
-              <Route path={`${match.path}`} exact component={DesktopSet}/>
-              <Route path={`${match.path}/desk_manage`} exact component={DesktopSet}/>
+              <Route path={`${match.path}`} exact render={()=><Redirect to={`${match.path}/desk_manage/image`} />}/>
+              <Route path={`${match.path}/desk_manage`} exact render={()=><Redirect to={`${match.path}/desk_manage/image`} />}/>
               <Route path={`${match.path}/desk_manage/:type`} component={DesktopSet}/>
               <Route path={`${match.path}/data_manage`} exact component={DataManage}/>
               <Route path={`${match.path}/privilege_manage`} exact component={PrivilegeManage}/>

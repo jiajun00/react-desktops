@@ -61,7 +61,12 @@ $text1-2_color:#767682; //字体色Text1-2
   background-color: $start_menus_background;
 }
 .start_box{
-  background-color: $start_box_background;
+  .start_box_background_change{
+    background-color: $start_box_background;
+  }
+  .start_box_background_change_color{
+    background-color: $start_box_background_color;
+  }
   .start_box_left{
     .start_box_left_user{
       color:$gray_font;

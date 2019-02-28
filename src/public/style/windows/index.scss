@@ -174,7 +174,17 @@
   width: 854px;
   height: 370px;
   z-index: $box_zIndex + 1;
+  .start_box_background{
+    z-index: $box_zIndex;
+  }
+  .start_box_background_change{
+    z-index: $box_zIndex + 1;
+  }
+  .start_box_background_change_color{
+    z-index: $box_zIndex + 1;
+  }
   .start_box_left{
+    z-index: $box_zIndex +2;
     padding: 40px 20px 20px 0px;
     .start_box_left_user{
       width: 140px;
@@ -267,6 +277,7 @@
   }
   .start_box_right{
     width: 100%;
+    z-index: $box_zIndex +2;
     .start_box_right_header{
       h2{
         padding: 14px 0;
@@ -344,19 +355,6 @@
       text-overflow: ellipsis;
     }
   }
-}
-
-.window_expand-enter {
-  overflow: hidden;
-}
-.window_expand-enter-active {
-  transition: all 0.1s ease-out;
-}
-.window_expand-leave {
-  overflow: hidden;
-}
-.window_expand-leave-active {
-  transition: all 0.2s ease-out;
 }
 
 .next-loading-wrap{

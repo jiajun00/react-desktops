@@ -22,7 +22,7 @@ class ImageSet extends Component {
           {imageList.map((row,i)=>(
             <li key={i}>
             <div className="desktop_set_image">
-              <img src={row.src} alt="image"/>
+              <img src={row.src} alt={row.src}/>
               {background_image === row.src && <div className="desktop_set_image_action"/>}
               <div className="desktop_set_image_cover">
                 <Button ghost="dark" onClick={()=>{preview_set(row.src)}}>预览</Button>

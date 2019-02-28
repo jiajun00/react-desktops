@@ -20,6 +20,9 @@ class HomeWindows extends Component {
   componentDidMount(){
     window.addEventListener("message", this.receiveMessage, false)
   }
+  componentWillUnmount(){
+    window.removeEventListener('message',this.receiveMessage)
+  }
   render() {
     const {
       dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,background,
@@ -47,6 +50,7 @@ class HomeWindows extends Component {
             openWindowList={openWindowList}
             closeStartBox={closeStartBox}
             startBoxLeftApps={startBoxLeftApps}
+            background={background}
           />
           <MessageBox isOpenMessageBox={isOpenMessageBox} openMessageBox={openMessageBox} closeMessageBox={closeMessageBox}/>
         </View>

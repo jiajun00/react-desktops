@@ -57,10 +57,23 @@ class StartBoxWindows extends Component {
 
   render() {
     const {
-      isOpenStartBox,startBoxLeftApps,openWindowList,
+      isOpenStartBox,startBoxLeftApps,openWindowList,background,
       closeStartBox,setWindowOpenList
     } = this.props
-
+    const backgroundStyle = {
+      position: 'absolute',
+      top:0,
+      left:0
+    }
+    if(background.type === 'color'){
+      backgroundStyle.backgroundColor = background.value
+      backgroundStyle.opacity = 0.98
+    }
+    const backgroundChangeStyle = {
+      position: 'absolute',
+      top:0,
+      left:0
+    }
     return (
       <Fragment>
         <Animate
@@ -74,6 +87,17 @@ class StartBoxWindows extends Component {
         >
         {isOpenStartBox ?
         <View className="start_box" style={{position: 'absolute', bottom: 0}}>
+          {background.type === 'color' ?
+            <Fragment>
+              <View height="100%" width="100%" className={'start_box_background'} style={backgroundStyle}/>
+              <View height="100%" width="100%" className={'start_box_background_change_color'} style={backgroundChangeStyle}/>
+            </Fragment>
+          :
+            <Fragment>
+              <View height="100%" width="100%" className={'start_box_background_change'} style={backgroundChangeStyle}/>
+            </Fragment>
+          }
+
           <View className="start_box_left">
             <div className="start_box_left_user">
               <div className="start_box_left_info">
