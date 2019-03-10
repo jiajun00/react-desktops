@@ -341,7 +341,7 @@ module.exports = {
   },
   plugins: [
     //打包分析
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,

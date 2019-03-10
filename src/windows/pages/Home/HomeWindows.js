@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { View } from 'react-desktop'
-import {connect} from "react-redux";
-import {actionCreators} from "./store";
+import { connect } from "react-redux";
+import { actionCreators } from "./store";
+import { actionCreators as mainActionCreators } from "../../store/main"
 
 import "../../../public/style/windows/index.scss"
-
 
 import StartMenuWindows from "../../../components/menu/StartMenuWindows";
 import MessageBox from "../../../components/block/MessageBox";
@@ -12,6 +12,7 @@ import StartBoxWindows from "../../../components/menu/StartBoxWindows";
 import DesktopApps from "../../../components/block/DesktopApps";
 import WindowsWindows from "../../../components/windows/WindowsWindows";
 import Iframe from "../../../components/block/Iframe";
+import RightMenuWindows from "../../../components/menu/RightMenuWindows";
 
 
 class HomeWindows extends Component {
@@ -25,8 +26,8 @@ class HomeWindows extends Component {
   }
   render() {
     const {
-      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,background,
-      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow
+      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,background,mainContextMenu,isOpenContextMenu,contextStyle,
+      setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow,set_context_menu
     } = this.props
     return (
       <View
@@ -41,6 +42,7 @@ class HomeWindows extends Component {
           height="100%"
           layout="vertical"
           className="desktop"
+          onContextMenu={(e)=>this.onContextMenu(e,'desktop')}
         >
           <DesktopApps desktopApps={desktopApps} setWindowOpenList={setWindowOpenList} openWindowList={openWindowList}/>
           <StartBoxWindows
@@ -84,15 +86,26 @@ class HomeWindows extends Component {
           }
         </WindowsWindows>
         ))}
+        <RightMenuWindows
+          mainContextMenu={mainContextMenu}
+          isOpenContextMenu={isOpenContextMenu}
+          contextStyle={contextStyle}
+          set_context_menu={set_context_menu}
+        />
       </View>
     )
   }
   receiveMessage =  ( event ) => {
     const self = this
     if(event.data.type === 'background_set'){
-      console.log( event.data );
-      console.log(self.props)
       self.props.set_background(event.data.value.type,event.data.value.value)
+    }
+  }
+  onContextMenu(e,type){
+    const { contextMenu,set_context_menu } = this.props
+    e.preventDefault()
+    if(type === 'desktop'){
+      set_context_menu(contextMenu.desktops,true,e)
     }
   }
 }
@@ -104,7 +117,11 @@ const initMapStateToProps = (state) => ({
   desktopApps:state.getIn(['homeWindows','desktopApps']).toJS(),
   openWindowList:state.getIn(['homeWindows','openWindowList']).toJS(),
   startBoxLeftApps:state.getIn(['homeWindows','startBoxLeftApps']).toJS(),
-  background:state.getIn(['homeWindows','background']).toJS()
+  background:state.getIn(['homeWindows','background']).toJS(),
+  contextMenu:state.getIn(['homeWindows','contextMenu']).toJS(),
+  isOpenContextMenu:state.getIn(['mainWindows','isOpenContextMenu']),
+  mainContextMenu:state.getIn(['mainWindows','contextMenu']).toJS(),
+  contextStyle:state.getIn(['mainWindows','contextStyle']).toJS()
 })
 
 const initMapDispatchToProps = (dispatch) => ({
@@ -168,6 +185,12 @@ const initMapDispatchToProps = (dispatch) => ({
   */
   set_background(type,value){
     dispatch(actionCreators.set_background(type,value))
+  },
+  /*
+   * 设置右键菜单
+   */
+  set_context_menu(list,isShow,e,type,isEnter){
+    dispatch(mainActionCreators.set_context_menu_box(list,isShow,e,type,isEnter))
   }
 })
 

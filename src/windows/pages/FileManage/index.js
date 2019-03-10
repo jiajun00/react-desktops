@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {  Route, Switch } from 'react-router-dom'
 import { View } from 'react-desktop'
-import {actionCreators} from "./store";
+// import {actionCreators} from "./store";
 
 
 import "../../../public/style/windows/fileManage.scss"

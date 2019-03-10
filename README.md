@@ -1,5 +1,5 @@
 # 桌面系统
-![](https://img.shields.io/badge/react_desktops-0.2.1-green.svg)
+![](https://img.shields.io/badge/react_desktops-0.3.0-green.svg)
 ![](https://img.shields.io/badge/build-passing-yellow.svg)
 ![](https://img.shields.io/badge/language-javascript-red.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)

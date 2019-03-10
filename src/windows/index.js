@@ -6,12 +6,15 @@ import {  Route, Switch } from 'react-router-dom'
 import HomeWindows from "./pages/Home/HomeWindows"
 import SystemControl from "./pages/SystemControl/SystemControl"
 import File from "./pages/FileManage"
+import { closeContextMenu } from "./common/rightMenu"
 
 class index extends Component {
 
   state = {}
   componentDidMount(){
     import("../public/style/themes/windows-themes-black.scss")
+    document.oncontextmenu = () => {return false}
+    document.onclick = closeContextMenu
   }
   render() {
     const { match } = this.props
@@ -25,6 +28,7 @@ class index extends Component {
       </Provider>
     )
   }
+
 }
 
 
