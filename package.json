@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js start",
-    "build": "node scripts/start.js build",
+    "build": "node scripts/build.js build",
     "test": "node scripts/test"
   },
   "eslintConfig": {
