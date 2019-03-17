@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { View } from 'react-desktop'
+import { str_cut } from 'ljtools'
 
 
 class DesktopApps extends Component {
@@ -8,26 +9,28 @@ class DesktopApps extends Component {
 
   render() {
     const {
-      desktopApps,openWindowList,
+      desktopApps,desktopAppsShowControl,openWindowList,
       setWindowOpenList
     } = this.props
     return (
       <View style={{padding:'10px 0 0 10px'}}>
-        <View
-          className="desktop_apps"
-          layout="vertical"
-        >
-          {desktopApps.map((row)=>(
-            <div
-              key={row.type}
-              className="desktop_app"
-              onDoubleClick={()=>{row.isBlank?window.open(row.url):setWindowOpenList(row,openWindowList)}}
-            >
-              <img src={row.logo} alt="file1"/>
-              <h3>{row.name}</h3>
-            </div>
-          ))}
-        </View>
+        {desktopAppsShowControl.isShow &&
+          <View
+            className="desktop_apps "
+            layout="vertical"
+          >
+            {desktopApps.map((row)=>(
+              <div
+                key={row.type}
+                className={"desktop_app "+desktopAppsShowControl.size}
+                onDoubleClick={()=>{row.isBlank?window.open(row.url):setWindowOpenList(row,openWindowList)}}
+              >
+                <img src={row.logo} alt="file1"/>
+                <h3>{str_cut(row.name,7)}</h3>
+              </div>
+            ))}
+          </View>
+        }
       </View>
     )
   }

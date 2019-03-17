@@ -1,4 +1,6 @@
 import React from 'react'
+import { Icon } from '@alifd/next'
+
 /*
  * 计算空文件数量并返回空文件数组
  * @param int fileListWidth  文件列表区域总宽度
@@ -52,4 +54,31 @@ export const sendParentMessage = (value,type) => {
     '*'
   );
 }
-
+/*
+ * 菜单列表logo显示处理
+ * @param Object data 消息类型
+ */
+export const menuLogo = (data) => {
+  let logo
+  if(data){
+    switch (data.type){
+      case 'point': //实心点
+        if(data.value){
+          logo = <p/>
+        }
+        break;
+      case 'icon':  //fusion design中图标
+        if(data.value){
+          logo = <Icon size={data.size?data.size:'xs'} type={data.value}/>
+        }
+        break;
+      case 'image': //图片
+        logo = <img src={data.value} alt={data.type}/>
+        break;
+      default:
+        logo = null;
+        break;
+    }
+  }
+  return logo
+}

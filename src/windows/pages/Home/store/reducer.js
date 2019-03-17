@@ -25,6 +25,10 @@ export default (state = defaultState, action) => {
       return state.set('openWindowList',action.windowList)
     case constants.SET_BACKGROUND://设置桌面背景
       return state.set('background',action.backgroundDesk)
+    case constants.SET_CONTEXT_MENU_LIST://设置右键菜单列表
+      return state.set('contextMenu',action.list)
+    case constants.SET_DESKTOP_APPS_SHOW_CONTROL://设置桌面图标显示属性
+      return state.set('desktopAppsShowControl',action.data)
     default:
       return state;
   }

@@ -6,7 +6,10 @@
     <meta name="theme-color" content="#000000">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <title>平台桌面系统</title>
+    <script src="%PUBLIC_URL%/constants/main.js"></script>
+    <script>
+      document.title = window.DesktopSystem.title;
+    </script>
   </head>
   <body>
     <noscript>

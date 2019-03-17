@@ -1,6 +1,6 @@
 {
   "name": "react-desktops",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "homepage": "http://desk.qqxio.cn",
   "dependencies": {
@@ -143,6 +143,7 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-server": "^3.1.9",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3"
+    "workbox-webpack-plugin": "3.6.3",
+    "ljtools": "^1.0.12"
   }
 }

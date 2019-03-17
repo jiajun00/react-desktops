@@ -12,21 +12,41 @@ export default fromJS({
   contextMenu:{ //右键菜单
     desktops:[
       {name:'查看',type:'view',sort:1,line:false,children:[
-          {name:'大图标',type:'large_logo',logo:{type:'point',value:false},line:false,sort:1},
-          {name:'中图标',type:'middle_logo',logo:{type:'point',value:true},line:false,sort:2},
-          {name:'小图标',type:'small_logo',logo:{type:'point',value:false},line:true,sort:3},
-          {name:'显示桌面图标',type:'is_show',logo:{type:'icon',value:'select'},line:false,sort:3}
+          {name:'大图标',type:'large_logo',logo:{type:'point',value:false},line:false,sort:1,func:{type:'select',runFunctionType:'selectContextMenuType',group:'view',position:'desktops'}},
+          {name:'中图标',type:'middle_logo',logo:{type:'point',value:true},line:false,sort:2,func:{type:'select',runFunctionType:'selectContextMenuType',group:'view',position:'desktops'}},
+          {name:'小图标',type:'small_logo',logo:{type:'point',value:false},line:true,sort:3,func:{type:'select',runFunctionType:'selectContextMenuType',group:'view',position:'desktops'}},
+          {name:'显示桌面图标',type:'is_show',logo:{type:'icon',value:'select'},line:false,sort:3,func:{type:'isShow',runFunctionType:'handleShowDesktopApps',group:'view',position:'desktops'}}
         ]},
       {name:'排列方式',type:'sort_type',sort:2,line:true,children:[
-          {name:'按日期排列',type:'date_sort',line:false,sort:1},
-          {name:'按类型排列',type:'class_sort',line:false,sort:2},
-          {name:'名称',type:'name_sort',line:false,sort:3},
-          {name:'属性',type:'attr_sort',line:false,sort:4}
+          {name:'按日期排列',type:'date_sort',logo:{type:'point',value:false},line:false,sort:1,func:{type:'select',runFunctionType:'selectContextMenuType',group:'sort_type',position:'desktops'}},
+          {name:'按类型排列',type:'class_sort',logo:{type:'point',value:false},line:false,sort:2,func:{type:'select',runFunctionType:'selectContextMenuType',group:'sort_type',position:'desktops'}},
+          {name:'名称',type:'name_sort',logo:{type:'point',value:true},line:false,sort:3,func:{type:'select',runFunctionType:'selectContextMenuType',group:'sort_type',position:'desktops'}},
+          {name:'属性',type:'attr_sort',logo:{type:'point',value:false},line:false,sort:4,func:{type:'select',runFunctionType:'selectContextMenuType',group:'sort_type',position:'desktops'}}
         ]},
       {name:'刷新',type:'refresh',sort:3,line:true,children:null,func:{type:'refresh',runFunctionType:'refreshCurrentPage'}},
       {name:'删除',type:'delete',sort:4,line:false,children:null},
       {name:'重命名',type:'rename',sort:5,line:true,children:null},
-      {name:'桌面背景',type:'desktop',sort:6,logo:{type:'image',value:"https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/menu/desktop.png"},line:false,children:null,func:{type:'openWindow',runFunctionType:'openDesktopSet',value:{name:'系统管理',type:'system',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/system_control.png',isShow:true,url:'/win/system/desk_manage',isIframe:true,isBlank:false,sort:1}}}
+      {name:'桌面背景',
+        type:'desktop',
+        sort:6,
+        logo:{type:'image',value:"https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/menu/desktop.png"},
+        line:false,
+        children:null,
+        func:{
+          type:'openWindow',
+          runFunctionType:'openDesktopSet',
+          value:{
+            name:'系统管理',
+            type:'system',
+            logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/system_control.png',
+            isShow:true,
+            url:'/win/system/desk_manage',
+            isIframe:true,
+            isBlank:false,
+            sort:1
+          }
+        }
+      }
     ],
     startMenu:[
       {name:'显示',type:'view',sort:1,line:false,children:[
@@ -44,7 +64,7 @@ export default fromJS({
       {name:'桌面背景',type:'desktop',sort:6,logo:{type:'image',value:"https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/menu/desktop.png"},line:false,children:null}
     ]
   },
-  background:{
+  background:{  //桌面背景
     type:'image',
     value:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/home/desktop-2.jpg'
   },
@@ -65,6 +85,11 @@ export default fromJS({
     {name:'招聘信息',type:'job',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/vue.png',isShow:true,url:'http://splider.qqxio.cn',isIframe:true,isBlank:false,style:{width:600,height:600},sort:12},
     {name:'CRM',type:'crm',logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/crm.png',isShow:true,url:'http://xcrm.qqxio.cn',isIframe:true,isBlank:false,sort:13}
   ],
+  desktopAppsShowControl:{  //控制桌面图标显示控制
+    isShow:true,  //是否显示
+    size:'middle_logo', //图标大小
+    rankType:'name_sort' //排列顺序
+  },
   openWindowList: [],  //已打开的应用
   startBoxLeftApps:[  //开始菜单左侧应用列表
     {
@@ -125,6 +150,8 @@ export default fromJS({
     },
   ],
   startBoxRightApps:[ //开始菜单右侧应用
-
+    {name:'标题',type:'app1',img:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/wangyi.jpg',colSpan:6,sort:1},
+    {type:'app2',img:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/weather.png',colSpan:6,sort:2},
+    {type:'app3',img:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/xiami.jpg',colSpan:12,sort:3},
   ]
 })

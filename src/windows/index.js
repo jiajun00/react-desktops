@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import {  Route, Switch } from 'react-router-dom'
 
 import HomeWindows from "./pages/Home/HomeWindows"
-import SystemControl from "./pages/SystemControl/SystemControl"
+import SystemControl from "./pages/SystemControl/index"
 import File from "./pages/FileManage"
 import { closeContextMenu } from "./common/rightMenu"
 

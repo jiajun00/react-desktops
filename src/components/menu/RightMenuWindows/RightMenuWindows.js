@@ -1,39 +1,18 @@
 import React, {Component} from 'react'
-import { Nav,Icon } from '@alifd/next'
+import { Nav } from '@alifd/next'
+import { menuLogo } from '../../../public/utils/com'
 
 const { Item, SubNav } = Nav
+const { openWindow,refreshCurrentPage,selectContextMenuType,toggleEnterContextMenu,handleShowDesktopApps } = require("../../../windows/common/rightMenu")
+
 
 const NavItem = (props) => {
-  const { openWindow,refreshCurrentPage } = require("../../../windows/common/rightMenu")
-  let logo = null
-  if(props.row.logo){
-    switch (props.row.logo.type){
-      case 'point':
-        if(props.row.logo.value){
-          logo = <p/>
-        }
-        break;
-      case 'icon':
-        logo = <Icon size="xs" type={props.row.logo.value}/>
-        break;
-      case 'image':
-        logo = <img src={props.row.logo.value} alt={props.row.logo.type}/>
-        break;
-      default:
-        logo = null;
-        break;
-    }
-  }
   return (
     <div
       className={props.row.line?"right_menu_windows_li right_menu_windows_line":"right_menu_windows_li"}
-      onClick={()=>{
-        props.row.func && props.row.func.type === 'openWindow' && openWindow(props.row.func.runFunctionType, props.row.func.value)
-        props.row.func && props.row.func.type === 'refresh' &&  props.row.func.runFunctionType === 'refreshCurrentPage' && refreshCurrentPage()
-      }}
     >
       <div className="right_menu_windows_li_img">
-        {logo}
+        {menuLogo(props.row.logo)}
       </div>
       <div>{props.row.name}</div>
     </div>
@@ -58,8 +37,7 @@ class RightMenuWindows extends Component {
   }
   render() {
     const {
-      mainContextMenu,
-      set_context_menu
+      mainContextMenu
     } = this.props
     const {contextStyle} = this.state
     const navStyle={
@@ -70,8 +48,8 @@ class RightMenuWindows extends Component {
         className="right_menu_windows"
         ref={node=>this.right_menu=node}
         style={contextStyle}
-        onMouseEnter={()=>{set_context_menu(mainContextMenu,true,this.right_menu,2,true)}}
-        onMouseLeave={()=>{set_context_menu(mainContextMenu,true,this.right_menu,2,false)}}
+        onMouseEnter={()=>{toggleEnterContextMenu(true)}}
+        onMouseLeave={()=>{toggleEnterContextMenu(false)}}
       >
         <Nav style={navStyle}  mode="popup" popupAlign="follow" triggerType="hover">
           {this.tree(mainContextMenu)}
@@ -91,6 +69,7 @@ class RightMenuWindows extends Component {
     })
   }
   tree = (data) => {
+    const {desktopAppsShowControl} = this.props
     return data.map((row)=>{
       if(row.children){
         return (
@@ -105,8 +84,20 @@ class RightMenuWindows extends Component {
         )
       }else{
         return (
-          <Item key={row.type} className="right_menu_windows_sub_nav">
-            <NavItem row={row}/>
+          <Item
+            key={row.type}
+            className="right_menu_windows_sub_nav"
+            onClick={()=>{
+              if(row.func){
+                row.func.type === 'openWindow' && openWindow(row.func.runFunctionType, row.func.value)
+                row.func.type === 'refresh' &&  row.func.runFunctionType === 'refreshCurrentPage' && refreshCurrentPage()
+                row.func.type === 'select' && row.func.runFunctionType === 'selectContextMenuType' && !row.logo.value && selectContextMenuType(row.func.group,row.type,row.func.position)
+                row.func.type === 'isShow' && row.func.runFunctionType === 'handleShowDesktopApps' && handleShowDesktopApps(row.func.group,row.type,row.func.position)
+
+              }
+            }}
+          >
+            <NavItem row={row} desktopAppsShowControl={desktopAppsShowControl}/>
           </Item>
         )
       }

@@ -57,7 +57,7 @@ class StartBoxWindows extends Component {
 
   render() {
     const {
-      isOpenStartBox,startBoxLeftApps,openWindowList,background,
+      isOpenStartBox,startBoxLeftApps,startBoxRightApps,openWindowList,background,
       closeStartBox,setWindowOpenList
     } = this.props
     const backgroundStyle = {
@@ -137,25 +137,15 @@ class StartBoxWindows extends Component {
             </View>
             <View className="start_box_right_content" layout="vertical">
               <Row gutter={8}>
-                <Col span="6">
-                  <div className="start_box_application">
-                    <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/wangyi.jpg" alt="wangyi"/>
-                    <h4>标题</h4>
-                    <div className="start_box_application_hover"/>
-                  </div>
-                </Col>
-                <Col span="6">
-                  <div className="start_box_application">
-                    <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/weather.png" alt="weather"/>
-                    <div className="start_box_application_hover"/>
-                  </div>
-                </Col>
-                <Col span="12">
-                  <div className="start_box_application">
-                    <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/application/xiami.jpg" alt="xiami"/>
-                    <div className="start_box_application_hover"/>
-                  </div>
-                </Col>
+                {startBoxRightApps.map(row=>(
+                  <Col key={row.type} span={row.colSpan}>
+                    <div className="start_box_application">
+                      <img src={row.img} alt={row.type}/>
+                      {row.name && <h4>{row.name}</h4>}
+                      <div className="start_box_application_hover"/>
+                    </div>
+                  </Col>
+                ))}
               </Row>
             </View>
           </View>

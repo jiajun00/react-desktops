@@ -9,7 +9,8 @@ export const SHOW_WINDOW = 'home/SHOW_WINDOW' //显示和隐藏窗口
 export const HIDDEN_WINDOW = 'home/HIDDEN_WINDOW' //隐藏窗口
 export const LOAD_WINDOW = 'home/LOAD_WINDOW' //窗口读取完成
 export const SET_BACKGROUND = 'home/SET_BACKGROUND' //设置桌面背景
-
+export const SET_CONTEXT_MENU_LIST = 'home/SET_CONTEXT_MENU_LIST' //设置右键菜单
+export const SET_DESKTOP_APPS_SHOW_CONTROL = 'home/SET_DESKTOP_APPS_SHOW_CONTROL' //设置桌面显示属性
 
 
 

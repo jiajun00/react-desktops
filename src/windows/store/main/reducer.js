@@ -8,8 +8,9 @@ export default (state = defaultState, action) => {
         'isOpenContextMenu':action.isShow,
         'contextMenu':action.data,
         'contextStyle':action.style,
-        'isEnterContextMenu':action.isEnterContextMenu
       })
+    case constants.IS_ENTER_CONTEXT_MENU://是否进入菜单
+      return state.set('isEnterContextMenu',action.value)
     default:
       return state;
   }

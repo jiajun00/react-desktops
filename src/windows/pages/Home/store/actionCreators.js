@@ -185,3 +185,22 @@ export const set_background = (type,value) => {
     backgroundDesk:fromJS(background)
   }
 }
+
+/*
+ * 设置右键菜单列表
+ */
+export const set_context_menu_list = (list) => {
+  return {
+    type: constants.SET_CONTEXT_MENU_LIST,
+    list:fromJS(list)
+  }
+}
+/*
+ * 设置桌面图标属性
+ */
+export const set_desktop_apps_show_control = (data) => {
+  return {
+    type: constants.SET_DESKTOP_APPS_SHOW_CONTROL,
+    data:fromJS(data)
+  }
+}

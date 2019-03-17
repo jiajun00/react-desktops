@@ -26,7 +26,7 @@ class HomeWindows extends Component {
   }
   render() {
     const {
-      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,background,mainContextMenu,isOpenContextMenu,contextStyle,
+      dataTime,isOpenMessageBox,isOpenStartBox,desktopApps,openWindowList,startBoxLeftApps,desktopAppsShowControl,startBoxRightApps,background,mainContextMenu,isOpenContextMenu,contextStyle,
       setDataTime,openMessageBox,closeMessageBox,openStartBox,closeStartBox,setWindowOpenList,closeWindow,hiddenWindow,set_context_menu
     } = this.props
     return (
@@ -44,7 +44,12 @@ class HomeWindows extends Component {
           className="desktop"
           onContextMenu={(e)=>this.onContextMenu(e,'desktop')}
         >
-          <DesktopApps desktopApps={desktopApps} setWindowOpenList={setWindowOpenList} openWindowList={openWindowList}/>
+          <DesktopApps
+            desktopApps={desktopApps}
+            setWindowOpenList={setWindowOpenList}
+            desktopAppsShowControl={desktopAppsShowControl}
+            openWindowList={openWindowList}
+          />
           <StartBoxWindows
             isOpenStartBox={isOpenStartBox}
             openStartBox={openStartBox}
@@ -52,6 +57,7 @@ class HomeWindows extends Component {
             openWindowList={openWindowList}
             closeStartBox={closeStartBox}
             startBoxLeftApps={startBoxLeftApps}
+            startBoxRightApps={startBoxRightApps}
             background={background}
           />
           <MessageBox isOpenMessageBox={isOpenMessageBox} openMessageBox={openMessageBox} closeMessageBox={closeMessageBox}/>
@@ -91,6 +97,7 @@ class HomeWindows extends Component {
           isOpenContextMenu={isOpenContextMenu}
           contextStyle={contextStyle}
           set_context_menu={set_context_menu}
+          desktopAppsShowControl={desktopAppsShowControl}
         />
       </View>
     )
@@ -115,8 +122,10 @@ const initMapStateToProps = (state) => ({
   isOpenMessageBox:state.getIn(['homeWindows','isOpenMessageBox']),
   isOpenStartBox:state.getIn(['homeWindows','isOpenStartBox']),
   desktopApps:state.getIn(['homeWindows','desktopApps']).toJS(),
+  desktopAppsShowControl:state.getIn(['homeWindows','desktopAppsShowControl']).toJS(),
   openWindowList:state.getIn(['homeWindows','openWindowList']).toJS(),
   startBoxLeftApps:state.getIn(['homeWindows','startBoxLeftApps']).toJS(),
+  startBoxRightApps:state.getIn(['homeWindows','startBoxRightApps']).toJS(),
   background:state.getIn(['homeWindows','background']).toJS(),
   contextMenu:state.getIn(['homeWindows','contextMenu']).toJS(),
   isOpenContextMenu:state.getIn(['mainWindows','isOpenContextMenu']),

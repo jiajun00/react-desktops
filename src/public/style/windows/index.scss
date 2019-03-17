@@ -177,14 +177,11 @@
   .start_box_background{
     z-index: $box_zIndex;
   }
-  .start_box_background_change{
-    z-index: $box_zIndex + 1;
-  }
   .start_box_background_change_color{
     z-index: $box_zIndex + 1;
   }
   .start_box_left{
-    z-index: $box_zIndex +2;
+    z-index: $box_zIndex +3;
     padding: 40px 20px 20px 0px;
     .start_box_left_user{
       width: 140px;
@@ -277,7 +274,7 @@
   }
   .start_box_right{
     width: 100%;
-    z-index: $box_zIndex +2;
+    z-index: $box_zIndex +3;
     .start_box_right_header{
       h2{
         padding: 14px 0;
@@ -332,9 +329,7 @@
   flex-wrap:wrap;
   .desktop_app{
     text-align: center;
-    width: 60px;
-    margin: 0 12px 0 0;
-    padding: 10px 0 0;
+    margin: 3px 12px 0 0;
     cursor: pointer;
     transition: background-color 0.3s ease-out;
     &:hover{
@@ -342,17 +337,43 @@
     }
     img{
       border-radius: 3px;
-      height: 50px;
-      width: 50px;
     }
     h3{
       font-family: "Microsoft YaHei";
+      margin-bottom: 2px;
       padding: 0 3px;
+      width: 100%;
       line-height: 17px;
+      height: 34px;
       font-weight: normal;
       font-size: 12px;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+  }
+  .small_logo{
+    padding: 2px 0 0;
+    width: 45px;
+    img{
+      height: 35px;
+      width: 35px;
+    }
+  }
+  .middle_logo{
+
+    padding: 3px 0 0;
+    width: 60px;
+    img{
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .large_logo{
+    padding: 7px 0 0;
+    width: 75px;
+    img{
+      height: 65px;
+      width: 65px;
     }
   }
 }
