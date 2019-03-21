@@ -19,7 +19,7 @@ class WindowsWindows extends Component {
       this.width = window.style.width
       this.height = window.style.height + 32
     }else{
-      this.width =  1230
+      this.width =  1100
       this.height = WindowOffsetHeight-100
     }
     this.winTop = 26 + this.props.zIndex*2
