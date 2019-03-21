@@ -381,3 +381,19 @@
 .next-loading-wrap{
   height: 100%;
 }
+.apps_list_set_content{
+  font-size: 12px;
+  padding: 3px 10px;
+  ul{
+    li{
+      padding: 2px 18px;
+      cursor: pointer;
+    }
+  }
+}
+.apps_list_set{
+  transition: transform ease-out 0.3s;
+  &.rotation{
+    transform: rotate(180deg);
+  }
+}

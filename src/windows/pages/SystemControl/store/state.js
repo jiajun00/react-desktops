@@ -29,7 +29,8 @@ export default fromJS({
         type:'apply_set',
         url:null,
         children:[
-          {title:'桌面应用管理',type:'desktop_app_manage',url:'/desktop_app_manage',logo:{type:'icon',value:'filter',size:'xs'},children:null}
+          {title:'应用管理',type:'apps_manage',url:'/apps_manage',logo:{type:'icon',value:'favorites-filling',size:'xs'},children:null},
+          {title:'桌面应用管理',type:'desktop_app_manage',url:'/desktop_app_manage',logo:{type:'icon',value:'edit',size:'xs'},children:null}
         ]
       }
     ]

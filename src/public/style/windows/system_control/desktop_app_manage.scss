@@ -1,0 +1,87 @@
+.desktop_app_manage{
+  .desktop_app_manage_save{
+    float: right;
+    margin:5px 40px 0 0;
+  }
+  .desktop_app_manage_content{
+    .next-tabs{
+      .next-tabs-bar{
+        padding: 0 120px 0 20px;
+        .next-tabs-nav{
+          .next-tabs-tab{
+            &:focus{
+              display: none;
+            }
+            .next-tabs-tab-inner{
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .next-tabs-content{
+        padding: 24px 14px 24px 24px;
+        .next-checkbox-wrapper{
+          position: relative;
+          display: block;
+          margin: 0 14px 12px 0;
+          .next-checkbox{
+            position: absolute;
+            top:50%;
+            left:18px;
+            margin-top:-8px;
+          }
+          .next-checkbox-label{
+            display: block;
+          }
+        }
+        .apps_list{
+          $height:45px;
+          padding: 10px 10px 10px 30px;
+          border: 1px solid #eee;
+          border-radius: 8px;
+          cursor: pointer;
+          &:hover{
+            border-color:#60ACF6;
+          }
+          .apps_list_select{
+            height: 100%;
+            align-items:center;
+          }
+          .apps_list_img{
+            padding: 6px 10px;
+            img{
+              width: $height;
+              height: $height;
+              display: block;
+              border-radius: 3px;
+              border: none;
+            }
+          }
+          .apps_list_title{
+            line-height: $height + 12px;
+            width: 100px;
+          }
+          .apps_list_set{
+            height: 12px;
+            line-height: 12px;
+          }
+        }
+        .apps_list_add{
+          width: 223px;
+          height: 79px;
+          padding: 10px;
+          text-align: center;
+          &:hover{
+            color:#60ACF6;
+          }
+          i{
+            margin-top: 10px;
+          }
+          .apps_list_add_title{
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}

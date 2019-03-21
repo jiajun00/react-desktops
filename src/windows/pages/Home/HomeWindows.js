@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import { View } from 'react-desktop'
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
@@ -42,14 +42,17 @@ class HomeWindows extends Component {
           height="100%"
           layout="vertical"
           className="desktop"
-          onContextMenu={(e)=>this.onContextMenu(e,'desktop')}
         >
-          <DesktopApps
-            desktopApps={desktopApps}
-            setWindowOpenList={setWindowOpenList}
-            desktopAppsShowControl={desktopAppsShowControl}
-            openWindowList={openWindowList}
-          />
+          <View
+            onContextMenu={(e)=>this.onContextMenu(e,'desktop')}
+          >
+            <DesktopApps
+              desktopApps={desktopApps}
+              setWindowOpenList={setWindowOpenList}
+              desktopAppsShowControl={desktopAppsShowControl}
+              openWindowList={openWindowList}
+            />
+          </View>
           <StartBoxWindows
             isOpenStartBox={isOpenStartBox}
             openStartBox={openStartBox}

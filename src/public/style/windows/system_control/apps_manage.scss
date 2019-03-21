@@ -1,0 +1,44 @@
+.apps_manage{
+  .apps_block{
+    margin-top: 24px;
+    padding: 0 24px;
+    .apps_list{
+      $width:45px;
+      $height:$width;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 10px 12px 14px;
+      margin:0 14px 12px 0;
+      &:hover{
+        border-color:#60ACF6;
+      }
+      .apps_list_left{
+        height: $height;
+        img{
+          width: $width;
+          height: $height;
+          border-radius: 5px;
+        }
+      }
+      .apps_list_right{
+       padding: 0 0 0 15px;
+        .apps_list_title{
+          width: 120px;
+          line-height: $height;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .apps_list_set{
+          height: 20px;
+          line-height: 20px;
+          margin-top: -6px;
+          transition: transform ease-out 0.3s;
+          &.rotation{
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}

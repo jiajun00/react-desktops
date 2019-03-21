@@ -3,7 +3,7 @@ import { Button,Dialog,ConfigProvider,Select } from '@alifd/next'
 import {actionCreators as actionCreatorsHome} from "../../../Home/store"
 import {connect} from "react-redux"
 import { sendParentMessage } from "../../../../../public/utils/com"
-import '../../../../../public/style/windows/desktop_set.scss'
+import '../../../../../public/style/windows/system_control/desktop_set.scss'
 import ContentRight from "../../../../../components/content/ContentRight"
 import ImageSet from "./DesktopSetType/ImageSet"
 import ColorSet from "./DesktopSetType/ColorSet"

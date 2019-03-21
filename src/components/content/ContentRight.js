@@ -57,7 +57,6 @@ class ContentRight extends Component {
       </Breadcrumb>
     )
   }
-
   search_item = (id) => {
     if(parseInt(id)){
       const { menuList } = this.props

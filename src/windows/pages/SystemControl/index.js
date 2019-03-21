@@ -6,15 +6,16 @@ import { connect } from "react-redux";
 import { actionCreators as actionCreatorsHome } from "../Home/store";
 import { menuLogo } from '../../../public/utils/com'
 
-import '../../../public/style/windows/system_control.scss'
+import '../../../public/style/windows/system_control/system_control.scss'
 
 import LeftnavRightContent from "../../../components/layout/LeftnavRightContent"
-import DesktopSet from "./system/Desktop"
+import DesktopSet from "./system/DesktopBackgroundSet"
 import DataManage from "./system/DataManage"
 import PrivilegeManage from "./system/PrivilegeManage"
 import RoleManage from "./system/RoleManage"
 import UserManage from "./system/UserManage"
 import DesktopAppManage from "./system/DesktopAppManage"
+import AppsManage from "./system/AppsManage"
 
 
 const TreeNode = Tree.Node
@@ -46,6 +47,7 @@ class Index extends Component {
               <Route path={`${match.path}/privilege_manage`} exact component={PrivilegeManage}/>
               <Route path={`${match.path}/role_manage`} exact component={RoleManage}/>
               <Route path={`${match.path}/user_manage`} exact component={UserManage}/>
+              <Route path={`${match.path}/apps_manage`} exact component={AppsManage}/>
               <Route path={`${match.path}/desktop_app_manage`} exact component={DesktopAppManage}/>
             </Switch>
           </main>
