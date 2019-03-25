@@ -23,8 +23,13 @@ const appsList = {
   }
 }
 
-
-
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"应用管理",url:'/apps_manage'}
+  ]
+}
 
 class index extends Component {
 
@@ -34,9 +39,7 @@ class index extends Component {
     return (
         <ContentRight
           className="apps_manage"
-          title="应用管理"
-          merge_url="/win/system"
-          route_url="/apps_manage"
+          breadcrumbRoute={breadcrumbRoute}
         >
           <div className="apps_block">
             <h3>{appsList.system.title}</h3>

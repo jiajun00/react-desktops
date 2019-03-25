@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 import { View } from 'react-desktop'
-import {  Route, Switch, NavLink, Redirect } from 'react-router-dom'
-import { Tree } from '@alifd/next'
+import {  Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from "react-redux";
 import { actionCreators as actionCreatorsHome } from "../Home/store";
-import { menuLogo } from '../../../public/utils/com'
 
 import '../../../public/style/windows/system_control/system_control.scss'
 
 import LeftnavRightContent from "../../../components/layout/LeftnavRightContent"
+import TreeMenu from "../../../components/menu/TreeMenu/TreeMenu";
 import DesktopSet from "./system/DesktopBackgroundSet"
 import DataManage from "./system/DataManage"
 import PrivilegeManage from "./system/PrivilegeManage"
@@ -18,7 +17,6 @@ import DesktopAppManage from "./system/DesktopAppManage"
 import AppsManage from "./system/AppsManage"
 
 
-const TreeNode = Tree.Node
 
 class Index extends Component {
 
@@ -31,11 +29,7 @@ class Index extends Component {
         <LeftnavRightContent>
           <nav>
             <View height='100%' style={{overflow:'auto'}}>
-              <Tree defaultExpandAll defaultSelectedKeys={['desk_manage']} style={{ width: '100%' }}>
-                <TreeNode label={LeftMenu.title} key={LeftMenu.type} selectable={false}>
-                  {this.tree(LeftMenu.children)}
-                </TreeNode>
-              </Tree>
+              <TreeMenu match={match} menu={LeftMenu} defaultSelectedKeys='desk_manage'/>
             </View>
           </nav>
           <main>
@@ -54,27 +48,6 @@ class Index extends Component {
         </LeftnavRightContent>
       </div>
     )
-  }
-  tree = (data) => {
-    const {match} = this.props
-    return data.map(row=>{
-      if(row.children){
-        return (
-          <TreeNode label={row.title} key={row.type} selectable={false}>
-            {this.tree(row.children)}
-          </TreeNode>
-          )
-      }else{
-        return (
-          <TreeNode
-            label={<NavLink to={match.path+row.url}>{menuLogo(row.logo)}<span>{row.title}</span></NavLink>}
-            key={row.type}
-            isLeaf
-          />
-        )
-      }
-    })
-
   }
 }
 

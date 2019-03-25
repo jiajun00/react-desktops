@@ -4,6 +4,13 @@ import { Button } from '@alifd/next'
 import ContentRight from "../../../../components/content/ContentRight"
 import PrivilegeTree from "../../../../components/tree/PrivilegeTree";
 
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"权限管理",url:'/privilege_manage'}
+  ]
+}
 
 class PrivilegeManage extends Component {
 
@@ -14,9 +21,7 @@ class PrivilegeManage extends Component {
       <Fragment>
         <ContentRight
           className="privilege_manage"
-          title="权限管理"
-          merge_url="/win/system"
-          route_url="/privilege_manage"
+          breadcrumbRoute={breadcrumbRoute}
         >
           <header>
             <h2>权限管理</h2>

@@ -12,6 +12,15 @@ const formItemLayout = {
   }
 }
 const RadioGroup = Radio.Group
+
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"系统参数",url:'/data_manage'}
+  ]
+}
+
 class DataManage extends Component {
 
   state = {}
@@ -20,9 +29,7 @@ class DataManage extends Component {
     return (
       <ContentRight
         className="data_manage"
-        title="系统参数"
-        merge_url="/win/system"
-        route_url="/data_manage"
+        breadcrumbRoute={breadcrumbRoute}
       >
         <h1>系统参数设置</h1>
         <Form style={{width: '60%'}} {...formItemLayout} >

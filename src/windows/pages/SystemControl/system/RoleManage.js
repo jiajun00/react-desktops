@@ -17,6 +17,13 @@ const dataSource = (j) => {
   return result;
 }
 
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"角色管理",url:'/role_manage'}
+  ]
+}
 
 class RoleManage extends Component {
 
@@ -30,9 +37,7 @@ class RoleManage extends Component {
     return (
       <ContentRight
         className="role_manage"
-        title="角色管理"
-        merge_url="/win/system"
-        route_url="/role_manage"
+        breadcrumbRoute={breadcrumbRoute}
       >
         <div className="system_control_main_search">
           <Search key="2" type="dark" shape="simple" placeholder="请输入管理员名" style={{width: 250}}/>

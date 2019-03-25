@@ -11,6 +11,13 @@ import ColorSet from "./DesktopSetType/ColorSet"
 
 const Option = Select.Option
 
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"桌面设置",url:'/desk_manage'}
+  ]
+}
 
 class Index extends Component {
 
@@ -44,9 +51,7 @@ class Index extends Component {
       <ConfigProvider locale={{ Dialog: { ok: '确认', cancel: '取消' } }}>
         <ContentRight
           className="desktop_set"
-          title="桌面设置"
-          merge_url="/win/system"
-          route_url="/desk_manage"
+          breadcrumbRoute = {breadcrumbRoute}
         >
           <Button
             onClick={
@@ -81,11 +86,13 @@ class Index extends Component {
       </ConfigProvider>
     )
   }
+  //预览图片样式初始化
   preview_init = () => {
     const width = this.preview.offsetWidth
     const height = width / 16 * 9
     this.preview.style.height = height + 'px'
   }
+  //预览图片设置
   preview_set = (url,type='image') => {
     this.setState({
       type,

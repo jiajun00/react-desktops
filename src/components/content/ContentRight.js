@@ -27,7 +27,7 @@ class ContentRight extends Component {
   }
   render() {
     const {
-      merge_url,route_url,className,title,isFile
+      className,isFile,breadcrumbRoute
     } = this.props
     return (
       <div className={"content_right "+className}>
@@ -35,8 +35,11 @@ class ContentRight extends Component {
             this.fileBreadcrumbItem()
           :
           <Breadcrumb>
-            <Breadcrumb.Item><Link to={merge_url}>首页</Link></Breadcrumb.Item>
-            <Breadcrumb.Item><Link to={merge_url + route_url}>{title}</Link></Breadcrumb.Item>
+            <Breadcrumb.Item><Link to={breadcrumbRoute.url}>{breadcrumbRoute.title}</Link></Breadcrumb.Item>
+            {breadcrumbRoute.list.map((row,i)=>(
+              <Breadcrumb.Item key={i}><Link to={breadcrumbRoute.url + row.url}>{row.name}</Link></Breadcrumb.Item>
+            ))}
+
           </Breadcrumb>
         }
         <div className={"content_right_main "+className+"_content"}>

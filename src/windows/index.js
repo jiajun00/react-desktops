@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import store from './store/index'
 import { Provider } from 'react-redux'
 import {  Route, Switch } from 'react-router-dom'
+import { closeContextMenu } from "./common/rightMenu"
 
 import HomeWindows from "./pages/Home/HomeWindows"
 import SystemControl from "./pages/SystemControl/index"
 import File from "./pages/FileManage"
-import { closeContextMenu } from "./common/rightMenu"
+import Message from "./pages/Message"
 
 class index extends Component {
 
@@ -24,6 +25,7 @@ class index extends Component {
           <Route path={`${match.path}`} exact component={HomeWindows}/>
           <Route path={`${match.path}/system`} component={SystemControl}/>
           <Route path={`${match.path}/file`} component={File}/>
+          <Route path={`${match.path}/message`} component={Message}/>
         </Switch>
       </Provider>
     )

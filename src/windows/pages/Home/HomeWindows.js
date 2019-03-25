@@ -12,7 +12,7 @@ import StartBoxWindows from "../../../components/menu/StartBoxWindows";
 import DesktopApps from "../../../components/block/DesktopApps";
 import WindowsWindows from "../../../components/windows/WindowsWindows";
 import Iframe from "../../../components/block/Iframe";
-import RightMenuWindows from "../../../components/menu/RightMenuWindows";
+import RightMenuWindows from "../../../components/menu/ContextMenuWindows";
 
 
 class HomeWindows extends Component {
@@ -44,6 +44,7 @@ class HomeWindows extends Component {
           className="desktop"
         >
           <View
+            height="100%"
             onContextMenu={(e)=>this.onContextMenu(e,'desktop')}
           >
             <DesktopApps

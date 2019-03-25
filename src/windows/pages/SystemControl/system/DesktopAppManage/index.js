@@ -29,6 +29,14 @@ const tabs = [
   {title:'自定义',type:'customize'}
 ]
 
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"桌面应用管理",url:'/desktop_app_manage'}
+  ]
+}
+
 class Index extends Component {
 
   state = {
@@ -37,12 +45,11 @@ class Index extends Component {
   }
 
   render() {
+    console.log(this)
     return (
       <ContentRight
         className="desktop_app_manage"
-        title="桌面应用管理"
-        merge_url="/win/system"
-        route_url="/desktop_app_manage"
+        breadcrumbRoute={breadcrumbRoute}
       >
         <Button className="desktop_app_manage_save"  type="primary">保存设置</Button>
         <Tab>

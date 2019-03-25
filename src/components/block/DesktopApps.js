@@ -13,10 +13,10 @@ class DesktopApps extends Component {
       setWindowOpenList
     } = this.props
     return (
-      <View style={{padding:'10px 0 0 10px'}}>
+      <View width="100%" style={{padding:'10px 0 0 10px'}}>
         {desktopAppsShowControl.isShow &&
           <View
-            className="desktop_apps "
+            className="desktop_apps"
             layout="vertical"
           >
             {desktopApps.map((row)=>(

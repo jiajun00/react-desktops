@@ -324,9 +324,11 @@
 }
 
 .desktop_apps{
-  justify-content:flex-start;
-  align-items:flex-start;
+  justify-content:flex-start; //项目在主轴上的对齐方式
+  align-items:flex-start; //交叉轴对齐方式
   flex-wrap:wrap;
+  align-content: flex-start;//多根轴线对齐方式
+  width: 100%;
   .desktop_app{
     text-align: center;
     margin: 3px 12px 0 0;

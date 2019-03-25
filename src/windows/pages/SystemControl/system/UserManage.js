@@ -3,6 +3,14 @@ import { Search } from '@alifd/next'
 
 import ContentRight from "../../../../components/content/ContentRight";
 
+const breadcrumbRoute = {
+  title:'首页',
+  url:"/win/system",
+  list:[
+    {name:"用户管理",url:'/user_manage'}
+  ]
+}
+
 class UserManage extends Component {
 
   state = {}
@@ -11,9 +19,7 @@ class UserManage extends Component {
     return (
       <ContentRight
         className="user_manage"
-        title="用户管理"
-        merge_url="/win/system"
-        route_url="/user_manage"
+        breadcrumbRoute={breadcrumbRoute}
       >
         <div className="system_control_main_search">
           <Search key="2" type="dark" shape="simple" placeholder="请输入用户名" style={{width: 250}}/>
