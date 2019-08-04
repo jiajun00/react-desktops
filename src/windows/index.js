@@ -3,6 +3,7 @@ import store from './store/index'
 import { Provider } from 'react-redux'
 import {  Route, Switch } from 'react-router-dom'
 import { closeContextMenu } from "./common/rightMenu"
+import "../public/style/windows/index.scss"
 
 import HomeWindows from "./pages/Home/HomeWindows"
 import SystemControl from "./pages/SystemControl/index"

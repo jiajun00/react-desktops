@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { actionCreators } from "./store";
 import { actionCreators as mainActionCreators } from "../../store/main"
 
-import "../../../public/style/windows/index.scss"
 
 import StartMenuWindows from "../../../components/menu/StartMenuWindows";
 import MessageBox from "../../../components/block/MessageBox";
