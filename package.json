@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://desk.qqxio.cn",
   "dependencies": {
-    "@alifd/next": "^1.11.11",
+    "@alifd/next": "^1.16.7",
     "@alifd/theme-2786": "^0.1.14",
     "react-desktop": "^0.3.7"
   },

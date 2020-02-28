@@ -11,7 +11,7 @@ const dataSource = (j) => {
       title: { name: `Quotation for 1PCS Nano ${3 + i}.0 controller compatible` },
       id: 1003 + i + j,
       time: 2000 + j,
-      name:'管理员'+i
+      name:'角色'+i
     });
   }
   return result;
@@ -47,7 +47,7 @@ class RoleManage extends Component {
           <Table dataSource={this.state.dataSource}
                  loading={this.state.loading}>
             <Table.Column align="center" title="Id" dataIndex="id" width={140} />
-            <Table.Column align="center" title="管理员" dataIndex="name" width={140} />
+            <Table.Column align="center" title="角色" dataIndex="name" width={140} />
             <Table.Column align="center" title="创建时间" dataIndex="time" width={200} />
             <Table.Column
               align="center"
