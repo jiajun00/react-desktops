@@ -1,0 +1,95 @@
+.nav_lists{
+  section{
+    a{
+      text-decoration: none;
+      &.active{
+        li{
+          background-color: #ddd;
+        }
+      }
+    }
+    li{
+      &:hover{
+        background-color: #ddd;
+      }
+    }
+  }
+}
+
+.finder_fileList{
+  min-width: 500px;
+  background-color: #fff;
+  .finder_fileList_list{
+    color:#666;
+    font-size: 13px;
+    dt{
+      overflow: hidden;
+      padding: 2px 0;
+      border-bottom: 1px solid #eee;
+      > div{
+        padding: 0px 8px;
+      }
+      .finder_fileList_list_header_name{
+        float: left;
+        min-width: 200px;
+      }
+      .finder_fileList_list_header_date{
+        float: right;
+        width: 15%;
+        min-width: 125px;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+      }
+      .finder_fileList_list_header_size{
+        float: right;
+        width: 10%;
+        min-width: 85px;
+        border-right: 1px solid #eee;
+      }
+      .finder_fileList_list_header_class{
+        float: right;
+        width: 10%;
+        min-width: 85px;
+      }
+    }
+    dd{
+      ul{
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        li{
+          overflow: hidden;
+          &:nth-child(2n){
+            background: #FAFAFA;
+          }
+          .finder_fileList_list_body_li{
+            width: 100%;
+          }
+          > div{
+            padding: 2px 8px;
+          }
+          .finder_fileList_list_body_name{
+            float: left;
+            min-width: 200px;
+          }
+          .finder_fileList_list_body_date{
+            float: right;
+            width: 15%;
+            min-width: 126px;
+          }
+          .finder_fileList_list_body_size{
+            float: right;
+            width: 10%;
+            min-width: 86px;
+            text-align: right;
+          }
+          .finder_fileList_list_body_class{
+            float: right;
+            width: 10%;
+            min-width: 85px;
+          }
+        }
+      }
+    }
+  }
+}

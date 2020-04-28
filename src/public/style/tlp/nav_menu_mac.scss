@@ -1,0 +1,49 @@
+@import "./StyleValue";
+.nav_menu_mac{
+  font-size: 14px;
+  position: absolute;
+  color:#fff;
+  border: 1px solid #4E5E7F;
+  border-radius: 3px;
+  background-color: rgba(54,66,98,0.85);
+  z-index: 3;
+  .borderTop{
+    border-top:1px solid rgba(255,255,255,0.4);
+  }
+  ul{
+    position: relative;
+    padding: 4px 0px;
+    li{
+      position: relative;
+      padding: 1px 40px 1px 6px;
+      white-space:nowrap;
+      .nav_check_logo{
+        font-weight: bold;
+        margin-right: 4px;
+        width: 12px;
+        height: 13px;
+        float: left;
+        i{
+          font-size: 12px;
+        }
+      }
+      .nav_left_logo{
+        font-size: 14px;
+        margin-left: 4px;
+      }
+      span{
+        margin-left: 2px;
+      }
+      .nav_right_logo{
+        float: right;
+        font-size: 12px;
+        margin-top: 4px;
+        margin-left: 15px;
+      }
+      &:hover{
+        background-color: $hover_lan;
+      }
+    }
+
+  }
+}

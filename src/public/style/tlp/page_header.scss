@@ -1,0 +1,30 @@
+.page_header{
+  padding: 16px 32px 0;
+  background-color: #fff;
+  .page_header_main{
+    display: flex;
+    margin-top: 16px;
+    .page_header_main_logo{
+      width: 28px;
+      margin: 0 16px 16px 0;
+    }
+    .page_header_main_header{
+      width: 100%;
+      .page_header_main_header_title{
+        display: flex;
+        h3{
+          width: 100%;
+          font-size: 20px;
+          margin-bottom: 16px;
+        }
+        .page_header_main_header_title_nav{
+          min-width: 266px;
+          text-align: right;
+        }
+      }
+    }
+    .page_header_main_content{
+      display: flex;
+    }
+  }
+}

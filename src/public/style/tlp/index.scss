@@ -1,0 +1,104 @@
+@import '~@alifd/theme-2786/dist/next.css';
+@import "../iconfont";
+@import "./StyleValue.scss";
+
+body{
+  overflow: hidden;
+}
+@keyframes living {
+  0%{
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  30%{
+    transform: scale(1.2);
+    opacity: 0.8;   /*圆形放大的同时，透明度逐渐减小为0*/
+  }
+  100%{
+    transform: scale(1.3);
+    opacity: 1;
+    margin-left:20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    animation-fill-mode:forwards;
+  }
+
+}
+
+.mac_home_menu_logo{
+  padding: 0px 8px 0px 18px;
+  &:hover{
+    background-color: $hover_lan;
+  }
+}
+
+.mac_home_menu_left_nav{
+  dl{
+    overflow: hidden;
+    font-family: "Heiti";
+    font-weight: 400;
+    font-size: 14px;
+    &:hover{
+      cursor: pointer;
+    }
+    dt{
+      font-weight: 900;
+      padding: 3px 16px;
+      float: left;
+    }
+    dd{
+      padding: 3px 10px;
+      float: left;
+    }
+    .active{
+      background-color: $hover_lan;
+    }
+  }
+}
+.mac_home_menu_right{
+  .data_time{
+    font-size: 14px;
+    padding-top: 3px;
+  }
+}
+.mac_home_tools{
+}
+.mac_home_tools_navs{
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #5C606D;
+  padding: 8px 10px 8px 0;
+  z-index: 999;
+ &:before{
+   margin: -8px 0 0 -15px;
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   background: rgba(255,255,255,0.03);
+ }
+ .mac_home_tools_nav{
+   padding: 8px 0 0 10px;
+   margin: 0 -30px 0 0px;
+   width: 40px;
+ }
+ .active{
+   &:before{
+     content: '';
+     border-radius: 2px;
+     width: 4px;
+     height: 4px;
+     background-color: rgba(255,255,255,0.8);
+     position: absolute;
+     top: 28px;
+     left: -13px;
+   }
+ }
+  img{
+    &:hover {
+    -webkit-animation: living 1s ease-out 1;
+      animation-fill-mode:forwards;
+    }
+  }
+}

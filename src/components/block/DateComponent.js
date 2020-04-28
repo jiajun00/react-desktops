@@ -25,7 +25,7 @@ class DateComponent extends Component {
             </div>
           </Fragment>
           :
-          <Fragment>{`${year}/${month}/${day} ${hour}:${minute} 周${week}`}</Fragment>
+          <Fragment>{`${year}年${month}月${day}日 星期${week}  ${hour}:${minute}`}</Fragment>
         }
       </div>
     )
