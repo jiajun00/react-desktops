@@ -14,7 +14,7 @@ class index extends Component {
 
   state = {}
   componentDidMount(){
-    import("../public/style/themes/windows-themes-black.scss")
+    require("../public/style/themes/windows-themes-black.scss")
     document.oncontextmenu = () => {return false}
     document.onclick = closeContextMenu
   }
