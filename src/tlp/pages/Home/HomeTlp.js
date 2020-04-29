@@ -1,10 +1,11 @@
-import React, {Component, Fragment} from 'react'
-import { connect } from 'react-redux'
-import { View } from 'react-desktop'
-import { actionCreators } from './store/index'
+import React, {Component, Fragment} from 'react';
+import { connect } from 'react-redux';
+import { View } from 'react-desktop';
+import ToolTip from 'react-portal-tooltip';
+import { actionCreators } from './store/index';
 
 import WindowsMac from "../../../components/windows/WindowsMac"
-import NavMenuMac from "../../../components/menu/NavMenuMac";
+import AppCenter from "../../../components/menu/AppCenter";
 import DateComponent from "../../../components/block/DateComponent";
 import Iframe from "../../../components/block/Iframe";
 import {actionCreators as actionCreatorsHomeMac} from "./store";
@@ -16,7 +17,7 @@ class HomeTlp extends Component {
   }
   render() {
     const {
-      homeNav,tools,openWindowList,setWindowOpenList,menuNav,isEnterMenu,isEnterMenuNav,openMenuNav,
+      homeNav,tools,openWindowList,setWindowOpenList,appCenter,isEnterMenu,isEnterMenuNav,toggleAppCenter,
       handleOpenNav,mouseEnterMenuNav,mouseLeaveMenuNav,closeWindow,hiddenWindow
     } = this.props
     return (
@@ -43,10 +44,7 @@ class HomeTlp extends Component {
             layout="horizontal"
             horizontalAlignment="left"
             className="mac_home_menu_left">
-              <View padding="3px 2px">
-                <i className="iconfont">&#xe602;&nbsp;</i>
-                应用程序
-              </View>
+              <AppCenter/>
           </View>
           {/*=左边应用程序开始区域结束=*/}
           {/**中间时间区域开始**/}
@@ -148,7 +146,6 @@ const initMapStateToProps = (state) => ({
   homeNav:state.getIn(['homeMac','homeNav']).toJS(),
   openWindowList: state.getIn(['homeMac','openWindowList']).toJS(),
   tools:state.getIn(['homeMac','tools']).toJS(),
-  menuNav:state.getIn(['homeMac','menuNav']).toJS(),
   openMenuNav:state.getIn(['homeMac','openMenuNav']).toJS(),
   isEnterMenuNav:state.getIn(['homeMac','isEnterMenuNav']),
   isEnterMenu:state.getIn(['homeMac','isEnterMenu']),
@@ -156,6 +153,7 @@ const initMapStateToProps = (state) => ({
 })
 
 const initMapDispatchToProps = (dispatch) => ({
+
   /*
    * 添加或显示窗口列表
    */
