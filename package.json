@@ -6,7 +6,8 @@
   "dependencies": {
     "@alifd/next": "^1.11.11",
     "@alifd/theme-2786": "^0.1.14",
-    "react-desktop": "^0.3.7"
+    "react-desktop": "^0.3.7",
+    "react-portal-tooltip": "^2.4.7"
   },
   "scripts": {
     "start": "node scripts/start.js start",
