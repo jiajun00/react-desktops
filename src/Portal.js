@@ -18,9 +18,9 @@ class Portal extends Component {
     }
     return (
       <div style={{paddingTop:20}}>
-        <a href="/win" style={buttonStyle}>Windows系统</a>
-        <a href="/tlp" style={buttonStyle}>Windows系统</a>
+        <a href="/tlp" style={buttonStyle}>大数据平台之门户</a>
         &nbsp;&nbsp;&nbsp;
+        <a href="/win" style={buttonStyle}>Windows系统</a>
         <a href="/mac" style={buttonStyle}>Mac系统</a>
       </div>
     )
