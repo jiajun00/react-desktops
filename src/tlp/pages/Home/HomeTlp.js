@@ -5,7 +5,8 @@ import ToolTip from 'react-portal-tooltip';
 import { actionCreators } from './store/index';
 
 import WindowsMac from "../../../components/windows/WindowsMac"
-import AppCenter from "../../../components/menu/AppCenter";
+import StartMenuTlP from "../../../components/menu/StartMenuTlP";
+import UserInfoTlP from "../../../components/menu/UserInfoTlP";
 import DateComponent from "../../../components/block/DateComponent";
 import Iframe from "../../../components/block/Iframe";
 import {actionCreators as actionCreatorsHomeMac} from "./store";
@@ -44,7 +45,7 @@ class HomeTlp extends Component {
             layout="horizontal"
             horizontalAlignment="left"
             className="mac_home_menu_left">
-              <AppCenter/>
+              <StartMenuTlP/>
           </View>
           {/*=左边应用程序开始区域结束=*/}
           {/**中间时间区域开始**/}
@@ -67,14 +68,7 @@ class HomeTlp extends Component {
             layout="horizontal"
             horizontalAlignment="right"
             className="mac_home_menu_right">
-            <View
-                className="mac_home_menu_logo"
-                style={{
-                  backgroundSize:'cover',
-                  background: `url(${require("../../../public/imgs/logo-tlp-220X220.png")}) no-repeat center center / cover`
-
-                }}
-                onClick={(e)=>{handleOpenNav(e,homeNav,'home')}}/>
+            <UserInfoTlP/>
           </View>
           {/*==右边用户信息区域结束==*/}
         </View>
