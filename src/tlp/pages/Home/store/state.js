@@ -10,7 +10,7 @@ export default fromJS({
   },
   tools:[ //工具栏
     {name:'我的电脑',id:'finder',logo:`${require('../../../../public/imgs/my_computer.png')}`,isShow:true,url:'/mac/finder',isIframe:true},
-    {name:'上个网', id:'chrome', logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/launchpad.png',isShow:true,url:'http://www.baidu.com',isIframe:true}
+    {name:'上个网', id:'chrome', logo:'https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/launchpad.png',isShow:true,url:'https://edu.51cto.com/sd/aca72',isIframe:true}
   ],
   openWindowList: [],  //已打开的应用
   homeNav:{

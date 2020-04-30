@@ -11,10 +11,11 @@ class App extends React.Component {
     return (
         <BrowserRouter>
           <Switch>
-            <Route path="/" exact component={Portal}/>
+            <Route path="/" exact component={Tlp}/>
+            <Route path="/portal" component={Portal}/>
             <Route path="/mac" component={Mac}/>
-            <Route path="/tlp" component={Tlp}/>
             <Route path="/win" component={Windows}/>
+            <Route path="/tlp" component={Tlp}/>
           </Switch>
         </BrowserRouter>
     )

@@ -134,8 +134,6 @@ class HomeTlp extends Component {
 
 
 
-
-
 const initMapStateToProps = (state) => ({
   homeNav:state.getIn(['homeMac','homeNav']).toJS(),
   openWindowList: state.getIn(['homeMac','openWindowList']).toJS(),
