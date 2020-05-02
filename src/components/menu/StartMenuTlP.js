@@ -21,6 +21,7 @@ const apps = [
         logo:"https://avatars1.githubusercontent.com/u/20293523?s=460&u=c2776d5f7286c3de1cfc5019cffaeb909da5cd2b&v=4"},
 
 ]
+const appCategoryAll = "app_category_all";
 class StartMenuTlP extends React.Component{
     state = {
         isOpen: false,
@@ -50,7 +51,7 @@ class StartMenuTlP extends React.Component{
     categoryClickHandler(categoryId) {
         if(categoryId) {
             let apps = this.state.apps;
-            let filteredApps = apps.filter(app => app.categoryId === categoryId);
+            let filteredApps = categoryId == appCategoryAll?apps:apps.filter(app => app.categoryId === categoryId);
             this.setState({
                 activeCategoryId:categoryId,
                 filteredApps: filteredApps
@@ -78,8 +79,11 @@ class StartMenuTlP extends React.Component{
                         layout="horizontal"
                         horizontalAlignment="left">
                         <ul>
+                            <li key={appCategoryAll} onClick={()=>{this.categoryClickHandler(appCategoryAll)}}>
+                                全部
+                            </li>
                         {state.categorys.map((category) => (
-                                <li key={category.id} onClick={()=>{console.log(arguments);this.categoryClickHandler(category.id)}}>
+                                <li key={category.id} onClick={()=>{this.categoryClickHandler(category.id)}}>
                                     {category.dictLabel}
                                 </li>
                         ))}
