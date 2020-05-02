@@ -1,6 +1,8 @@
 import { fromJS } from 'immutable'
 import * as constants from './constants'
 import {actionCreators} from "./index";
+import {URL_GET_APP_LIST, URL_GET_APP_CATEGORY_LIST} from "./constants";
+import axios from 'axios';
 
 /*
  * 添加窗口
@@ -54,6 +56,7 @@ export const mouseLeavelMenuNav = () => ({
   type: constants.MOUSE_LEAVEL_MENU_NAV,
   isEnterMenuNav: false
 })
+
 /*
  * 关闭窗口
  * @param string type 窗口类型
@@ -168,3 +171,44 @@ export const handleOpenNav = (e,menuNav,type='nav') => {
     dispatch(actionCreators.mouseEnterMenu())
   }
 }
+
+/**
+ *
+ * 获取应用列表
+ * ***/
+export  const  getAppList = (processData) => {
+  axios.get(URL_GET_APP_LIST).then((res) => {
+    let data = res.data;
+    if(data.code == 200) {
+      data = data.data;
+      processData(data);
+    }else {
+    }
+  }).catch((res) => {
+  })
+}
+
+/**
+ *
+ * 获取应用类型列表
+ * ***/
+export  const  getAppCategoryList = (processData) => {
+  axios.get(URL_GET_APP_CATEGORY_LIST).then((res) => {
+    let data = res.data;
+    if(data.code == 200) {
+      data = data.data;
+      processData(data);
+    }else {
+    }
+  }).catch((res) => {
+  })
+}
+
+/**
+ * 设置应用列表
+ * **/
+export  const  setAppList = (appList) => ({
+  type:constants.SET_APP_LIST,
+  data: fromJS(appList)
+})
+

@@ -89,10 +89,10 @@ class HomeTlp extends Component {
                 {tools.map((row)=>(
                   <View
                     onClick={()=>{setWindowOpenList(row,openWindowList)}}
-                    key={row.type}
-                    className={openWindowList.find(list=>(list.type===row.type)) ? "mac_home_tools_nav active" : "mac_home_tools_nav"}
+                    key={row.id}
+                    className={openWindowList.find(list=>(list.id===row.id)) ? "mac_home_tools_nav active" : "mac_home_tools_nav"}
                   >
-                    <img width={50} height={45} src={row.logo} alt={row.name}/>
+                    <img width={50} height={45} src={row.logo} alt={row.intro || row.name}/>
                   </View>
                 ))}
               </span>
@@ -108,20 +108,18 @@ class HomeTlp extends Component {
           */}
         </View>
         {/**打开窗口开始**/}
-        {openWindowList.map((row)=>(
+        {openWindowList.map((row, idx)=>(
           <WindowsMac
             id={row.id}
             key={row.id}
             window={row}
-            zIndex={row.zIndex}
+            zIndex={idx + 100}
             openWindowList={openWindowList}
             setWindowIndex={this.props.setWindowOpenList}
             closeWindow={closeWindow}
             hiddenWindow={hiddenWindow}
           >
-            {row.isIframe &&
-            <Iframe title={row.type} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
-            }
+            <Iframe title={row.name} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
           </WindowsMac>
         ))}
         {/*==打开窗口结束==*/}

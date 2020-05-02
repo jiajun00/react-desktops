@@ -16,8 +16,8 @@ class index extends Component {
     return (
       <Provider store={store}>
         <Switch>
-          <Route path={`${match.path}`} exact component={HomeTlp}/>
-          <Route path={`${match.path}/finder`}  component={FinderTlp}/>
+          <Route key="homeTlp" path={`${match.path}`} exact component={HomeTlp}/>
+          <Route key="finderTlp" path={`${match.path}/finder`}  component={FinderTlp}/>
         </Switch>
       </Provider>
       )

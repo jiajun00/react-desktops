@@ -100,7 +100,7 @@ class StartBoxWindows extends Component {
 
           <View className="start_box_left">
             <div className="start_box_left_user">
-              <div className="start_box_left_info">
+              <div classNisOpenStartBoxame="start_box_left_info">
                 <img src="https://react-desktop.oss-cn-shenzhen.aliyuncs.com/images/logo/default_header.jpg" alt="header_img"/>
                 <h3>用户名</h3>
                 <p>系统管理员</p>

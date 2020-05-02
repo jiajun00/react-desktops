@@ -6,6 +6,7 @@
   "dependencies": {
     "@alifd/next": "^1.11.11",
     "@alifd/theme-2786": "^0.1.14",
+    "axios": "^0.19.2",
     "react-desktop": "^0.3.7",
     "react-portal-tooltip": "^2.4.7"
   },

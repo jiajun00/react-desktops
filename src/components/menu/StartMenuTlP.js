@@ -7,32 +7,50 @@
 import React from 'react';
 import {View} from 'react-desktop';
 import ToolTip from 'react-portal-tooltip';
+import { connect } from 'react-redux';
 import "../../public/style/tlp/start_menu_tlp.scss"
+import {getAppCategoryList, getAppList} from "../../tlp/pages/Home/store/actionCreators";
+import { fromJS } from 'immutable';
+import {actionCreators as actionCreatorsHomeMac, actionCreators} from "../../tlp/pages/Home/store";
+import {APP_LOGO_DEFAULT} from "../../AppConf.js"
 
 class StartMenuTlP extends React.Component{
     state = {
         isOpen: false,
-        categorys:{
-            "hello":[
-                {name:"helloword", icon:`url(${require("../../public/imgs/my_computer.png")})`, intro:"ssssssssssssss",id:"11"},
-                {name:"helloword", icon:"", intro:"ssssssssssssss",id:"12"},
-                {name:"helloword", icon:"", intro:"ssssssssssssss",id:"13"},
-                {name:"helloword", icon:"", intro:"ssssssssssssss",id:"14"},
-                {name:"helloword", icon:"", intro:"ssssssssssssss",id:"15"}
-            ],
-            "world":[
-                {name:"world", icon:"", intro:"ssssssssssssss",id:"21"},
-                {name:"world", icon:"", intro:"ssssssssssssss",id:"22"},
-                {name:"world", icon:"", intro:"ssssssssssssss",id:"23"},
-                {name:"world", icon:"", intro:"ssssssssssssss",id:"24"},
-            ]
-        },
-        activeCategory:"hello"
+        categorys:[
+            {id:"00002",dictLabel:"写作"},
+            {id:"00001",dictLabel:"教育"},
+        ],
+        apps: [
+            {id:"000021", name:"简书",url:"https://www.jianshu.com/",
+                logo:"https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png"
+            },
+            {id:"000011", name:"51cto", url:"https://edu.51cto.com/sd/aca72",
+                logo:"https://avatars1.githubusercontent.com/u/20293523?s=460&u=c2776d5f7286c3de1cfc5019cffaeb909da5cd2b&v=4"},
+
+        ],
+        activeCategoryId:""
     }
     toggleStartMenu(isOpen) {
         this.setState({isOpen: isOpen})
     }
+
+    componentDidMount() {
+       getAppList((data) => {
+           this.setState({apps:data});
+       });
+       getAppCategoryList((data) => {
+           this.setState({categorys: data});
+       });
+    }
+    categoryClickHandler(categoryId) {
+        this.setState({activeCategoryId:categoryId});
+    }
     render() {
+        const {
+            openWindowList,setWindowOpenList
+        } = this.props
+        let state = this.state;
         return (
             <>
                 <View padding="3px 2px" onMouseEnter={() => this.toggleStartMenu(true)}
@@ -40,7 +58,7 @@ class StartMenuTlP extends React.Component{
                     <i  id="start-menu" className="iconfont">&#xe602;&nbsp;</i>
                     <span >应用程序</span>
                 </View>
-                <ToolTip active={this.state.isOpen} position="bottom" arrow="left" parent="#start-menu">
+                <ToolTip active={state.isOpen} position="bottom" arrow="left" parent="#start-menu">
                    <View className="start_menu_tlp" width="600px" height="500px">
                     <View
                         className="start_menu_tlp_left"
@@ -49,9 +67,9 @@ class StartMenuTlP extends React.Component{
                         layout="horizontal"
                         horizontalAlignment="left">
                         <ul>
-                        {Object.keys(this.state.categorys).map((category, idx) => (
-                                <li key={category} onClick={(e)=>(this.activeCategory = category)}>
-                                    {category}
+                        {state.categorys.map((category, idx) => (
+                                <li key={category.id} onClick={()=>(this.categoryClickHandler(category.id))}>
+                                    {category.dictLabel}
                                 </li>
                         ))}
                         </ul>
@@ -63,10 +81,11 @@ class StartMenuTlP extends React.Component{
                         layout="horizontal"
                         horizontalAlignment="left">
                         <ul>
-                            {this.state.categorys[this.activeCategory||"hello"].map((app) => (
-                                <li key={app.id} title={app.intro}>
-                                    <img className="stat_menu_app_logo" src={app.icon}/>
-                                    {app.name}
+                            {state.apps.map((app) => ((!state.activeCategoryId || state.activeCategoryId == app.categoryId)&&
+                                <li onClick={() => setWindowOpenList(app, openWindowList)}
+                                    key={app.id} title={app.intro || app.name }>
+                                    <img alt={app.name} className="start_menu_app_logo" src={app.logo||APP_LOGO_DEFAULT}/>
+                                    <span className="start_menu_app_name">{app.name}</span>
                                 </li>
                             ))}
                         </ul>
@@ -78,4 +97,15 @@ class StartMenuTlP extends React.Component{
     }
 }
 
-export default StartMenuTlP
+const initMapStateToProps = (state) => ({
+    openWindowList: state.getIn(['homeMac','openWindowList']).toJS()
+})
+const initMapDispatchToProps = (dispatch) => ({
+    /*
+     * 添加或显示窗口列表
+     */
+    setWindowOpenList(window,openWindowList){
+        dispatch(actionCreators.setWindowOpenList(window,openWindowList))
+    }
+})
+export default connect(initMapStateToProps, initMapDispatchToProps)(StartMenuTlP)

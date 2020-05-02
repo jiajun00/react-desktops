@@ -25,7 +25,7 @@ class UserInfoTlP extends React.Component {
         <>
             <View
                 id="user-info"
-                className="mac_home_menu_logo"
+                className="user-info-menu-logo"
                 onMouseEnter={() => this.toggleStartMenu(true)}
                 onMouseLeave={()=> this.toggleStartMenu(false)}
                 style={{
