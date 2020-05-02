@@ -7,7 +7,7 @@
 
 import React from 'react';
 import {View} from 'react-desktop';
-import ToolTip from 'react-portal-tooltip';
+import ToolTip from '../tooltip/index';
 import "../../public/style/tlp/start_menu_tlp.scss"
 
 class UserInfoTlP extends React.Component {
