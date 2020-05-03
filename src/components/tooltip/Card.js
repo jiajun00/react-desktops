@@ -70,7 +70,7 @@ export default class Card extends Component {
       transition: `${this.state.transition} .3s ease-in-out, visibility .3s ease-in-out`,
       opacity: this.state.hover || this.props.active ? 1 : 0,
       visibility: this.state.hover || this.props.active ? 'visible' : 'hidden',
-      zIndex: 50,
+      zIndex: 999,
       ...this.getStyle(this.props.position, this.props.arrow),
     }
 

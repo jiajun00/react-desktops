@@ -62,6 +62,9 @@ body{
   }
 }
 .mac_home_tools{
+  &:hover {
+    z-index: 999;
+  }
 }
 .mac_home_tools_navs{
   border-radius: 0 5px 5px 0;

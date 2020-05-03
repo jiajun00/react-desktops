@@ -119,7 +119,7 @@ class HomeTlp extends Component {
             closeWindow={closeWindow}
             hiddenWindow={hiddenWindow}
           >
-            <Iframe title={row.name} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={row.isLoad} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
+            <Iframe title={row.name} frameBorder={0} style={{background:'#fff'}} width="100%" src={row.url} isLoad={true} onLoad={()=>{this.props.loadWindow(row,openWindowList)}}/>
           </WindowsMac>
         ))}
         {/*==打开窗口结束==*/}

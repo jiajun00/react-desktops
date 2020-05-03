@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom'
 class Iframe extends Component {
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this).addEventListener('load', this.onLoad);
+    //ReactDOM.findDOMNode(this).addEventListener('load', this.onLoad);
   }
 
   onLoad = () => {
-    // ReactDOM.findDOMNode(this).contentDocument.body.addEventListener('click', this.props.setWindowIndex);
+    //console.log(this);
+    //let iframeNode = ReactDOM.findDOMNode(this);
+    //(iframeNode.contentWindow.document|| iframeNode.document).body.addEventListener('click', this.props.setWindowIndex);
   }
 
   render() {

@@ -121,7 +121,7 @@ export const setDateTime = (dataTime) => ({
 export const setWindowOpenList = (window,openWindowList) => {
   return (dispatch) => {
     const openWindowIndex = openWindowList.findIndex((row) => {
-      return row.type === window.type
+      return row.id === window.id
     })
     let list = openWindowList
     if (openWindowIndex >= 0) { //判断窗口是否已打开
