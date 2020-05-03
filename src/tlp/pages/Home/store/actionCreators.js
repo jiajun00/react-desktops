@@ -61,9 +61,9 @@ export const mouseLeavelMenuNav = () => ({
  * 关闭窗口
  * @param string type 窗口类型
  */
-export const closeWindow = (type,openWindowList) => {
+export const closeWindow = (id,openWindowList) => {
   const index = openWindowList.findIndex((row)=>{
-    return row.type === type
+    return row.id === id
   })
   const list = openWindowList
   list.splice(index,1)
@@ -77,7 +77,7 @@ export const closeWindow = (type,openWindowList) => {
  */
 export const hiddenWindow = (window,windowList) => {
   const index = windowList.findIndex((row)=>(
-    row.type === window.type
+    row.id === window.id
   ))
   windowList[index].isShow = false
   return{
@@ -97,7 +97,7 @@ export const showWindow = (windowList) => ({
  */
 export const loadWindow = (window,openWindowList) => {
     const openWindowIndex = openWindowList.findIndex((row) => {
-      return row.type === window.type
+      return row.id === window.id
     })
     let list = openWindowList
     list[openWindowIndex].isLoad = true

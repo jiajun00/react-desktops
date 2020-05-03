@@ -81,15 +81,18 @@ class WindowsMac extends Component {
             controls
             isFullscreen={isFullScreen}
             onCloseClick={() => {
-              this.props.closeWindow(this.props.window.type,this.props.openWindowList)
+              this.props.closeWindow(this.props.window.id,this.props.openWindowList)
             }}
             onMinimizeClick={()=>this.props.hiddenWindow(this.props.window,this.props.openWindowList)}
             onResizeClick={() => {
               this.handleClickSetScreen()
             }}
             onMouseDown={e => {
-              this.mouseMoveDown(e,'position')
+              this.mouseMoveDown(e,'position');
+              console.log("props:" + this.props);
               this.props.setWindowIndex(this.props.window,this.props.openWindowList)
+              console.dir(this.props);
+
             }}
           />
           <View

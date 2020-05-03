@@ -14,12 +14,11 @@ import {actionCreators as actionCreatorsHomeMac} from "./store";
 class HomeTlp extends Component {
   constructor(props){
     super(props)
-    window.onmouseup = (e) => this.props.mouseClick(e,this.props.isEnterMenu,this.props.isEnterMenuNav,this.props.openMenuNav)
+    //window.onmouseup = (e) => this.props.mouseClick(e,this.props.isEnterMenu,this.props.isEnterMenuNav,this.props.openMenuNav)
   }
   render() {
     const {
-      homeNav,tools,openWindowList,setWindowOpenList,appCenter,isEnterMenu,isEnterMenuNav,toggleAppCenter,
-      handleOpenNav,mouseEnterMenuNav,mouseLeaveMenuNav,closeWindow,hiddenWindow
+      tools,openWindowList,setWindowOpenList,closeWindow,hiddenWindow
     } = this.props
     return (
       <View
@@ -113,7 +112,7 @@ class HomeTlp extends Component {
             id={row.id}
             key={row.id}
             window={row}
-            zIndex={idx + 100}
+            zIndex={row.zIndex}
             openWindowList={openWindowList}
             setWindowIndex={this.props.setWindowOpenList}
             closeWindow={closeWindow}
@@ -133,12 +132,12 @@ class HomeTlp extends Component {
 
 
 const initMapStateToProps = (state) => ({
-  homeNav:state.getIn(['homeMac','homeNav']).toJS(),
+  //homeNav:state.getIn(['homeMac','homeNav']).toJS(),
   openWindowList: state.getIn(['homeMac','openWindowList']).toJS(),
   tools:state.getIn(['homeMac','tools']).toJS(),
-  openMenuNav:state.getIn(['homeMac','openMenuNav']).toJS(),
-  isEnterMenuNav:state.getIn(['homeMac','isEnterMenuNav']),
-  isEnterMenu:state.getIn(['homeMac','isEnterMenu']),
+  //openMenuNav:state.getIn(['homeMac','openMenuNav']).toJS(),
+  //isEnterMenuNav:state.getIn(['homeMac','isEnterMenuNav']),
+  //isEnterMenu:state.getIn(['homeMac','isEnterMenu']),
   dataTime:state.getIn(['homeMac','dataTime']).toJS()
 })
 
@@ -159,45 +158,14 @@ const initMapDispatchToProps = (dispatch) => ({
   /*
    * 关闭窗口
    */
-  closeWindow(type,openWindowList){
-    dispatch(actionCreatorsHomeMac.closeWindow(type,openWindowList))
+  closeWindow(id,openWindowList){
+    dispatch(actionCreatorsHomeMac.closeWindow(id,openWindowList))
   },
   /*
    * 隐藏窗口
    */
   hiddenWindow(window,windowList){
     dispatch(actionCreatorsHomeMac.hiddenWindow(window,windowList))
-  },
-  /*
-   * 访问菜单
-   */
-  handleOpenNav(e,menuNav,type='nav'){
-    e.preventDefault()
-    dispatch(actionCreators.handleOpenNav(e,menuNav,type))
-  },
-  /*
-   * 鼠标进入菜单栏
-   */
-  mouseEnterMenuNav(){
-    dispatch(actionCreators.mouseEnterMenuNav())
-  },
-  /*
-   * 鼠标离开菜单选择栏
-   */
-  mouseLeaveMenuNav(){
-    dispatch(actionCreators.mouseLeavelMenuNav())
-  },
-  /*
-   * 鼠标点击
-   */
-  mouseClick(e,isEnterMenu,isEnterMenuNav,openMenuNav){
-    e.preventDefault()
-    if(isEnterMenu && !isEnterMenuNav){
-      dispatch(actionCreators.clearMenuNav())
-    }
-    if(!isEnterMenu && !isEnterMenuNav && Object.keys(openMenuNav).length>0){
-      dispatch(actionCreators.clearMenuNav())
-    }
   },
   /*
    * 设置日期
