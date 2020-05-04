@@ -15,10 +15,13 @@ import {actionCreators as actionCreatorsHomeMac, actionCreators} from "../../tlp
 import {APP_LOGO_DEFAULT} from "../../AppConf.js"
 const apps = [
     {id:"000021", categoryId:"00002",isShow:true,name:"简书",url:"https://www.jianshu.com/",
-        logo:"https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png"
+        logo:"http://www.05sun.com/up/1410/20141019155756.png"
     },
     {id:"000011",categoryId:"00001",isShow:true, name:"51cto", url:"https://edu.51cto.com/sd/aca72",
         logo:"https://avatars1.githubusercontent.com/u/20293523?s=460&u=c2776d5f7286c3de1cfc5019cffaeb909da5cd2b&v=4"},
+    {id:"000031",categoryId:"00003", isShow:true, name:"云主机", url:"https://www.aliyun.com/minisite/goods?userCode=qtg5vupa",
+        logo:"https://img.alicdn.com/tfs/TB1Ly5oS3HqK1RjSZFPXXcwapXa-238-54.png"
+    }
 
 ]
 const appCategoryAll = "app_category_all";
@@ -28,15 +31,12 @@ class StartMenuTlP extends React.Component{
         categorys:[
             {id:"00002",dictLabel:"写作"},
             {id:"00001",dictLabel:"教育"},
+            {id:"00003",dictLabel:"建站工具"},
         ],
         apps:apps,
         filteredApps:apps,
         activeCategoryId: ""
     }
-    toggleStartMenu(isOpen) {
-        this.setState({isOpen: isOpen})
-    }
-
     componentDidMount() {
        getAppList((data) => {
            this.setState({
@@ -63,14 +63,13 @@ class StartMenuTlP extends React.Component{
             openWindowList,setWindowOpenList
         } = this.props
         let state = this.state;
-        let appNav =  <View padding="3px 2px" onMouseEnter={() => this.toggleStartMenu(true)}
-                            onMouseLeave={()=> this.toggleStartMenu(false)}>
+        let appNav =  <View padding="3px 2px">
                         <i  id="start-menu" className="iconfont">&#xe602;&nbsp;</i>
                         <span >应用程序</span>
                     </View>;
         return (
 
-                <StatefulToolTip group={state.activeCategoryId} active={state.isOpen} position="bottom" arrow="left" parent={appNav}>
+                <StatefulToolTip group="start_menu_tlp" position="bottom" arrow="left" parent={appNav}>
                    <View className="start_menu_tlp" width="600px" height="500px">
                     <View
                         className="start_menu_tlp_left"

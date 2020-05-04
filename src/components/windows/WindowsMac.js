@@ -1,8 +1,12 @@
-import React, {Component, Fragment} from 'react'
-import { View,Window,TitleBar } from 'react-desktop'
+import React, {Component, Fragment} from 'react';
+import { View,Window,TitleBar } from 'react-desktop';
+import Cover from "../block/Cover";
+
 const WindowOffsetWidth = window.innerWidth
 const WindowOffsetHeight = window.innerHeight
 let lastWindowStyleState = null //记录前一次设置的屏幕属性
+
+
 class WindowsMac extends Component {
   constructor(props){
     super(props)
@@ -64,6 +68,8 @@ class WindowsMac extends Component {
       zIndex:this.props.zIndex+8,
       display: showCover
     }
+    const contextMenuId = this.props.window.id + "_context_menu";
+    console.log(contextMenuId);
     return (
       <Fragment>
         <span
@@ -76,6 +82,7 @@ class WindowsMac extends Component {
           height="100%"
           padding="0px"
         >
+
           <TitleBar
             title={this.props.window.name}
             controls
@@ -89,19 +96,18 @@ class WindowsMac extends Component {
             }}
             onMouseDown={e => {
               this.mouseMoveDown(e,'position');
-              console.log("props:" + this.props);
-              this.props.setWindowIndex(this.props.window,this.props.openWindowList)
-              console.dir(this.props);
-
+              this.props.setWindowIndex(this.props.window,this.props.openWindowList);
             }}
           />
-          <View
-            padding="0px"
-            width="100%"
-            style={{overflow: 'scroll'}}
-          >
-            {this.props.children}
-          </View>
+
+            <View
+              padding="0px"
+              width="100%"
+            >
+              <Cover position="left" winWidth={windowStyle.width} winHeight={windowStyle.height} />
+              <Cover position="right" winWidth={windowStyle.width} winHeight={windowStyle.height} />
+              {this.props.children}
+            </View>
           <div
             ref={el=>this.windowCover=el}
             style={cover}

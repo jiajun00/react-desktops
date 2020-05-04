@@ -1,4 +1,18 @@
 @import "./StyleValue";
+
+.window-cover {
+  opacity: 1;
+  background-color: green;
+}
+.window-cover-m {
+  opacity: 1;
+  background-color: green;
+  background-image: url("../../imgs/lawn.jpg");
+}
+.window-cover-l {
+  opacity: 1;
+  background-color: green;
+}
 .user-info-menu-logo {
   width:26px;
   height:26px;
