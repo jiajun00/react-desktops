@@ -17,7 +17,7 @@ class Cover extends Component{
         super(props);
         let position = props.position || 'left';
         let winWidth = parseInt(props.winWidth);//父窗口的宽度
-        let width = this.props.width || 2;
+        let width = this.props.width || 10;
         this.state = {
             x:0,
             y:0,
