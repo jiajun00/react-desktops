@@ -27,7 +27,7 @@ class HomeTlp extends Component {
         layout="vertical"
         style={{
           backgroundSize:'cover',
-          background: `url(${require("../../../public/imgs/wolf.jpg")}) no-repeat center center / cover`
+          background: `url(${require("../../../public/imgs/counting_stars.svg")}) no-repeat center center / cover`
 
         }}>
         {/**顶部面板开始**/}
