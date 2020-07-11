@@ -9,6 +9,8 @@
 react-desktops是基于react-desktop基础上，封装桌面操作系统前端UI，用了丰富的mac和win10桌面元素，包括桌面图标、窗口化子页面管理、开始菜单等组件，兼容主流现代浏览器。
 适合快速开发后台管理系统的前端界面、整合企业诸多应用、通过B/S架构集成系统、可作为企业级应用管理平台。
 
+由于网络问题最新版请到码云中[查看](https://gitee.com/jiajun000/react-desktops)
+
 ### 技术栈
 - react
 - webpack
