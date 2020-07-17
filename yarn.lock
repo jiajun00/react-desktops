@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@alifd/field@~1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@alifd/field/-/field-1.3.3.tgz#d1b86ec7b557334cc9869cf900faac7bc327fdc7"
+"@alifd/field@~1.4.1":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@alifd/field/-/field-1.4.4.tgz#6d78dd24cf40f8db88f269ee623aa5dc9b1b96af"
   dependencies:
-    "@alifd/validate" "^1.1.3"
+    "@alifd/validate" "^1.2.0"
     prop-types "^15.5.8"
 
 "@alifd/next@1.11.11":
@@ -20,12 +20,12 @@
     react-transition-group "^2.2.1"
     shallow-element-equals "^1.0.1"
 
-"@alifd/next@^1.11.11":
-  version "1.18.17"
-  resolved "https://registry.yarnpkg.com/@alifd/next/-/next-1.18.17.tgz#96f02f19a893d60b9d9140278aadb6ac46b0d253"
+"@alifd/next@^1.16.7":
+  version "1.20.18"
+  resolved "https://registry.yarnpkg.com/@alifd/next/-/next-1.20.18.tgz#355d02a8ce3fe7996e52ee0295d696c8a9032060"
   dependencies:
-    "@alifd/field" "~1.3.3"
-    "@alifd/validate" "~1.1.4"
+    "@alifd/field" "~1.4.1"
+    "@alifd/validate" "~1.2.0"
     babel-runtime "^6.26.0"
     classnames "^2.2.3"
     hoist-non-react-statics "^2.1.0"
@@ -40,9 +40,9 @@
   dependencies:
     "@alifd/next" "1.11.11"
 
-"@alifd/validate@^1.1.3", "@alifd/validate@~1.1.4":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.1.5.tgz#e44896785051182cb94db7ec2b33a99b4c86943a"
+"@alifd/validate@^1.2.0", "@alifd/validate@~1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.2.0.tgz#252e0add24e64efd54fe611ba8c66d0147d850f6"
 
 "@babel/code-frame@7.0.0", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.35":
   version "7.0.0"
@@ -5469,13 +5469,9 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@~4.17.10:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-
-lodash@^4.17.14, lodash@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+"lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.17.5, lodash@~4.17.10:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
 
 loglevel@^1.6.6:
   version "1.6.6"
