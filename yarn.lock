@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@alifd/field@~1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@alifd/field/-/field-1.3.3.tgz#d1b86ec7b557334cc9869cf900faac7bc327fdc7"
+"@alifd/field@~1.4.1":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@alifd/field/-/field-1.4.4.tgz#6d78dd24cf40f8db88f269ee623aa5dc9b1b96af"
   dependencies:
-    "@alifd/validate" "^1.1.3"
+    "@alifd/validate" "^1.2.0"
     prop-types "^15.5.8"
 
 "@alifd/next@1.11.11":
@@ -20,12 +20,12 @@
     react-transition-group "^2.2.1"
     shallow-element-equals "^1.0.1"
 
-"@alifd/next@^1.11.11":
-  version "1.18.17"
-  resolved "https://registry.yarnpkg.com/@alifd/next/-/next-1.18.17.tgz#96f02f19a893d60b9d9140278aadb6ac46b0d253"
+"@alifd/next@^1.16.7":
+  version "1.20.24"
+  resolved "https://registry.yarnpkg.com/@alifd/next/-/next-1.20.24.tgz#f79cfba6a1b246124b7154cddf1b0094e58a3b86"
   dependencies:
-    "@alifd/field" "~1.3.3"
-    "@alifd/validate" "~1.1.4"
+    "@alifd/field" "~1.4.1"
+    "@alifd/validate" "~1.2.0"
     babel-runtime "^6.26.0"
     classnames "^2.2.3"
     hoist-non-react-statics "^2.1.0"
@@ -40,9 +40,9 @@
   dependencies:
     "@alifd/next" "1.11.11"
 
-"@alifd/validate@^1.1.3", "@alifd/validate@~1.1.4":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.1.5.tgz#e44896785051182cb94db7ec2b33a99b4c86943a"
+"@alifd/validate@^1.2.0", "@alifd/validate@~1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.2.0.tgz#252e0add24e64efd54fe611ba8c66d0147d850f6"
 
 "@babel/code-frame@7.0.0", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.35":
   version "7.0.0"
@@ -1626,8 +1626,8 @@ bluebird@^3.5.5:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
-  version "4.11.8"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
+  version "4.11.9"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
 
 body-parser@1.19.0:
   version "1.19.0"
@@ -2913,8 +2913,8 @@ electron-to-chromium@^1.3.62, electron-to-chromium@^1.3.82:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.84.tgz#2e55df59e818f150a9f61b53471ebf4f0feecc65"
 
 elliptic@^6.0.0:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.1.tgz#c2d0b7776911b86722c632c3c06c60f2f819939a"
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
   dependencies:
     bn.js "^4.4.0"
     brorand "^1.0.1"
@@ -4046,8 +4046,8 @@ hash-base@^3.0.0:
     safe-buffer "^5.0.1"
 
 hash.js@^1.0.0, hash.js@^1.0.3:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.5.tgz#e38ab4b85dfb1e0c40fe9265c0e9b54854c23812"
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
