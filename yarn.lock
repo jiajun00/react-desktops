@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@alifd/field@~1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@alifd/field/-/field-1.3.3.tgz#d1b86ec7b557334cc9869cf900faac7bc327fdc7"
+"@alifd/field@~1.5.0":
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/@alifd/field/-/field-1.5.5.tgz#251c83c4816c7ece5f3e94005ea9392746b729d5"
   dependencies:
-    "@alifd/validate" "^1.1.3"
+    "@alifd/validate" "^1.2.0"
     prop-types "^15.5.8"
 
 "@alifd/next@1.11.11":
@@ -20,18 +20,21 @@
     react-transition-group "^2.2.1"
     shallow-element-equals "^1.0.1"
 
-"@alifd/next@^1.11.11":
-  version "1.18.17"
-  resolved "https://registry.yarnpkg.com/@alifd/next/-/next-1.18.17.tgz#96f02f19a893d60b9d9140278aadb6ac46b0d253"
+"@alifd/next@^1.16.7":
+  version "1.23.25"
+  resolved "https://registry.yarnpkg.com/@alifd/next/-/next-1.23.25.tgz#9f87c437af2bf5fac392ad7a7a7af72e3f70c2cc"
   dependencies:
-    "@alifd/field" "~1.3.3"
-    "@alifd/validate" "~1.1.4"
+    "@alifd/field" "~1.5.0"
+    "@alifd/validate" "~1.2.0"
     babel-runtime "^6.26.0"
     classnames "^2.2.3"
-    hoist-non-react-statics "^2.1.0"
+    dayjs "^1.9.6"
+    hoist-non-react-statics "^3.0.0"
+    lodash.clonedeep "^4.5.0"
     prop-types "^15.6.0"
     react-lifecycles-compat "^3.0.4"
     react-transition-group "^2.2.1"
+    resize-observer-polyfill "^1.5.1"
     shallow-element-equals "^1.0.1"
 
 "@alifd/theme-2786@^0.1.14":
@@ -40,9 +43,13 @@
   dependencies:
     "@alifd/next" "1.11.11"
 
-"@alifd/validate@^1.1.3", "@alifd/validate@~1.1.4":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.1.5.tgz#e44896785051182cb94db7ec2b33a99b4c86943a"
+"@alifd/validate@^1.2.0":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.3.1.tgz#8d4970d152315356e2f619610de03ce70bcabeb0"
+
+"@alifd/validate@~1.2.0":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@alifd/validate/-/validate-1.2.3.tgz#3b7f880a1a955470b303fddce5afa42a9f2d9ff2"
 
 "@babel/code-frame@7.0.0", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.35":
   version "7.0.0"
@@ -2606,6 +2613,10 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
+dayjs@^1.9.6:
+  version "1.10.7"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
+
 debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -4086,6 +4097,12 @@ hoist-non-react-statics@^2.1.0, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
+hoist-non-react-statics@^3.0.0:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  dependencies:
+    react-is "^16.7.0"
+
 hoist-non-react-statics@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
@@ -5424,7 +5441,7 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.clonedeep@^4.3.2:
+lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
@@ -7284,9 +7301,9 @@ querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
-querystringify@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.0.tgz#7ded8dfbf7879dcc60d0a644ac6754b283ad17ef"
+querystringify@^2.1.1:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
 
 radium@=0.19.6:
   version "0.19.6"
@@ -7418,6 +7435,10 @@ react-error-overlay@^5.1.0:
 react-is@^16.3.2, react-is@^16.6.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
+
+react-is@^16.7.0:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
 
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -7769,6 +7790,10 @@ require-uncached@^1.0.3:
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -8895,10 +8920,10 @@ url-loader@1.1.1:
     schema-utils "^1.0.0"
 
 url-parse@^1.1.8, url-parse@^1.4.3:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.4.tgz#cac1556e95faa0303691fec5cf9d5a1bc34648f8"
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.3.tgz#71c1303d38fb6639ade183c2992c8cc0686df862"
   dependencies:
-    querystringify "^2.0.0"
+    querystringify "^2.1.1"
     requires-port "^1.0.0"
 
 url@^0.11.0:
