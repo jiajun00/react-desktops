@@ -65,7 +65,7 @@ npm run build
 ![image](https://react-desktop.oss-cn-shenzhen.aliyuncs.com/demo/win-system.png)
 
 ## 在线演示
-[演示地址](http://desk.qqxio.cn)
+[演示地址](https://desk.ynedu.plus)
 
 ## Learn More
 
