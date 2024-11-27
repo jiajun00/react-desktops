@@ -105,7 +105,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.7.7",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "immutable": "^4.0.0-rc.12",
